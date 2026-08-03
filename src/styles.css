@@ -162,12 +162,19 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "lnum" 1;
   }
 
+  h1,
+  h2,
+  h3,
   .font-display {
+    font-family: var(--font-display);
     font-weight: 600;
     font-style: normal;
-    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
   }
 
   i,
@@ -175,3 +182,4 @@
     font-style: normal;
   }
 }
+
