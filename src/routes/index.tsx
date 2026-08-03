@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, Image as ImageIcon, Palette, Sparkles, Upload, Wand2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Sparkles, Upload } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { RevealStrip } from "@/components/site/RevealStrip";
@@ -74,10 +74,10 @@ const mosaicTiles = [
 ];
 
 const steps = [
-  { icon: Upload, title: "Загрузка фото", text: "Снимок с телефона подойдёт — важно, чтобы было видно стены, окна и пол." },
-  { icon: Palette, title: "Выбор стиля", text: "Тип помещения и одно из 20+ направлений: сканди, лофт, джапандии другие." },
-  { icon: Wand2, title: "Генерация ИИ", text: "Около минуты — геометрия комнаты сохраняется, меняются отделка, свет и мебель." },
-  { icon: ImageIcon, title: "Результат", text: "Сравниваете до/после, просите правки словами и скачиваете кадр в высоком разрешении." },
+  { title: "Загрузка фото", text: "Снимок с телефона подойдёт — важно, чтобы было видно стены, окна и пол." },
+  { title: "Выбор стиля", text: "Тип помещения и одно из 20+ направлений: сканди, лофт, джапандии другие." },
+  { title: "Генерация ИИ", text: "Около минуты — геометрия комнаты сохраняется, меняются отделка, свет и мебель." },
+  { title: "Результат", text: "Сравниваете до/после, просите правки словами и скачиваете кадр в высоком разрешении." },
 ];
 
 const rooms = [
@@ -356,20 +356,18 @@ function Home() {
           </div>
           <div className="mt-10 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
-              <div key={s.title} className="flex flex-col bg-background p-6">
-                <div className="flex items-center justify-between">
-                  <s.icon className="size-6" strokeWidth={1.5} />
-                  <span className="font-display text-3xl tracking-[0.02em] text-muted-foreground/50">
-                    0{i + 1}
-                  </span>
-                </div>
-                <h3 className="mt-6 font-display text-2xl leading-tight tracking-[0.02em]">
+              <div key={s.title} className="relative flex flex-col bg-background p-6">
+                <span className="font-display text-3xl tracking-[0.02em] text-muted-foreground/50">
+                  0{i + 1}
+                </span>
+                <h3 className="mt-8 font-display text-2xl leading-tight tracking-[0.02em]">
                   {s.title}
                 </h3>
                 <p className="mt-3 text-sm text-muted-foreground">{s.text}</p>
               </div>
             ))}
           </div>
+
           <div className="mt-8 flex flex-wrap gap-3">
             <StartButton />
             <BuyButton />
