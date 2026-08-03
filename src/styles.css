@@ -189,6 +189,10 @@
     text-transform: uppercase;
   }
 
+  .font-display.normal-case {
+    text-transform: none;
+  }
+
   h1,
   h2,
   h3 {

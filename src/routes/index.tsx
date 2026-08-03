@@ -321,7 +321,7 @@ function Home() {
                   loading="lazy"
                 />
                 <div className="p-3">
-                  <p className="font-display text-xl leading-none tracking-[0.02em]">{s.name}</p>
+                  <p className="font-display normal-case text-xl leading-none tracking-[0.02em]">{s.name}</p>
                   <p className="mt-1.5 line-clamp-1 text-xs text-muted-foreground">{s.desc}</p>
                 </div>
               </Link>
