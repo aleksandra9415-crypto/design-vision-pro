@@ -365,15 +365,17 @@ function Home() {
                   i % 2 === 1 ? "lg:[&>figure]:order-last" : ""
                 }`}
               >
-                <figure className={i === 1 ? "lg:col-span-6" : "lg:col-span-7"}>
+                <figure className="lg:col-span-7">
                   <img
                     src={c.image}
                     alt={c.title}
+                    width={1024}
+                    height={768}
                     className="aspect-[4/3] w-full object-cover"
                     loading="lazy"
                   />
                 </figure>
-                <div className={i === 1 ? "lg:col-span-6 lg:pr-10" : "lg:col-span-5"}>
+                <div className="lg:col-span-5">
 
                   <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
                     {c.kicker}
@@ -410,23 +412,8 @@ function Home() {
               Разные комнаты, стили и сценарии — от студии до фасада частного дома.
             </p>
           </div>
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {userExamples.map((ex) => (
-              <figure key={`${ex.style}-${ex.room}`} className="group">
-                <img
-                  src={ex.image}
-                  alt={`${ex.style} · ${ex.room}`}
-                  width={768}
-                  height={576}
-                  className="aspect-[4/3] w-full object-cover"
-                  loading="lazy"
-                />
-                <figcaption className="mt-2 text-sm">
-                  <span className="font-medium">{ex.style}</span>
-                  <span className="text-muted-foreground"> · {ex.room}</span>
-                </figcaption>
-              </figure>
-            ))}
+          <div className="mt-10">
+            <RevealStrip items={revealItems} />
           </div>
           <div className="mt-10 flex flex-wrap gap-3">
             <StartButton label="Сделать свой кадр" />
@@ -435,20 +422,45 @@ function Home() {
         </div>
       </section>
 
-
       {/* ОТЗЫВЫ */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <div className="grid gap-10 lg:grid-cols-3">
-            {testimonials.map((t) => (
-              <blockquote key={t.name} className="border-t border-foreground/20 pt-6">
-                <p className="font-display text-2xl leading-snug">«{t.text}»</p>
-                <footer className="mt-5 text-sm text-muted-foreground">
-                  {t.name}, {t.city}
-                </footer>
-              </blockquote>
-            ))}
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+              Что говорят пользователи
+            </h2>
+            <p className="max-w-sm text-sm text-muted-foreground">
+              Владельцы квартир, дизайнеры и бригады — листайте, чтобы увидеть больше историй.
+            </p>
           </div>
+
+          <Carousel opts={{ align: "start", loop: true }} className="mt-10">
+            <CarouselContent className="-ml-4">
+              {testimonialsExtended.map((t) => (
+                <CarouselItem key={t.name} className="pl-4 sm:basis-1/2 lg:basis-1/3">
+                  <figure className="flex h-full flex-col border border-border bg-card p-6">
+                    <div className="flex size-16 items-center justify-center rounded-full bg-secondary font-display text-xl text-foreground">
+                      {t.name.slice(0, 1)}
+                    </div>
+                    <blockquote className="mt-5 flex-1 text-sm leading-relaxed text-muted-foreground">
+                      «{t.text}»
+                    </blockquote>
+                    <figcaption className="mt-5 border-t border-border pt-4 text-sm">
+                      <span className="font-medium">{t.name}</span>
+                      <span className="text-muted-foreground">
+                        {" "}
+                        · {t.city} · {t.role}
+                      </span>
+                    </figcaption>
+                  </figure>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="mt-8 flex gap-2">
+              <CarouselPrevious className="static translate-y-0 rounded-none" />
+              <CarouselNext className="static translate-y-0 rounded-none" />
+            </div>
+          </Carousel>
         </div>
       </section>
 
