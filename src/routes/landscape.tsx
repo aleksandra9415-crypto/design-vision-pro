@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MiniLanding } from "@/components/site/MiniLanding";
 import { exteriorStyles, images } from "@/lib/mock-data";
 
-export const Route = createFileRoute("/exterior")({
+export const Route = createFileRoute("/landscape")({
   head: () => ({
     meta: [
       { title: "Дизайн ландшафта и фасада дома по фото с ИИ" },
