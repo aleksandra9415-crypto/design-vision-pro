@@ -19,7 +19,8 @@ export function RevealStrip({ items }: { items: RevealItem[] }) {
               aria-hidden={dup === 1 || key === "after" ? true : undefined}
               className={IMG_CLASS}
               draggable={false}
-              loading="lazy"
+              loading="eager"
+              decoding="async"
             />
           ))}
         </div>
