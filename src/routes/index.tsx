@@ -324,7 +324,7 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Витрина стилей
+              Стили интерьера
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
               Больше 20 направлений в генераторе. Вот двенадцать, с которых обычно начинают.
@@ -365,7 +365,7 @@ function Home() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-            Что с этим делают
+            Возможности сервиса
           </h2>
           <div className="mt-12 space-y-20">
             {cases.map((c, i) => (
@@ -416,14 +416,14 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Из архива работ
+              Любое пространство
             </h2>
             <p className="mt-3 max-w-sm text-sm text-muted-foreground">
               Разные комнаты, стили и сценарии — от студии до фасада частного дома.
             </p>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {revealItems.slice(0, 3).map((it) => (
+            {revealCards.map((it) => (
               <RevealCard key={it.alt} before={it.before} after={it.after} alt={it.alt} />
             ))}
           </div>
@@ -437,29 +437,12 @@ function Home() {
         </div>
       </section>
 
-      {/* ОТЗЫВЫ */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-            Что говорят пользователи
-          </h2>
-          <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-            Короткие видео от владельцев квартир, дизайнеров и бригад: что загружали, что получили
-            и как это повлияло на ремонт. Текст под каждым видео — краткая расшифровка.
-          </p>
-
-          <TestimonialsCarousel />
-
-        </div>
-      </section>
-
-
       {/* ПРЕВЬЮ ТАРИФОВ */}
       <section className="border-b border-border bg-secondary/40">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Пакеты кредитов
+              Тарифы
             </h2>
             <p className="mt-3 max-w-sm text-sm text-muted-foreground">
               Один кредит — один кадр. Кредиты не сгорают, подписки нет.
@@ -515,12 +498,29 @@ function Home() {
         </div>
       </section>
 
+      {/* ОТЗЫВЫ */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
+            Что говорят пользователи
+          </h2>
+          <p className="mt-3 max-w-2xl text-base text-muted-foreground">
+            Короткие видео от владельцев квартир, дизайнеров и бригад: что загружали, что получили
+            и как это повлияло на ремонт. Текст под каждым видео — краткая расшифровка.
+          </p>
+
+          <TestimonialsCarousel />
+
+        </div>
+      </section>
+
+
       {/* ФИНАЛЬНЫЙ CTA */}
       <section>
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Первые три кадра — за наш счёт
+              Создайте первый дизайн
             </h2>
             <p className="mt-5 max-w-md text-muted-foreground">
               Регистрация занимает минуту, карта не нужна. Загрузите фото комнаты или план — и
