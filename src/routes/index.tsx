@@ -342,37 +342,6 @@ function Home() {
 
 
 
-      {/* НАС ВЫБИРАЮТ */}
-      <section className="border-b border-border bg-secondary/60">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-            Нас выбирают
-          </h2>
-          <div className="mt-10 grid grid-cols-2 gap-y-10 lg:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label} className="px-2">
-                <p className="font-display text-4xl tracking-[0.02em] sm:text-5xl">{s.value}</p>
-                <p className="mt-2 max-w-[16ch] text-sm text-muted-foreground">{s.label}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
-              О нас писали
-            </p>
-            <div className="flex flex-wrap items-center gap-2">
-              {press.map((p) => (
-                <span
-                  key={p}
-                  className="border border-border bg-card px-4 py-2 font-display text-lg tracking-[0.02em] text-muted-foreground"
-                >
-                  {p}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* КАК РАБОТАЕМ */}
       <section className="border-b border-border">
@@ -450,6 +419,39 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* НАС ВЫБИРАЮТ */}
+      <section className="border-b border-border bg-secondary/60">
+        <div className="mx-auto max-w-6xl px-4 py-14">
+          <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
+            Нас выбирают
+          </h2>
+          <div className="mt-10 grid grid-cols-2 gap-y-10 lg:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.label} className="px-2">
+                <p className="font-display text-4xl tracking-[0.02em] sm:text-5xl">{s.value}</p>
+                <p className="mt-2 max-w-[16ch] text-sm text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
+              О нас писали
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              {press.map((p) => (
+                <span
+                  key={p}
+                  className="border border-border bg-card px-4 py-2 font-display text-lg tracking-[0.02em] text-muted-foreground"
+                >
+                  {p}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
 
 
       {/* КЕЙСЫ — журнальный разворот */}
