@@ -78,14 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Дизайн интерьера, ландшафта и фасада с ИИ" },
-      { name: "description", content: "Визуализация интерьера, ландшафта и фасада по фото или схеме мебели." },
+      { title: "Vizoria — дизайн интерьера, ландшафта и фасада с ИИ" },
+      { name: "description", content: "Vizoria: загрузите фото комнаты, дома или участка — студийная визуализация будет готова примерно за минуту." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Дизайн интерьера и экстерьера с ИИ" },
-      { property: "og:description", content: "Дизайн по фото за минуту." },
+      { property: "og:title", content: "Vizoria — дизайн интерьера, ландшафта и фасада с ИИ" },
+      { property: "og:description", content: "Vizoria: загрузите фото комнаты, дома или участка — студийная визуализация будет готова примерно за минуту." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Vizoria — дизайн интерьера, ландшафта и фасада с ИИ" },
+      { name: "twitter:description", content: "Vizoria: загрузите фото комнаты, дома или участка — студийная визуализация будет готова примерно за минуту." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bf9f81c0-2ce4-45a5-abaf-9074f0a7bba3/id-preview-25331e93--e61d869d-8983-4510-ad8b-b235981bfef0.lovable.app-1785789371848.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bf9f81c0-2ce4-45a5-abaf-9074f0a7bba3/id-preview-25331e93--e61d869d-8983-4510-ad8b-b235981bfef0.lovable.app-1785789371848.png" },
     ],
     links: [
       {

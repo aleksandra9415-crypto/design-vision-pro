@@ -102,10 +102,10 @@ export const Route = createFileRoute("/")({
         content:
           "Vizoria: загрузите фото комнаты, дома или участка — студийная визуализация будет готова примерно за минуту.",
       },
-      { property: "og:title", content: "Vizoria — визуализация интерьера и экстерьера" },
+      { property: "og:title", content: "Vizoria — дизайн интерьера, ландшафта и фасада с ИИ" },
       {
         property: "og:description",
-        content: "Визуализация интерьера, ландшафта и фасада по фото за минуту.",
+        content: "Vizoria: загрузите фото комнаты, дома или участка — студийная визуализация будет готова примерно за минуту.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
