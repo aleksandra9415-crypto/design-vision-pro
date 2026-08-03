@@ -407,22 +407,39 @@ function Home() {
       {/* ПРИМЕРЫ */}
       <section className="border-b border-border bg-secondary/50">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-            Из архива работ
-          </h2>
-          <div className="mt-10 grid gap-8 lg:grid-cols-3">
-            {galleryExamples.map((ex) => (
-              <figure key={ex.style}>
-                <BeforeAfter before={ex.before} after={ex.after} />
-                <figcaption className="mt-3">
-                  <span className="font-display text-2xl">{ex.style}</span>
-                  <span className="ml-2 text-sm text-muted-foreground">{ex.room}</span>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+              Из архива работ
+            </h2>
+            <p className="max-w-sm text-sm text-muted-foreground">
+              Разные комнаты, стили и сценарии — от студии до фасада частного дома.
+            </p>
+          </div>
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {userExamples.map((ex) => (
+              <figure key={`${ex.style}-${ex.room}`} className="group">
+                <img
+                  src={ex.image}
+                  alt={`${ex.style} · ${ex.room}`}
+                  width={768}
+                  height={576}
+                  className="aspect-[4/3] w-full object-cover"
+                  loading="lazy"
+                />
+                <figcaption className="mt-2 text-sm">
+                  <span className="font-medium">{ex.style}</span>
+                  <span className="text-muted-foreground"> · {ex.room}</span>
                 </figcaption>
               </figure>
             ))}
           </div>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <StartButton label="Сделать свой кадр" />
+            <BuyButton />
+          </div>
         </div>
       </section>
+
 
       {/* ОТЗЫВЫ */}
       <section className="border-b border-border">
