@@ -10,33 +10,219 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ExteriorRouteImport } from './routes/exterior'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as InteriorRouteImport } from './routes/interior'
+import { Route as OfferRouteImport } from './routes/offer'
+import { Route as PaymentInfoRouteImport } from './routes/payment-info'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProRouteImport } from './routes/pro'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as AppAccountRouteImport } from './routes/app.account'
+import { Route as AppBillingRouteImport } from './routes/app.billing'
+import { Route as AppGeneratorRouteImport } from './routes/app.generator'
+import { Route as AppResultRouteImport } from './routes/app.result'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExteriorRoute = ExteriorRouteImport.update({
+  id: '/exterior',
+  path: '/exterior',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InteriorRoute = InteriorRouteImport.update({
+  id: '/interior',
+  path: '/interior',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfferRoute = OfferRouteImport.update({
+  id: '/offer',
+  path: '/offer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentInfoRoute = PaymentInfoRouteImport.update({
+  id: '/payment-info',
+  path: '/payment-info',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProRoute = ProRouteImport.update({
+  id: '/pro',
+  path: '/pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountRoute = AppAccountRouteImport.update({
+  id: '/app/account',
+  path: '/app/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppBillingRoute = AppBillingRouteImport.update({
+  id: '/app/billing',
+  path: '/app/billing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGeneratorRoute = AppGeneratorRouteImport.update({
+  id: '/app/generator',
+  path: '/app/generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppResultRoute = AppResultRouteImport.update({
+  id: '/app/result',
+  path: '/app/result',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/exterior': typeof ExteriorRoute
+  '/faq': typeof FaqRoute
+  '/interior': typeof InteriorRoute
+  '/offer': typeof OfferRoute
+  '/payment-info': typeof PaymentInfoRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/pro': typeof ProRoute
+  '/terms': typeof TermsRoute
+  '/app/account': typeof AppAccountRoute
+  '/app/billing': typeof AppBillingRoute
+  '/app/generator': typeof AppGeneratorRoute
+  '/app/result': typeof AppResultRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/exterior': typeof ExteriorRoute
+  '/faq': typeof FaqRoute
+  '/interior': typeof InteriorRoute
+  '/offer': typeof OfferRoute
+  '/payment-info': typeof PaymentInfoRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/pro': typeof ProRoute
+  '/terms': typeof TermsRoute
+  '/app/account': typeof AppAccountRoute
+  '/app/billing': typeof AppBillingRoute
+  '/app/generator': typeof AppGeneratorRoute
+  '/app/result': typeof AppResultRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/exterior': typeof ExteriorRoute
+  '/faq': typeof FaqRoute
+  '/interior': typeof InteriorRoute
+  '/offer': typeof OfferRoute
+  '/payment-info': typeof PaymentInfoRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/pro': typeof ProRoute
+  '/terms': typeof TermsRoute
+  '/app/account': typeof AppAccountRoute
+  '/app/billing': typeof AppBillingRoute
+  '/app/generator': typeof AppGeneratorRoute
+  '/app/result': typeof AppResultRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/exterior'
+    | '/faq'
+    | '/interior'
+    | '/offer'
+    | '/payment-info'
+    | '/pricing'
+    | '/privacy'
+    | '/pro'
+    | '/terms'
+    | '/app/account'
+    | '/app/billing'
+    | '/app/generator'
+    | '/app/result'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/exterior'
+    | '/faq'
+    | '/interior'
+    | '/offer'
+    | '/payment-info'
+    | '/pricing'
+    | '/privacy'
+    | '/pro'
+    | '/terms'
+    | '/app/account'
+    | '/app/billing'
+    | '/app/generator'
+    | '/app/result'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/exterior'
+    | '/faq'
+    | '/interior'
+    | '/offer'
+    | '/payment-info'
+    | '/pricing'
+    | '/privacy'
+    | '/pro'
+    | '/terms'
+    | '/app/account'
+    | '/app/billing'
+    | '/app/generator'
+    | '/app/result'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  ExteriorRoute: typeof ExteriorRoute
+  FaqRoute: typeof FaqRoute
+  InteriorRoute: typeof InteriorRoute
+  OfferRoute: typeof OfferRoute
+  PaymentInfoRoute: typeof PaymentInfoRoute
+  PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProRoute: typeof ProRoute
+  TermsRoute: typeof TermsRoute
+  AppAccountRoute: typeof AppAccountRoute
+  AppBillingRoute: typeof AppBillingRoute
+  AppGeneratorRoute: typeof AppGeneratorRoute
+  AppResultRoute: typeof AppResultRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +234,124 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exterior': {
+      id: '/exterior'
+      path: '/exterior'
+      fullPath: '/exterior'
+      preLoaderRoute: typeof ExteriorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/interior': {
+      id: '/interior'
+      path: '/interior'
+      fullPath: '/interior'
+      preLoaderRoute: typeof InteriorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offer': {
+      id: '/offer'
+      path: '/offer'
+      fullPath: '/offer'
+      preLoaderRoute: typeof OfferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment-info': {
+      id: '/payment-info'
+      path: '/payment-info'
+      fullPath: '/payment-info'
+      preLoaderRoute: typeof PaymentInfoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pro': {
+      id: '/pro'
+      path: '/pro'
+      fullPath: '/pro'
+      preLoaderRoute: typeof ProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/account': {
+      id: '/app/account'
+      path: '/app/account'
+      fullPath: '/app/account'
+      preLoaderRoute: typeof AppAccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/billing': {
+      id: '/app/billing'
+      path: '/app/billing'
+      fullPath: '/app/billing'
+      preLoaderRoute: typeof AppBillingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/generator': {
+      id: '/app/generator'
+      path: '/app/generator'
+      fullPath: '/app/generator'
+      preLoaderRoute: typeof AppGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/result': {
+      id: '/app/result'
+      path: '/app/result'
+      fullPath: '/app/result'
+      preLoaderRoute: typeof AppResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  ExteriorRoute: ExteriorRoute,
+  FaqRoute: FaqRoute,
+  InteriorRoute: InteriorRoute,
+  OfferRoute: OfferRoute,
+  PaymentInfoRoute: PaymentInfoRoute,
+  PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProRoute: ProRoute,
+  TermsRoute: TermsRoute,
+  AppAccountRoute: AppAccountRoute,
+  AppBillingRoute: AppBillingRoute,
+  AppGeneratorRoute: AppGeneratorRoute,
+  AppResultRoute: AppResultRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

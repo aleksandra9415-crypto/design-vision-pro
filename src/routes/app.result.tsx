@@ -1,0 +1,88 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Download, RefreshCw } from "lucide-react";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { AppShell } from "@/components/site/AppShell";
+import { BeforeAfter } from "@/components/site/BeforeAfter";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { loadGeneration, mockPair, type GenerationResult } from "@/lib/generation-store";
+
+export const Route = createFileRoute("/app/result")({
+  head: () => ({
+    meta: [
+      { title: "Результат генерации — сравнение до и после" },
+      { name: "description", content: "Сравните исходное фото и результат генерации, скачайте изображение." },
+      { property: "og:title", content: "Результат генерации" },
+      { property: "og:description", content: "Сравнение до/после и параметры генерации." },
+    ],
+  }),
+  component: Result,
+});
+
+const fallback: GenerationResult = {
+  tab: "interior",
+  tabLabel: "Интерьер",
+  type: "Гостиная",
+  style: "Сканди",
+  notes: "",
+  ...mockPair("interior"),
+  createdAt: new Date().toLocaleDateString("ru-RU"),
+};
+
+function Result() {
+  const [result, setResult] = useState<GenerationResult>(fallback);
+
+  useEffect(() => {
+    const saved = loadGeneration();
+    if (saved) setResult(saved);
+  }, []);
+
+  return (
+    <AppShell>
+      <h1 className="text-2xl font-semibold tracking-tight">Результат</h1>
+      <p className="mt-1 text-sm text-muted-foreground">Генерация от {result.createdAt}</p>
+
+      <div className="mt-6 grid gap-6 lg:grid-cols-[2fr_1fr]">
+        <Card className="border-border">
+          <CardContent className="pt-6">
+            <BeforeAfter before={result.before} after={result.after} />
+          </CardContent>
+        </Card>
+
+        <Card className="border-border">
+          <CardContent className="pt-6">
+            <p className="font-medium">Параметры</p>
+            <dl className="mt-4 space-y-3 text-sm">
+              {[
+                ["Раздел", result.tabLabel],
+                ["Объект", result.type],
+                ["Стиль", result.style],
+                ["Уточнения", result.notes || "—"],
+              ].map(([k, v]) => (
+                <div key={k} className="flex gap-3">
+                  <dt className="w-28 shrink-0 text-muted-foreground">{k}</dt>
+                  <dd className="min-w-0 break-words">{v}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="mt-6 space-y-2">
+              <Button
+                className="w-full"
+                onClick={() => toast.success("Изображение сохранено (демо)")}
+              >
+                <Download className="size-4" /> Скачать
+              </Button>
+              <Button asChild variant="outline" className="w-full">
+                <Link to="/app/generator" search={{ tab: result.tab }}>
+                  <RefreshCw className="size-4" /> Сгенерировать ещё
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </AppShell>
+  );
+}
