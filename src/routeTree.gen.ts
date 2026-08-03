@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as FacadeRouteImport } from './routes/facade'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as InteriorRouteImport } from './routes/interior'
 import { Route as LandscapeRouteImport } from './routes/landscape'
@@ -32,6 +33,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacadeRoute = FacadeRouteImport.update({
+  id: '/facade',
+  path: '/facade',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -98,6 +104,7 @@ const AppResultRoute = AppResultRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/facade': typeof FacadeRoute
   '/faq': typeof FaqRoute
   '/interior': typeof InteriorRoute
   '/landscape': typeof LandscapeRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/facade': typeof FacadeRoute
   '/faq': typeof FaqRoute
   '/interior': typeof InteriorRoute
   '/landscape': typeof LandscapeRoute
@@ -131,6 +139,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/facade': typeof FacadeRoute
   '/faq': typeof FaqRoute
   '/interior': typeof InteriorRoute
   '/landscape': typeof LandscapeRoute
@@ -149,6 +158,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/facade'
     | '/faq'
     | '/interior'
     | '/landscape'
@@ -165,6 +175,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/facade'
     | '/faq'
     | '/interior'
     | '/landscape'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/auth'
+    | '/facade'
     | '/faq'
     | '/interior'
     | '/landscape'
@@ -198,6 +210,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  FacadeRoute: typeof FacadeRoute
   FaqRoute: typeof FaqRoute
   InteriorRoute: typeof InteriorRoute
   LandscapeRoute: typeof LandscapeRoute
@@ -226,6 +239,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/facade': {
+      id: '/facade'
+      path: '/facade'
+      fullPath: '/facade'
+      preLoaderRoute: typeof FacadeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -318,6 +338,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  FacadeRoute: FacadeRoute,
   FaqRoute: FaqRoute,
   InteriorRoute: InteriorRoute,
   LandscapeRoute: LandscapeRoute,

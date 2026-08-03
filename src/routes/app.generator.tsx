@@ -15,17 +15,18 @@ import {
 } from "@/components/ui/select";
 import { mockPair, saveGeneration } from "@/lib/generation-store";
 import {
-  exteriorStyles,
-  exteriorTypes,
+  facadeStyles,
+  facadeTypes,
   interiorStyles,
-  planStyles,
-  planTypes,
+  landscapeStyles,
+  landscapeTypes,
   roomTypes,
   tabs,
   type TabId,
 } from "@/lib/mock-data";
 
-const validTabs: TabId[] = ["interior", "exterior", "plan"];
+const validTabs: TabId[] = ["interior", "landscape", "facade"];
+
 
 export const Route = createFileRoute("/app/generator")({
   validateSearch: (search: Record<string, unknown>): { tab: TabId } => {
@@ -45,9 +46,10 @@ export const Route = createFileRoute("/app/generator")({
 
 const config = {
   interior: { types: roomTypes, styles: interiorStyles, typeLabel: "Тип помещения", upload: "фото комнаты" },
-  exterior: { types: exteriorTypes, styles: exteriorStyles, typeLabel: "Объект", upload: "фото дома или участка" },
-  plan: { types: planTypes, styles: planStyles, typeLabel: "Тип объекта", upload: "схему расстановки мебели" },
+  landscape: { types: landscapeTypes, styles: landscapeStyles, typeLabel: "Объект", upload: "фото участка" },
+  facade: { types: facadeTypes, styles: facadeStyles, typeLabel: "Объект", upload: "фото дома" },
 } as const;
+
 
 function Generator() {
   const { tab } = Route.useSearch() as { tab: TabId };
