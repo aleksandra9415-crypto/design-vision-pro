@@ -4,10 +4,10 @@ import { LegalPage } from "@/components/site/LegalPage";
 export const Route = createFileRoute("/payment-info")({
   head: () => ({
     meta: [
-      { title: "Информация об оплате — Дизайн ИИ" },
+      { title: "Информация об оплате — Vizoria" },
       { name: "description", content: "Способы оплаты, зачисление кредитов и получение чека." },
       { property: "og:title", content: "Информация об оплате" },
-      { property: "og:description", content: "Как оплатить пакет кредитов в сервисе Дизайн ИИ." },
+      { property: "og:description", content: "Как оплатить пакет кредитов в сервисе Vizoria." },
     ],
   }),
   component: () => (

@@ -1,24 +1,34 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Sparkles, Upload } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Sparkles, Upload } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Button } from "@/components/ui/button";
-import { galleryExamples, howItWorks, images, interiorStyles, testimonials } from "@/lib/mock-data";
+import {
+  galleryExamples,
+  howItWorks,
+  images,
+  interiorStyles,
+  plans,
+  testimonials,
+} from "@/lib/mock-data";
+import heroWide from "@/assets/hero-wide.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Студия дизайна интерьера, ландшафта и фасада с ИИ" },
+      { title: "Vizoria — дизайн интерьера, ландшафта и фасада с ИИ" },
       {
         name: "description",
         content:
-          "Загрузите фото комнаты, дома или схему расстановки мебели — студийная визуализация будет готова примерно за минуту.",
+          "Vizoria: загрузите фото комнаты, дома или схему расстановки мебели — студийная визуализация будет готова примерно за минуту.",
       },
-      { property: "og:title", content: "Студия дизайна интерьера и экстерьера" },
+      { property: "og:title", content: "Vizoria — визуализация интерьера и экстерьера" },
       {
         property: "og:description",
         content: "Визуализация интерьера, ландшафта и фасада по фото или чертежу за минуту.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
@@ -58,62 +68,70 @@ const cases = [
   },
 ];
 
+function StartButton({
+  label = "Начать бесплатно",
+  variant = "default",
+}: {
+  label?: string;
+  variant?: "default" | "outline";
+}) {
+  return (
+    <Button asChild size="lg" variant={variant} className="rounded-none">
+      <Link to="/app/generator" search={{ tab: "interior" }}>
+        {label} <ArrowRight className="size-4" />
+      </Link>
+    </Button>
+  );
+}
+
+function BuyButton({ label = "Купить кредиты" }: { label?: string }) {
+  return (
+    <Button asChild size="lg" variant="outline" className="rounded-none">
+      <Link to="/pricing">
+        {label} <ArrowUpRight className="size-4" />
+      </Link>
+    </Button>
+  );
+}
+
 function Home() {
   return (
     <PageShell>
-      {/* HERO */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 pb-14 pt-12 sm:pt-16">
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-7">
-              <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
-                Студия визуализации
-              </p>
-              <h1 className="mt-5 font-display text-5xl leading-[0.95] tracking-tight sm:text-7xl">
-                Сначала посмотрите,
-                <br />
-                <span className="italic text-primary">потом ремонтируйте</span>
-              </h1>
-            </div>
-            <p className="max-w-sm text-base text-muted-foreground lg:col-span-5 lg:pb-3">
-              Фотография комнаты, фасада или план расстановки мебели превращается в готовый кадр
-              интерьера. Геометрия помещения сохраняется — меняются отделка, свет и обстановка.
-            </p>
-          </div>
-
-          {/* Крупное до/после как доказательство */}
-          <div className="mt-10 grid gap-6 lg:grid-cols-12">
-            <div className="lg:col-span-8">
-              <BeforeAfter before={images.interiorBefore} after={images.interiorAfter} />
-            </div>
-
-            {/* Живая зона загрузки прямо в композиции */}
-            <div className="flex flex-col justify-between gap-6 lg:col-span-4">
-              <Link
-                to="/app/generator"
-                search={{ tab: "interior" }}
-                className="group flex flex-1 flex-col items-center justify-center gap-3 border-2 border-dashed border-border bg-card/60 p-8 text-center transition-colors hover:border-primary/60 hover:bg-card"
-              >
-                <Upload className="size-6 text-primary" />
-                <span className="font-display text-2xl leading-tight">Перетащите фото сюда</span>
-                <span className="text-xs text-muted-foreground">
-                  JPG или PNG до 15 МБ · первые 3 кадра бесплатно
-                </span>
+      {/* HERO — полноэкранное фото */}
+      <section className="relative h-[calc(100svh-65px)] min-h-[520px] w-full overflow-hidden">
+        <img
+          src={heroWide}
+          alt="Светлая гостиная в нейтральной серо-жемчужной палитре"
+          width={1920}
+          height={1088}
+          className="absolute inset-0 size-full origin-center object-cover animate-ken-burns"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/35 to-foreground/10" />
+        <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end px-4 pb-14">
+          <p className="text-xs uppercase tracking-[0.32em] text-background/70">Vizoria</p>
+          <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[0.95] tracking-tight text-background sm:text-7xl">
+            Сначала посмотрите,
+            <br />
+            <span className="italic">потом ремонтируйте</span>
+          </h1>
+          <p className="mt-6 max-w-xl text-base text-background/80">
+            Фотография комнаты, фасада или план расстановки мебели превращается в готовый кадр
+            интерьера. Геометрия помещения сохраняется — меняются отделка, свет и обстановка.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild size="lg" className="rounded-none bg-background text-foreground hover:bg-background/90">
+              <Link to="/app/generator" search={{ tab: "interior" }}>
+                Начать бесплатно <ArrowRight className="size-4" />
               </Link>
-              <div>
-                <Button asChild size="lg" className="w-full rounded-none">
-                  <Link to="/app/generator" search={{ tab: "interior" }}>
-                    Открыть генератор <ArrowRight className="size-4" />
-                  </Link>
-                </Button>
-                <Link
-                  to="/pricing"
-                  className="mt-3 inline-flex items-center gap-1 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-                >
-                  Пакеты кредитов <ArrowUpRight className="size-3.5" />
-                </Link>
-              </div>
-            </div>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-none border-background/60 bg-transparent text-background hover:bg-background/15 hover:text-background"
+            >
+              <Link to="/pricing">Тарифы и кредиты</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -130,6 +148,41 @@ function Home() {
         </div>
       </section>
 
+      {/* ДО / ПОСЛЕ — крупно */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+              Одно фото — другая комната
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Потяните ползунок, чтобы увидеть исходный кадр
+            </p>
+          </div>
+          <div className="mt-8">
+            <BeforeAfter before={images.interiorBefore} after={images.interiorAfter} />
+          </div>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-12 lg:items-center">
+            <Link
+              to="/app/generator"
+              search={{ tab: "interior" }}
+              className="group flex flex-col items-center justify-center gap-3 border-2 border-dashed border-border bg-card/60 p-8 text-center transition-colors hover:border-foreground/40 hover:bg-card lg:col-span-7"
+            >
+              <Upload className="size-6" />
+              <span className="font-display text-2xl leading-tight">Перетащите фото сюда</span>
+              <span className="text-xs text-muted-foreground">
+                JPG или PNG до 15 МБ · первые 3 кадра бесплатно
+              </span>
+            </Link>
+            <div className="flex flex-wrap gap-3 lg:col-span-5">
+              <StartButton label="Загрузить фото" />
+              <BuyButton />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ДЕМО ГЕНЕРАТОРА */}
       <section className="border-b border-border">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 lg:grid-cols-12 lg:items-center">
@@ -141,13 +194,13 @@ function Home() {
               Три поля и одна кнопка
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Никакого обучения интерфейсу. Ниже — реальный экран генератора: снимок, стиль,
+              Никакого обучения интерфейсу. Рядом — реальный экран генератора: снимок, стиль,
               уточнение словами. Дальше остаётся дождаться кадра.
             </p>
             <ol className="mt-8 space-y-4 border-t border-border pt-6">
               {howItWorks.map((step) => (
                 <li key={step.title} className="flex gap-4">
-                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-foreground" />
                   <span>
                     <span className="font-medium">{step.title}. </span>
                     <span className="text-sm text-muted-foreground">{step.text}</span>
@@ -155,11 +208,15 @@ function Home() {
                 </li>
               ))}
             </ol>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <StartButton label="Попробовать бесплатно" />
+              <BuyButton label="Выбрать тариф" />
+            </div>
           </div>
 
           {/* Фрагмент интерфейса */}
           <div className="lg:col-span-7">
-            <div className="border border-border bg-card p-5 shadow-[0_24px_60px_-40px_oklch(0.235_0.012_60/0.6)] sm:p-7">
+            <div className="border border-border bg-card p-5 shadow-[0_24px_60px_-40px_oklch(0.205_0.003_250/0.6)] sm:p-7">
               <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
                 {["Интерьер", "Экстерьер", "Чертёж"].map((t, i) => (
                   <span
@@ -193,7 +250,7 @@ function Home() {
                         key={s.id}
                         className={`border px-3 py-2 text-sm ${
                           i === 0
-                            ? "border-primary bg-primary/10 font-medium"
+                            ? "border-foreground bg-foreground/5 font-medium"
                             : "border-border text-muted-foreground"
                         }`}
                       >
@@ -241,14 +298,20 @@ function Home() {
                   />
                 </figure>
                 <div className={`lg:col-span-5 ${i === 1 ? "lg:col-span-6 lg:pr-10" : ""}`}>
-                  <p className="text-xs uppercase tracking-[0.28em] text-primary">{c.kicker}</p>
+                  <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
+                    {c.kicker}
+                  </p>
                   <h3 className="mt-4 font-display text-3xl leading-tight tracking-tight sm:text-4xl">
                     {c.title}
                   </h3>
                   <p className="mt-4 text-muted-foreground">{c.text}</p>
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                    <StartButton label="Начать бесплатно" />
+                    <BuyButton />
+                  </div>
                   <Link
                     to={c.to}
-                    className="mt-6 inline-flex items-center gap-1 border-b border-foreground/30 pb-1 text-sm font-medium hover:border-foreground"
+                    className="mt-5 inline-flex items-center gap-1 border-b border-foreground/30 pb-1 text-sm font-medium hover:border-foreground"
                   >
                     {c.linkLabel} <ArrowUpRight className="size-4" />
                   </Link>
@@ -262,14 +325,9 @@ function Home() {
       {/* ПРИМЕРЫ */}
       <section className="border-b border-border bg-secondary/50">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-              Из архива работ
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Потяните ползунок, чтобы увидеть исходный кадр
-            </p>
-          </div>
+          <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+            Из архива работ
+          </h2>
           <div className="mt-10 grid gap-8 lg:grid-cols-3">
             {galleryExamples.map((ex) => (
               <figure key={ex.style}>
@@ -285,7 +343,7 @@ function Home() {
       </section>
 
       {/* ОТЗЫВЫ */}
-      <section>
+      <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div className="grid gap-10 lg:grid-cols-3">
             {testimonials.map((t) => (
@@ -297,16 +355,79 @@ function Home() {
               </blockquote>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-border pt-10 sm:flex-row sm:items-end">
-            <h2 className="max-w-lg font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-              Первые три кадра — за наш счёт
+      {/* ПРЕВЬЮ ТАРИФОВ */}
+      <section className="border-b border-border bg-secondary/40">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+              Пакеты кредитов
             </h2>
-            <Button asChild size="lg" className="rounded-none">
-              <Link to="/app/generator" search={{ tab: "interior" }}>
-                Загрузить фото <ArrowRight className="size-4" />
-              </Link>
-            </Button>
+            <p className="max-w-sm text-sm text-muted-foreground">
+              Один кредит — один кадр. Кредиты не сгорают, подписки нет.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {plans.map((p) => (
+              <div
+                key={p.id}
+                className={`flex flex-col border bg-card p-6 ${
+                  p.popular ? "border-foreground" : "border-border"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <p className="font-display text-2xl">{p.name}</p>
+                  {p.popular && (
+                    <span className="bg-foreground px-2 py-1 text-[11px] uppercase tracking-widest text-background">
+                      Выбирают чаще
+                    </span>
+                  )}
+                </div>
+                <p className="mt-4 font-display text-4xl tracking-tight">{p.price} ₽</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {p.credits} генераций · {p.desc}
+                </p>
+                <ul className="mt-5 flex-1 space-y-2">
+                  {p.features.slice(0, 4).map((f) => (
+                    <li key={f} className="flex gap-2 text-sm text-muted-foreground">
+                      <Check className="mt-0.5 size-4 shrink-0 text-foreground" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Button
+                  asChild
+                  size="lg"
+                  variant={p.popular ? "default" : "outline"}
+                  className="mt-6 w-full rounded-none"
+                >
+                  <Link to="/app/billing" search={{ plan: p.id }}>
+                    Купить пакет
+                  </Link>
+                </Button>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <BuyButton label="Все тарифы" />
+            <StartButton label="Сначала попробовать" />
+          </div>
+        </div>
+      </section>
+
+      {/* ФИНАЛЬНЫЙ CTA */}
+      <section>
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-16 sm:flex-row sm:items-end">
+          <h2 className="max-w-lg font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+            Первые три кадра — за наш счёт
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            <StartButton label="Загрузить фото" />
+            <BuyButton />
           </div>
         </div>
       </section>

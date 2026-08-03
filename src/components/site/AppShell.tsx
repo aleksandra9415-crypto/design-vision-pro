@@ -18,7 +18,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground">
               <Sparkles className="size-4" />
             </span>
-            <span className="truncate text-sm font-semibold">ЛОГО · Дизайн ИИ</span>
+            <span className="truncate font-display text-xl tracking-tight">Vizoria</span>
           </Link>
           <nav className="flex shrink-0 items-center gap-1">
             {nav.map((n) => (

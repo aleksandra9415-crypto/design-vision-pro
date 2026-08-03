@@ -4,10 +4,10 @@ import { LegalPage } from "@/components/site/LegalPage";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Политика конфиденциальности — Дизайн ИИ" },
+      { title: "Политика конфиденциальности — Vizoria" },
       { name: "description", content: "Как сервис обрабатывает и хранит персональные данные и загруженные изображения." },
       { property: "og:title", content: "Политика конфиденциальности" },
-      { property: "og:description", content: "Обработка персональных данных в сервисе Дизайн ИИ." },
+      { property: "og:description", content: "Обработка персональных данных в сервисе Vizoria." },
     ],
   }),
   component: () => (

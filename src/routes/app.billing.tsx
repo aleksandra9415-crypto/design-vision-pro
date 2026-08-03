@@ -15,7 +15,7 @@ export const Route = createFileRoute("/app/billing")({
   }),
   head: () => ({
     meta: [
-      { title: "Оплата пакета кредитов — Дизайн ИИ" },
+      { title: "Оплата пакета кредитов — Vizoria" },
       { name: "description", content: "Выберите пакет кредитов и оформите оплату." },
       { property: "og:title", content: "Оплата" },
       { property: "og:description", content: "Покупка пакета кредитов без подписки." },

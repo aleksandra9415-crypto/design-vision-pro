@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Вход и регистрация — Дизайн ИИ" },
+      { title: "Вход и регистрация — Vizoria" },
       {
         name: "description",
         content: "Войдите или создайте аккаунт, чтобы получить 3 бесплатные генерации дизайна.",
