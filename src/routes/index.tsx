@@ -3,20 +3,12 @@ import { ArrowRight, ArrowUpRight, Check, ChevronDown, Sparkles, Upload } from "
 import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { RevealStrip } from "@/components/site/RevealStrip";
-import { VideoTestimonial } from "@/components/site/VideoTestimonial";
+import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
 
 import { Button } from "@/components/ui/button";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
   images,
   plans,
-  testimonialsExtended,
 } from "@/lib/mock-data";
 
 import heroWide from "@/assets/hero-wide.jpg";
@@ -424,25 +416,8 @@ function Home() {
             и как это повлияло на ремонт. Текст под каждым видео — краткая расшифровка.
           </p>
 
-          <Carousel
-            opts={{ align: "start", loop: true, containScroll: false }}
-            className="mt-10"
-          >
-            <CarouselContent className="-ml-4">
-              {testimonialsExtended.map((t) => (
-                <CarouselItem
-                  key={t.name}
-                  className="basis-[78%] pl-4 sm:basis-[52%] lg:basis-[34%]"
-                >
-                  <VideoTestimonial item={t} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="mt-8 flex gap-2">
-              <CarouselPrevious className="static translate-y-0 rounded-none" />
-              <CarouselNext className="static translate-y-0 rounded-none" />
-            </div>
-          </Carousel>
+          <TestimonialsCarousel />
+
         </div>
       </section>
 

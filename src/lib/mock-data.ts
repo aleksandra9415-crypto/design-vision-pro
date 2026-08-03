@@ -4,12 +4,16 @@ import exteriorBefore from "@/assets/exterior-before.jpg";
 import exteriorAfter from "@/assets/exterior-after.jpg";
 import landscapeBefore from "@/assets/landscape-before.jpg";
 import landscapeAfter from "@/assets/landscape-after.jpg";
-import styleNeoclassic from "@/assets/style-neoclassic.jpg";
-import styleMinimal from "@/assets/style-minimal.jpg";
-import styleHygge from "@/assets/style-hygge.jpg";
-import styleJapandi from "@/assets/style-japandi.jpg";
-import roomKitchen from "@/assets/room-kitchen.jpg";
-import roomKids from "@/assets/room-kids.jpg";
+import personAnna from "@/assets/person-anna.jpg";
+import personIgor from "@/assets/person-igor.jpg";
+import personMarina from "@/assets/person-marina.jpg";
+import personDmitry from "@/assets/person-dmitry.jpg";
+import personOlga from "@/assets/person-olga.jpg";
+import personArtem from "@/assets/person-artem.jpg";
+import personPolina from "@/assets/person-polina.jpg";
+import personSergey from "@/assets/person-sergey.jpg";
+import personKsenia from "@/assets/person-ksenia.jpg";
+import personVladimir from "@/assets/person-vladimir.jpg";
 
 
 export const images = {
@@ -243,15 +247,15 @@ export const howItWorks = [
 ];
 
 export const testimonialsExtended = [
-  { name: "Анна", city: "Москва", role: "ремонт квартиры", duration: "0:38", poster: interiorAfter, text: "Загрузила фото пустой гостиной — за минуту получила три варианта. Ремонт наконец сдвинулся с места." },
-  { name: "Игорь", city: "Казань", role: "загородный дом", duration: "0:52", poster: landscapeAfter, text: "Показал жене визуализацию участка до начала работ. Спор о том, где будет терраса, закончился за пять минут." },
-  { name: "Марина", city: "Санкт-Петербург", role: "дизайнер интерьера", duration: "1:04", poster: styleNeoclassic, text: "Показываю клиенту варианты фасада прямо на встрече. Экономия часов работы." },
-  { name: "Дмитрий", city: "Екатеринбург", role: "риелтор", duration: "0:41", poster: styleMinimal, text: "Пустая квартира на фото выглядела уныло. С меблированным кадром показы пошли заметно бодрее." },
-  { name: "Ольга", city: "Новосибирск", role: "ремонт кухни", duration: "0:47", poster: roomKitchen, text: "Сравнила пять вариантов фасадов кухни за вечер. Выбрала тот, о котором сама бы не подумала." },
-  { name: "Артём", city: "Краснодар", role: "строительная бригада", duration: "0:33", poster: exteriorAfter, text: "Заказчику проще согласовать отделку по картинке, чем по описанию. Правок стало меньше." },
-  { name: "Полина", city: "Нижний Новгород", role: "съёмная квартира", duration: "0:29", poster: styleHygge, text: "Хотела понять, что изменит текстиль и свет. Оказалось, половину ремонта делать не нужно." },
-  { name: "Сергей", city: "Самара", role: "фасад дома", duration: "0:56", poster: exteriorBefore, text: "Примерил три варианта облицовки на своё фото. Выбор занял вечер, а не месяц." },
-  { name: "Ксения", city: "Тюмень", role: "детская комната", duration: "0:35", poster: roomKids, text: "Показала дочке два варианта комнаты — выбрали вместе, без слёз и споров." },
-  { name: "Владимир", city: "Пермь", role: "архитектор", duration: "1:12", poster: styleJapandi, text: "Быстрый черновой рендер по плану — удобно для первой встречи, когда идею надо показать сразу." },
+  { name: "Анна", city: "Москва", role: "ремонт квартиры", duration: "0:38", poster: personAnna, text: "Загрузила фото пустой гостиной — за минуту получила три варианта. Ремонт наконец сдвинулся с места." },
+  { name: "Игорь", city: "Казань", role: "загородный дом", duration: "0:52", poster: personIgor, text: "Показал жене визуализацию участка до начала работ. Спор о том, где будет терраса, закончился за пять минут." },
+  { name: "Марина", city: "Санкт-Петербург", role: "дизайнер интерьера", duration: "1:04", poster: personMarina, text: "Показываю клиенту варианты фасада прямо на встрече. Экономия часов работы." },
+  { name: "Дмитрий", city: "Екатеринбург", role: "риелтор", duration: "0:41", poster: personDmitry, text: "Пустая квартира на фото выглядела уныло. С меблированным кадром показы пошли заметно бодрее." },
+  { name: "Ольга", city: "Новосибирск", role: "ремонт кухни", duration: "0:47", poster: personOlga, text: "Сравнила пять вариантов фасадов кухни за вечер. Выбрала тот, о котором сама бы не подумала." },
+  { name: "Артём", city: "Краснодар", role: "строительная бригада", duration: "0:33", poster: personArtem, text: "Заказчику проще согласовать отделку по картинке, чем по описанию. Правок стало меньше." },
+  { name: "Полина", city: "Нижний Новгород", role: "съёмная квартира", duration: "0:29", poster: personPolina, text: "Хотела понять, что изменит текстиль и свет. Оказалось, половину ремонта делать не нужно." },
+  { name: "Сергей", city: "Самара", role: "фасад дома", duration: "0:56", poster: personSergey, text: "Примерил три варианта облицовки на своё фото. Выбор занял вечер, а не месяц." },
+  { name: "Ксения", city: "Тюмень", role: "детская комната", duration: "0:35", poster: personKsenia, text: "Показала дочке два варианта комнаты — выбрали вместе, без слёз и споров." },
+  { name: "Владимир", city: "Пермь", role: "архитектор", duration: "1:12", poster: personVladimir, text: "Быстрый черновой рендер по плану — удобно для первой встречи, когда идею надо показать сразу." },
 ];
 
