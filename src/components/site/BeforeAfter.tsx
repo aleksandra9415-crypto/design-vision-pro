@@ -36,10 +36,10 @@ export function BeforeAfter({
           style={{ left: `${pos}%` }}
         />
         <span className="absolute left-3 top-3 rounded-md bg-background/85 px-2 py-1 text-xs font-medium">
-          До
+          После
         </span>
         <span className="absolute right-3 top-3 rounded-md bg-background/85 px-2 py-1 text-xs font-medium">
-          После
+          До
         </span>
       </div>
       <input
