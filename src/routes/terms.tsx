@@ -4,10 +4,10 @@ import { LegalPage } from "@/components/site/LegalPage";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Пользовательское соглашение — Дизайн ИИ" },
+      { title: "Пользовательское соглашение — Vizoria" },
       { name: "description", content: "Условия использования сервиса генерации дизайна с ИИ." },
       { property: "og:title", content: "Пользовательское соглашение" },
-      { property: "og:description", content: "Условия использования сервиса Дизайн ИИ." },
+      { property: "og:description", content: "Условия использования сервиса Vizoria." },
     ],
   }),
   component: () => (

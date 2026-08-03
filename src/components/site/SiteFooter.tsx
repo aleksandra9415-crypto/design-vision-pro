@@ -34,7 +34,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-muted/40">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="text-base font-semibold tracking-tight">ЛОГО · Дизайн ИИ</p>
+          <p className="text-base font-semibold tracking-tight">ЛОГО · Vizoria</p>
           <p className="mt-2 max-w-xs text-sm text-muted-foreground">
             Визуализация интерьера, ландшафта и фасада по фото или схеме расстановки мебели.
           </p>
@@ -58,7 +58,7 @@ export function SiteFooter() {
         ))}
       </div>
       <div className="border-t border-border/70 px-4 py-5 text-center text-xs text-muted-foreground">
-        © 2026 Дизайн ИИ. Демонстрационная версия сервиса.
+        © 2026 Vizoria. Демонстрационная версия сервиса.
       </div>
     </footer>
   );

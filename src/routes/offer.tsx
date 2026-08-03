@@ -4,10 +4,10 @@ import { LegalPage } from "@/components/site/LegalPage";
 export const Route = createFileRoute("/offer")({
   head: () => ({
     meta: [
-      { title: "Публичная оферта — Дизайн ИИ" },
+      { title: "Публичная оферта — Vizoria" },
       { name: "description", content: "Условия договора-оферты на оказание услуг генерации визуализаций." },
       { property: "og:title", content: "Публичная оферта" },
-      { property: "og:description", content: "Договор-оферта сервиса Дизайн ИИ." },
+      { property: "og:description", content: "Договор-оферта сервиса Vizoria." },
     ],
   }),
   component: () => (
