@@ -301,11 +301,11 @@ function Home() {
       {/* ГАЛЕРЕЯ СТИЛЕЙ */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
             <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
               Витрина стилей
             </h2>
-            <p className="max-w-sm text-sm text-muted-foreground">
+            <p className="mt-3 text-sm text-muted-foreground">
               Больше 20 направлений в генераторе. Вот двенадцать, с которых обычно начинают.
             </p>
           </div>
