@@ -8,7 +8,7 @@ export function RevealStrip({ items }: { items: RevealItem[] }) {
   const loop = [...items, ...items, ...items, ...items];
 
   const track = (key: "before" | "after") => (
-    <div className="flex w-max animate-[reveal-marquee_60s_linear_infinite] motion-reduce:animate-none">
+    <div className="flex w-max animate-[reveal-marquee_60s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:animate-none">
       {[0, 1].map((dup) => (
         <div className="flex shrink-0" key={dup}>
           {loop.map((it, i) => (
@@ -33,7 +33,7 @@ export function RevealStrip({ items }: { items: RevealItem[] }) {
         <span>Оригинал</span>
         <span>Результат</span>
       </div>
-      <div className="relative w-full select-none overflow-hidden bg-muted">
+      <div className="group relative w-full select-none overflow-hidden bg-muted">
         {track("before")}
 
         {/* Правая половина — «после», выровнена по той же ленте */}
