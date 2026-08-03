@@ -1,24 +1,28 @@
 export type RevealItem = { before: string; after: string; alt: string };
 
-export function RevealStrip({ items }: { items: RevealItem[] }) {
-  // Чередуем «до» и «после» в одну ленту и дублируем набор для бесшовного цикла
-  const base = items.flatMap((it) => [
-    { src: it.before, alt: `${it.alt} — оригинал` },
-    { src: it.after, alt: `${it.alt} — результат` },
-  ]);
-  const loop = [...base, ...base];
+const IMG_CLASS =
+  "h-[240px] w-[220px] shrink-0 object-cover sm:h-[300px] sm:w-[280px] lg:h-[360px] lg:w-[320px]";
 
-  const track = (ariaHidden: boolean) => (
-    <div className="flex shrink-0" aria-hidden={ariaHidden || undefined}>
-      {loop.map((it, i) => (
-        <img
-          key={i}
-          src={it.src}
-          alt={ariaHidden ? "" : it.alt}
-          className="h-[240px] w-[220px] shrink-0 object-cover sm:h-[300px] sm:w-[280px] lg:h-[360px] lg:w-[320px]"
-          draggable={false}
-          loading="lazy"
-        />
+export function RevealStrip({ items }: { items: RevealItem[] }) {
+  // Дублируем набор — для бесшовного зацикливания
+  const loop = [...items, ...items, ...items, ...items];
+
+  const track = (key: "before" | "after") => (
+    <div className="flex w-max animate-[reveal-marquee_60s_linear_infinite] motion-reduce:animate-none">
+      {[0, 1].map((dup) => (
+        <div className="flex shrink-0" key={dup}>
+          {loop.map((it, i) => (
+            <img
+              key={`${dup}-${i}`}
+              src={it[key]}
+              alt={dup === 0 && key === "before" ? `${it.alt} — оригинал` : ""}
+              aria-hidden={dup === 1 || key === "after" ? true : undefined}
+              className={IMG_CLASS}
+              draggable={false}
+              loading="lazy"
+            />
+          ))}
+        </div>
       ))}
     </div>
   );
@@ -30,9 +34,22 @@ export function RevealStrip({ items }: { items: RevealItem[] }) {
         <span>Результат</span>
       </div>
       <div className="relative w-full select-none overflow-hidden bg-muted">
-        <div className="flex w-max animate-[reveal-marquee_60s_linear_infinite] motion-reduce:animate-none">
-          {track(false)}
-          {track(true)}
+        {track("before")}
+
+        {/* Правая половина — «после», выровнена по той же ленте */}
+        <div className="absolute inset-y-0 left-1/2 right-0 overflow-hidden">
+          <div className="absolute inset-y-0 left-0 w-[200%] -translate-x-1/2">
+            {track("after")}
+          </div>
+        </div>
+
+        {/* Центральный разделитель */}
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 z-10 w-px -translate-x-1/2 bg-background">
+          <span className="absolute left-1/2 top-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-background text-foreground shadow-lg">
+            <svg viewBox="0 0 24 24" className="size-4" fill="currentColor" aria-hidden="true">
+              <path d="M9 6 4 12l5 6zM15 6l5 6-5 6z" />
+            </svg>
+          </span>
         </div>
       </div>
     </div>
