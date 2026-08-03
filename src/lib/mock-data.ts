@@ -2,24 +2,24 @@ import interiorBefore from "@/assets/interior-before.jpg";
 import interiorAfter from "@/assets/interior-after.jpg";
 import exteriorBefore from "@/assets/exterior-before.jpg";
 import exteriorAfter from "@/assets/exterior-after.jpg";
-import planBefore from "@/assets/plan-before.jpg";
-import planAfter from "@/assets/plan-after.jpg";
+import landscapeBefore from "@/assets/landscape-before.jpg";
+import landscapeAfter from "@/assets/landscape-after.jpg";
 
 export const images = {
   interiorBefore,
   interiorAfter,
-  exteriorBefore,
-  exteriorAfter,
-  planBefore,
-  planAfter,
+  facadeBefore: exteriorBefore,
+  facadeAfter: exteriorAfter,
+  landscapeBefore,
+  landscapeAfter,
 };
 
-export type TabId = "interior" | "exterior" | "plan";
+export type TabId = "interior" | "landscape" | "facade";
 
 export const tabs: { id: TabId; label: string }[] = [
   { id: "interior", label: "Интерьер" },
-  { id: "exterior", label: "Экстерьер" },
-  { id: "plan", label: "Чертёж" },
+  { id: "landscape", label: "Ландшафт" },
+  { id: "facade", label: "Фасад" },
 ];
 
 export const interiorStyles = [
@@ -33,20 +33,22 @@ export const interiorStyles = [
   { id: "boho", name: "Бохо", desc: "Ротанг, растения, этнические узоры" },
 ];
 
-export const exteriorStyles = [
-  { id: "modern-facade", name: "Современный фасад", desc: "Панели, панорамные окна" },
-  { id: "scandi-house", name: "Скандинавский дом", desc: "Дерево, тёмная крыша" },
+export const landscapeStyles = [
   { id: "eng-garden", name: "Английский сад", desc: "Живые изгороди, миксбордеры" },
   { id: "jp-garden", name: "Японский сад", desc: "Камни, вода, хвойные" },
   { id: "minimal-yard", name: "Минималистичный участок", desc: "Газон, геометрия дорожек" },
   { id: "eco", name: "Эко-стиль", desc: "Природные материалы, злаки" },
+  { id: "meadow", name: "Природный луг", desc: "Злаки и многолетники без стрижки" },
+  { id: "patio", name: "Патио и терраса", desc: "Зона отдыха, мощение, свет" },
 ];
 
-export const planStyles = [
-  { id: "photoreal", name: "Фотореализм", desc: "Рендер под съёмку интерьера" },
-  { id: "presentation", name: "Презентационный", desc: "Для показа заказчику" },
-  { id: "sketch", name: "Скетч", desc: "Быстрая подача идеи" },
-  { id: "minimal-render", name: "Минимализм", desc: "Нейтральная база под правки" },
+export const facadeStyles = [
+  { id: "modern-facade", name: "Современный фасад", desc: "Панели, панорамные окна" },
+  { id: "scandi-house", name: "Скандинавский дом", desc: "Дерево, тёмная крыша" },
+  { id: "barn", name: "Барнхаус", desc: "Строгий силуэт, тёмная отделка" },
+  { id: "brick", name: "Кирпич", desc: "Клинкер и спокойная классика" },
+  { id: "plaster", name: "Штукатурка", desc: "Светлые нейтральные тона" },
+  { id: "night-light", name: "Вечерний свет", desc: "Архитектурная подсветка фасада" },
 ];
 
 export const roomTypes = [
@@ -60,8 +62,22 @@ export const roomTypes = [
   "Студия",
 ];
 
-export const exteriorTypes = ["Фасад дома", "Двор", "Участок с газоном", "Терраса", "Зона барбекю"];
-export const planTypes = ["Квартира", "Дом", "Коммерческое помещение", "Одна комната"];
+export const landscapeTypes = [
+  "Участок с газоном",
+  "Двор",
+  "Сад",
+  "Дорожки и мощение",
+  "Терраса",
+  "Зона барбекю",
+];
+export const facadeTypes = [
+  "Фасад дома",
+  "Входная группа",
+  "Отделка стен",
+  "Кровля",
+  "Вечерняя подсветка",
+];
+
 
 export const galleryExamples = [
   {
