@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExteriorRouteImport } from './routes/exterior'
+import { Route as InteriorRouteImport } from './routes/interior'
+import { Route as ProRouteImport } from './routes/pro'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExteriorRoute = ExteriorRouteImport.update({
+  id: '/exterior',
+  path: '/exterior',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InteriorRoute = InteriorRouteImport.update({
+  id: '/interior',
+  path: '/interior',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProRoute = ProRouteImport.update({
+  id: '/pro',
+  path: '/pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/exterior': typeof ExteriorRoute
+  '/interior': typeof InteriorRoute
+  '/pro': typeof ProRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/exterior': typeof ExteriorRoute
+  '/interior': typeof InteriorRoute
+  '/pro': typeof ProRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/exterior': typeof ExteriorRoute
+  '/interior': typeof InteriorRoute
+  '/pro': typeof ProRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/exterior' | '/interior' | '/pro'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/exterior' | '/interior' | '/pro'
+  id: '__root__' | '/' | '/exterior' | '/interior' | '/pro'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExteriorRoute: typeof ExteriorRoute
+  InteriorRoute: typeof InteriorRoute
+  ProRoute: typeof ProRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/exterior': {
+      id: '/exterior'
+      path: '/exterior'
+      fullPath: '/exterior'
+      preLoaderRoute: typeof ExteriorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/interior': {
+      id: '/interior'
+      path: '/interior'
+      fullPath: '/interior'
+      preLoaderRoute: typeof InteriorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pro': {
+      id: '/pro'
+      path: '/pro'
+      fullPath: '/pro'
+      preLoaderRoute: typeof ProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExteriorRoute: ExteriorRoute,
+  InteriorRoute: InteriorRoute,
+  ProRoute: ProRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -62,7 +62,7 @@ function Home() {
         <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Как это работает</h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {howItWorks.map((step, i) => {
-            const Icon = stepIcons[i];
+            const Icon = stepIcons[i] ?? Sparkles;
             return (
               <Card key={step.title} className="border-border">
                 <CardContent className="pt-6">
