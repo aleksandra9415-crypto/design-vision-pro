@@ -9,7 +9,7 @@ export function RevealCard({
   after: string;
   alt: string;
 }) {
-  const [pos, setPos] = useState(50);
+  const [pos, setPos] = useState(75);
 
   return (
     <div>
@@ -32,10 +32,10 @@ export function RevealCard({
         />
 
         <span className="absolute bottom-3 left-3 bg-background/85 px-2 py-1 text-[10px] uppercase tracking-[0.22em] text-foreground">
-          Оригинал
+          Стало
         </span>
         <span className="absolute bottom-3 right-3 bg-background/85 px-2 py-1 text-[10px] uppercase tracking-[0.22em] text-foreground">
-          Результат
+          Было
         </span>
 
         <div

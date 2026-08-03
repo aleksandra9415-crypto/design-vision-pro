@@ -31,8 +31,8 @@ export function RevealStrip({ items }: { items: RevealItem[] }) {
   return (
     <div>
       <div className="flex items-end justify-between pb-3 text-xs uppercase tracking-[0.28em] text-muted-foreground">
-        <span>Оригинал</span>
-        <span>Результат</span>
+        <span>Было</span>
+        <span>Стало</span>
       </div>
       <div className="group relative w-full select-none overflow-hidden bg-muted">
         {track("before")}
