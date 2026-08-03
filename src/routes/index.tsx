@@ -414,34 +414,25 @@ function Home() {
       {/* ОТЗЫВЫ */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-              Что говорят пользователи
-            </h2>
-            <p className="max-w-sm text-sm text-muted-foreground">
-              Владельцы квартир, дизайнеры и бригады — листайте, чтобы увидеть больше историй.
-            </p>
-          </div>
+          <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+            Что говорят пользователи
+          </h2>
+          <p className="mt-3 max-w-2xl text-base text-muted-foreground">
+            Короткие видео от владельцев квартир, дизайнеров и бригад: что загружали, что получили
+            и как это повлияло на ремонт. Текст под каждым видео — краткая расшифровка.
+          </p>
 
-          <Carousel opts={{ align: "start", loop: true }} className="mt-10">
+          <Carousel
+            opts={{ align: "start", loop: true, containScroll: false }}
+            className="mt-10"
+          >
             <CarouselContent className="-ml-4">
               {testimonialsExtended.map((t) => (
-                <CarouselItem key={t.name} className="pl-4 sm:basis-1/2 lg:basis-1/3">
-                  <figure className="flex h-full flex-col border border-border bg-card p-6">
-                    <div className="flex size-16 items-center justify-center rounded-full bg-secondary font-display text-xl text-foreground">
-                      {t.name.slice(0, 1)}
-                    </div>
-                    <blockquote className="mt-5 flex-1 text-sm leading-relaxed text-muted-foreground">
-                      «{t.text}»
-                    </blockquote>
-                    <figcaption className="mt-5 border-t border-border pt-4 text-sm">
-                      <span className="font-medium">{t.name}</span>
-                      <span className="text-muted-foreground">
-                        {" "}
-                        · {t.city} · {t.role}
-                      </span>
-                    </figcaption>
-                  </figure>
+                <CarouselItem
+                  key={t.name}
+                  className="basis-[78%] pl-4 sm:basis-[52%] lg:basis-[34%]"
+                >
+                  <VideoTestimonial item={t} />
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -452,6 +443,7 @@ function Home() {
           </Carousel>
         </div>
       </section>
+
 
       {/* ПРЕВЬЮ ТАРИФОВ */}
       <section className="border-b border-border bg-secondary/40">
