@@ -356,20 +356,18 @@ function Home() {
           </div>
           <div className="mt-10 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
-              <div key={s.title} className="flex flex-col bg-background p-6">
-                <div className="flex items-center justify-between">
-                  <s.icon className="size-6" strokeWidth={1.5} />
-                  <span className="font-display text-3xl tracking-[0.02em] text-muted-foreground/50">
-                    0{i + 1}
-                  </span>
-                </div>
-                <h3 className="mt-6 font-display text-2xl leading-tight tracking-[0.02em]">
+              <div key={s.title} className="relative flex flex-col bg-background p-6">
+                <span className="font-display text-3xl tracking-[0.02em] text-muted-foreground/50">
+                  0{i + 1}
+                </span>
+                <h3 className="mt-8 font-display text-2xl leading-tight tracking-[0.02em]">
                   {s.title}
                 </h3>
                 <p className="mt-3 text-sm text-muted-foreground">{s.text}</p>
               </div>
             ))}
           </div>
+
           <div className="mt-8 flex flex-wrap gap-3">
             <StartButton />
             <BuyButton />
