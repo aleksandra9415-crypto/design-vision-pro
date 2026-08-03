@@ -239,10 +239,10 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Одно фото — другая комната
+              Узнайте, как это будет выглядеть
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              Загрузите фото — получите готовый кадр интерьера.
+              Загрузите фото — получите готовый результат за минуту.
             </p>
           </div>
 
