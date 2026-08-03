@@ -82,6 +82,12 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+const heroFacts = [
+  { value: "20+ стилей", label: "интерьер, ландшафт и фасад" },
+  { value: "~60 секунд", label: "от фото до готового кадра" },
+  { value: "3 поля и кнопка", label: "без обучения интерфейсу" },
+];
+
 const stats = [
   { value: "48 000", label: "созданных проектов" },
   { value: "12 400", label: "человек в работе с нами" },
