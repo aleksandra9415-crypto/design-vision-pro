@@ -4,6 +4,13 @@ import exteriorBefore from "@/assets/exterior-before.jpg";
 import exteriorAfter from "@/assets/exterior-after.jpg";
 import landscapeBefore from "@/assets/landscape-before.jpg";
 import landscapeAfter from "@/assets/landscape-after.jpg";
+import styleNeoclassic from "@/assets/style-neoclassic.jpg";
+import styleMinimal from "@/assets/style-minimal.jpg";
+import styleHygge from "@/assets/style-hygge.jpg";
+import styleJapandi from "@/assets/style-japandi.jpg";
+import roomKitchen from "@/assets/room-kitchen.jpg";
+import roomKids from "@/assets/room-kids.jpg";
+
 
 export const images = {
   interiorBefore,
