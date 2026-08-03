@@ -4,7 +4,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Button } from "@/components/ui/button";
 import {
-  galleryExamples,
+  
   howItWorks,
   images,
   interiorStyles,
