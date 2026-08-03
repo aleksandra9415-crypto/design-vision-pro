@@ -47,20 +47,17 @@ const styleGallery = [
   { name: "Тёплый нейтральный", desc: "Дерево и молочные оттенки", image: roomKids },
 ];
 
-const userExamples = [
-  { image: styleScandi, style: "Сканди", room: "Гостиная" },
-  { image: roomKitchen, style: "Современный", room: "Кухня" },
-  { image: styleJapandi, style: "Джапанди", room: "Спальня" },
-  { image: roomBath, style: "Минимализм", room: "Ванная" },
-  { image: styleLoft, style: "Лофт", room: "Студия" },
-  { image: roomKids, style: "Хюгге", room: "Детская" },
-  { image: styleClassic, style: "Классика", room: "Гостиная" },
-  { image: styleBoho, style: "Бохо", room: "Балкон" },
-  { image: styleNeoclassic, style: "Неоклассика", room: "Кабинет" },
-  { image: styleEclectic, style: "Эклектика", room: "Столовая" },
-  { image: images.exteriorAfter, style: "Современный фасад", room: "Фасад дома" },
-  { image: images.planAfter, style: "Фотореализм", room: "Квартира по чертежу" },
+const revealItems = [
+  { before: images.interiorBefore, after: styleScandi, alt: "Гостиная в стиле сканди" },
+  { before: images.planBefore, after: roomKitchen, alt: "Кухня по схеме расстановки" },
+  { before: images.interiorBefore, after: styleJapandi, alt: "Спальня в стиле джапанди" },
+  { before: images.exteriorBefore, after: images.exteriorAfter, alt: "Фасад частного дома" },
+  { before: images.planBefore, after: roomBath, alt: "Ванная по чертежу" },
+  { before: images.interiorBefore, after: styleLoft, alt: "Студия в стиле лофт" },
 ];
+
+const finalThumbs = [styleScandi, roomKitchen, styleJapandi, roomBath];
+
 
 const press = ["Т—Ж", "VC.ru", "Cossa", "Habr", "Inc."];
 
