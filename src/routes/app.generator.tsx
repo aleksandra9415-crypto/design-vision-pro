@@ -50,9 +50,14 @@ const config = {
 } as const;
 
 function Generator() {
-  const { tab } = Route.useSearch();
+  const { tab } = Route.useSearch() as { tab: TabId };
   const navigate = useNavigate();
-  const cfg = config[tab];
+  const cfg = config[tab] as {
+    types: readonly string[];
+    styles: readonly { id: string; name: string; desc: string }[];
+    typeLabel: string;
+    upload: string;
+  };
 
   const [file, setFile] = useState<{ name: string; url: string } | null>(null);
   const [type, setType] = useState<string>("");
@@ -79,8 +84,8 @@ function Generator() {
       saveGeneration({
         tab,
         tabLabel: tabs.find((t) => t.id === tab)?.label ?? "Интерьер",
-        type: type || cfg.types[0],
-        style: cfg.styles.find((s) => s.id === style)?.name ?? cfg.styles[0].name,
+        type: type || cfg.types[0] || "",
+        style: cfg.styles.find((s) => s.id === style)?.name ?? cfg.styles[0]?.name ?? "",
         notes,
         before: pair.before,
         after: pair.after,

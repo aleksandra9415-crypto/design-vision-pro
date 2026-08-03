@@ -20,6 +20,10 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProRouteImport } from './routes/pro'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as AppAccountRouteImport } from './routes/app.account'
+import { Route as AppBillingRouteImport } from './routes/app.billing'
+import { Route as AppGeneratorRouteImport } from './routes/app.generator'
+import { Route as AppResultRouteImport } from './routes/app.result'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +80,26 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAccountRoute = AppAccountRouteImport.update({
+  id: '/app/account',
+  path: '/app/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppBillingRoute = AppBillingRouteImport.update({
+  id: '/app/billing',
+  path: '/app/billing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGeneratorRoute = AppGeneratorRouteImport.update({
+  id: '/app/generator',
+  path: '/app/generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppResultRoute = AppResultRouteImport.update({
+  id: '/app/result',
+  path: '/app/result',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +113,10 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/pro': typeof ProRoute
   '/terms': typeof TermsRoute
+  '/app/account': typeof AppAccountRoute
+  '/app/billing': typeof AppBillingRoute
+  '/app/generator': typeof AppGeneratorRoute
+  '/app/result': typeof AppResultRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +130,10 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/pro': typeof ProRoute
   '/terms': typeof TermsRoute
+  '/app/account': typeof AppAccountRoute
+  '/app/billing': typeof AppBillingRoute
+  '/app/generator': typeof AppGeneratorRoute
+  '/app/result': typeof AppResultRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +148,10 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/pro': typeof ProRoute
   '/terms': typeof TermsRoute
+  '/app/account': typeof AppAccountRoute
+  '/app/billing': typeof AppBillingRoute
+  '/app/generator': typeof AppGeneratorRoute
+  '/app/result': typeof AppResultRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +167,10 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/pro'
     | '/terms'
+    | '/app/account'
+    | '/app/billing'
+    | '/app/generator'
+    | '/app/result'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +184,10 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/pro'
     | '/terms'
+    | '/app/account'
+    | '/app/billing'
+    | '/app/generator'
+    | '/app/result'
   id:
     | '__root__'
     | '/'
@@ -157,6 +201,10 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/pro'
     | '/terms'
+    | '/app/account'
+    | '/app/billing'
+    | '/app/generator'
+    | '/app/result'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +219,10 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProRoute: typeof ProRoute
   TermsRoute: typeof TermsRoute
+  AppAccountRoute: typeof AppAccountRoute
+  AppBillingRoute: typeof AppBillingRoute
+  AppGeneratorRoute: typeof AppGeneratorRoute
+  AppResultRoute: typeof AppResultRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -252,6 +304,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/account': {
+      id: '/app/account'
+      path: '/app/account'
+      fullPath: '/app/account'
+      preLoaderRoute: typeof AppAccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/billing': {
+      id: '/app/billing'
+      path: '/app/billing'
+      fullPath: '/app/billing'
+      preLoaderRoute: typeof AppBillingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/generator': {
+      id: '/app/generator'
+      path: '/app/generator'
+      fullPath: '/app/generator'
+      preLoaderRoute: typeof AppGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/result': {
+      id: '/app/result'
+      path: '/app/result'
+      fullPath: '/app/result'
+      preLoaderRoute: typeof AppResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -267,6 +347,10 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProRoute: ProRoute,
   TermsRoute: TermsRoute,
+  AppAccountRoute: AppAccountRoute,
+  AppBillingRoute: AppBillingRoute,
+  AppGeneratorRoute: AppGeneratorRoute,
+  AppResultRoute: AppResultRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

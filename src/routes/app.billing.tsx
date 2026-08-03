@@ -28,7 +28,7 @@ function Billing() {
   const { plan } = Route.useSearch();
   const navigate = useNavigate();
   const [selected, setSelected] = useState(plan);
-  const active = plans.find((p) => p.id === selected) ?? plans[1];
+  const active = plans.find((p) => p.id === selected) ?? plans[1]!;
 
   return (
     <AppShell>
