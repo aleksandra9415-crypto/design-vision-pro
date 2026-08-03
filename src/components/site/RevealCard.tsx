@@ -28,7 +28,7 @@ export function RevealCard({
           className="absolute inset-0 h-full w-full object-cover"
           draggable={false}
           loading="lazy"
-          style={{ clipPath: `inset(0 0 0 ${100 - pos}%)` }}
+          style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
         />
 
         <span className="absolute bottom-3 left-3 bg-background/85 px-2 py-1 text-[10px] uppercase tracking-[0.22em] text-foreground">
