@@ -28,7 +28,7 @@ export function RevealCard({
           className="absolute inset-0 h-full w-full object-cover"
           draggable={false}
           loading="lazy"
-          style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
+          style={{ clipPath: `inset(0 0 0 ${100 - pos}%)` }}
         />
 
         <span className="absolute bottom-3 left-3 bg-background/85 px-2 py-1 text-[10px] uppercase tracking-[0.22em] text-foreground">
@@ -50,7 +50,7 @@ export function RevealCard({
         value={pos}
         aria-label={`Сравнение до и после — ${alt}`}
         onChange={(e) => setPos(Number(e.target.value))}
-        className="mt-4 w-full accent-primary"
+        className="mt-4 w-full accent-foreground"
       />
       <p className="mt-2 font-display normal-case text-lg leading-tight tracking-[0.02em]">{alt}</p>
     </div>
