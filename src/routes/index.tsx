@@ -229,7 +229,7 @@ function Home() {
             </div>
 
             {/* Фрагмент интерфейса генератора */}
-            <div className="flex h-full flex-col gap-6 border border-border bg-card p-6 shadow-[0_24px_60px_-40px_oklch(0.205_0.003_250/0.6)] sm:p-8">
+            <div className="flex h-full flex-col gap-6 border border-border bg-card p-6 sm:p-8">
               <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
                 {["Интерьер", "Ландшафт", "Фасад"].map((t, i) => (
                   <span
