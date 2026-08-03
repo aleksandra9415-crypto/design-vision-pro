@@ -45,6 +45,7 @@ export function RevealCard({
       }}
       className="relative h-[220px] w-full cursor-ew-resize select-none overflow-hidden bg-muted sm:h-[260px]"
     >
+      {/* Слева — оригинал, справа — результат */}
       <img
         src={before}
         alt={`${alt} — оригинал`}
@@ -52,23 +53,20 @@ export function RevealCard({
         draggable={false}
         loading="lazy"
       />
-      <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
-        <div className="h-full" style={{ width: `${(100 / Math.max(pos, 0.001)) * 100}%` }}>
-          <img
-            src={after}
-            alt={`${alt} — результат`}
-            className="h-full w-full object-cover"
-            draggable={false}
-            loading="lazy"
-          />
-        </div>
-      </div>
+      <img
+        src={after}
+        alt={`${alt} — результат`}
+        className="absolute inset-0 h-full w-full object-cover"
+        draggable={false}
+        loading="lazy"
+        style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
+      />
 
       <span className="absolute bottom-3 left-3 bg-background/85 px-2 py-1 text-[10px] uppercase tracking-[0.22em] text-foreground">
-        Результат
+        Оригинал
       </span>
       <span className="absolute bottom-3 right-3 bg-background/85 px-2 py-1 text-[10px] uppercase tracking-[0.22em] text-foreground">
-        Оригинал
+        Результат
       </span>
 
       <div
