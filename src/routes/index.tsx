@@ -181,37 +181,20 @@ function Home() {
               <Link to="/pricing">Тарифы и кредиты</Link>
             </Button>
           </div>
-        </div>
-      </section>
-
-      {/* ЦИФРЫ */}
-      <section className="border-b border-border bg-secondary/60">
-        <div className="mx-auto max-w-6xl px-4 py-12">
-          <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label} className="px-2">
-                <p className="font-display text-4xl tracking-[0.02em] sm:text-5xl">{s.value}</p>
-                <p className="mt-2 max-w-[16ch] text-sm text-muted-foreground">{s.label}</p>
+          <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-t border-background/25 pt-6">
+            {heroFacts.map((f) => (
+              <div key={f.label}>
+                <p className="font-display text-2xl leading-none tracking-[0.02em] text-background">
+                  {f.value}
+                </p>
+                <p className="mt-2 text-xs text-background/70">{f.label}</p>
               </div>
             ))}
           </div>
-          <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
-              О нас писали
-            </p>
-            <div className="flex flex-wrap items-center gap-2">
-              {press.map((p) => (
-                <span
-                  key={p}
-                  className="border border-border bg-card px-4 py-2 font-display text-lg tracking-[0.02em] text-muted-foreground"
-                >
-                  {p}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
+
+
 
       {/* ДО/ПОСЛЕ + ДЕМО ГЕНЕРАТОРА */}
       <section className="border-b border-border">
