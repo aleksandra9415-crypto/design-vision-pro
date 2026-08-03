@@ -1,15 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check, Sparkles, Upload } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Sparkles } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
+import { RevealStrip } from "@/components/site/RevealStrip";
 import { Button } from "@/components/ui/button";
 import {
-  
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
   howItWorks,
   images,
   interiorStyles,
   plans,
-  testimonials,
+  testimonialsExtended,
 } from "@/lib/mock-data";
 import heroWide from "@/assets/hero-wide.jpg";
 import styleScandi from "@/assets/style-scandi.jpg";
@@ -153,10 +160,10 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/35 to-foreground/10" />
         <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end px-4 pb-14">
           <p className="text-xs uppercase tracking-[0.32em] text-background/70">Vizoria</p>
-          <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[0.95] tracking-tight text-background sm:text-7xl">
+          <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[1.02] tracking-tight text-background sm:text-6xl">
             Сначала посмотрите,
             <br />
-            <span className="italic">потом ремонтируйте</span>
+            потом ремонтируйте
           </h1>
           <p className="mt-6 max-w-xl text-base text-background/80">
             Фотография комнаты, фасада или план расстановки мебели превращается в готовый кадр
@@ -238,7 +245,7 @@ function Home() {
             </div>
 
             {/* Фрагмент интерфейса генератора */}
-            <div className="border border-border bg-card p-5 shadow-[0_24px_60px_-40px_oklch(0.205_0.003_250/0.6)] sm:p-7">
+            <div className="border border-border bg-card p-6 shadow-[0_24px_60px_-40px_oklch(0.205_0.003_250/0.6)] sm:p-8">
               <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
                 {["Интерьер", "Экстерьер", "Чертёж"].map((t, i) => (
                   <span
@@ -252,21 +259,21 @@ function Home() {
                 ))}
               </div>
 
-              <div className="mt-5">
+              <div className="mt-6">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">
                   Фото комнаты
                 </p>
                 <img
                   src={images.interiorBefore}
                   alt="Загруженное фото гостиной до генерации"
-                  className="mt-2 h-40 w-full object-cover"
+                  className="mt-3 h-44 w-full object-cover"
                   loading="lazy"
                 />
               </div>
 
-              <div className="mt-5">
+              <div className="mt-6">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">Стиль</p>
-                <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
                   {interiorStyles.slice(0, 8).map((s, i) => (
                     <span
                       key={s.id}
@@ -282,33 +289,21 @@ function Home() {
                 </div>
               </div>
 
-              <p className="mt-5 border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
-                тёплый свет, зелёный акцент, больше растений
-              </p>
+              <div className="mt-6">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">Уточнения</p>
+                <p className="mt-3 border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
+                  тёплый свет, зелёный акцент, больше растений
+                </p>
+              </div>
 
-              <Button asChild size="lg" className="mt-5 w-full rounded-none">
+              <Button asChild size="lg" className="mt-6 w-full rounded-none">
                 <Link to="/app/generator" search={{ tab: "interior" }}>
                   <Sparkles className="size-4" /> Сгенерировать
                 </Link>
               </Button>
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-12 lg:items-center">
-            <Link
-              to="/app/generator"
-              search={{ tab: "interior" }}
-              className="group flex flex-col items-center justify-center gap-3 border-2 border-dashed border-border bg-card/60 p-8 text-center transition-colors hover:border-foreground/40 hover:bg-card lg:col-span-7"
-            >
-              <Upload className="size-6" />
-              <span className="font-display text-2xl leading-tight">Перетащите фото сюда</span>
-              <span className="text-xs text-muted-foreground">
+              <p className="mt-3 text-center text-xs text-muted-foreground">
                 JPG или PNG до 15 МБ · первые 3 кадра бесплатно
-              </span>
-            </Link>
-            <div className="flex flex-wrap gap-3 lg:col-span-5">
-              <StartButton label="Загрузить фото" />
-              <BuyButton />
+              </p>
             </div>
           </div>
         </div>
