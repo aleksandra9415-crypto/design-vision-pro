@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import {
   images,
   plans,
-  testimonialsExtended,
 } from "@/lib/mock-data";
 
 import heroWide from "@/assets/hero-wide.jpg";
