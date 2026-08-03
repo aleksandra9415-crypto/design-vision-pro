@@ -44,13 +44,7 @@ export function RevealStrip({ items }: { items: RevealItem[] }) {
         </div>
 
         {/* Центральный разделитель */}
-        <div className="pointer-events-none absolute inset-y-0 left-1/2 z-10 w-px -translate-x-1/2 bg-background">
-          <span className="absolute left-1/2 top-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-background text-foreground shadow-lg">
-            <svg viewBox="0 0 24 24" className="size-4" fill="currentColor" aria-hidden="true">
-              <path d="M9 6 4 12l5 6zM15 6l5 6-5 6z" />
-            </svg>
-          </span>
-        </div>
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 z-10 w-px -translate-x-1/2 bg-background" />
       </div>
     </div>
   );
