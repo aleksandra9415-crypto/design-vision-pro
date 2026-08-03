@@ -324,7 +324,7 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Дизайны, которые сгенерировали наши пользователи
+              Дизайны, которые сгенерированы у нас
             </h2>
             <p className="mt-3 max-w-lg text-sm text-muted-foreground">
               Наведите на плитку — покажем исходное фото до генерации.
