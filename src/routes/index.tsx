@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, Sparkles, Upload } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Image as ImageIcon, Palette, Sparkles, Upload, Wand2 } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { RevealStrip } from "@/components/site/RevealStrip";
 import { RevealCard } from "@/components/site/RevealCard";
+import { UserMosaic } from "@/components/site/UserMosaic";
+import { RoomTabs } from "@/components/site/RoomTabs";
 import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
 
 import { Button } from "@/components/ui/button";
@@ -57,6 +59,36 @@ const revealCards = [
 ];
 
 const finalThumbs = [styleScandi, roomKitchen, styleJapandi, roomBath];
+
+const mosaicTiles = [
+  { before: images.interiorBefore, after: styleScandi, alt: "Гостиная, сканди", span: "col-span-2 row-span-2 lg:col-span-3 lg:row-span-2" },
+  { before: images.interiorBefore, after: styleLoft, alt: "Студия, лофт", span: "lg:col-span-2" },
+  { before: images.landscapeBefore, after: images.landscapeAfter, alt: "Участок с газоном", span: "lg:row-span-2" },
+  { before: images.interiorBefore, after: roomKitchen, alt: "Кухня, современный" },
+  { before: images.interiorBefore, after: roomBath, alt: "Ванная, спа-минимализм" },
+  { before: images.facadeBefore, after: images.facadeAfter, alt: "Фасад дома", span: "col-span-2 lg:col-span-2" },
+  { before: images.interiorBefore, after: styleJapandi, alt: "Спальня, джапанди", span: "lg:col-span-2 lg:row-span-2" },
+  { before: images.interiorBefore, after: roomKids, alt: "Детская, тёплые тона" },
+  { before: images.interiorBefore, after: styleNeoclassic, alt: "Гостиная, неоклассика" },
+  { before: images.interiorBefore, after: styleBoho, alt: "Спальня, бохо", span: "col-span-2 lg:col-span-2" },
+];
+
+const steps = [
+  { icon: Upload, title: "Загрузка фото", text: "Снимок с телефона подойдёт — важно, чтобы было видно стены, окна и пол." },
+  { icon: Palette, title: "Выбор стиля", text: "Тип помещения и одно из 20+ направлений: сканди, лофт, джапандии другие." },
+  { icon: Wand2, title: "Генерация ИИ", text: "Около минуты — геометрия комнаты сохраняется, меняются отделка, свет и мебель." },
+  { icon: ImageIcon, title: "Результат", text: "Сравниваете до/после, просите правки словами и скачиваете кадр в высоком разрешении." },
+];
+
+const rooms = [
+  { name: "Спальня", before: images.interiorBefore, after: styleJapandi, note: "Спокойная палитра, мягкий свет и вместительное хранение без визуального шума." },
+  { name: "Кухня", before: images.interiorBefore, after: roomKitchen, note: "Рабочий треугольник, фартук и фасады — в актуальных материалах." },
+  { name: "Детская", before: images.interiorBefore, after: roomKids, note: "Тёплые тона, зоны для сна, игр и занятий в одном кадре." },
+  { name: "Гостиная", before: images.interiorBefore, after: styleScandi, note: "Сценарии для отдыха и приёма гостей, светлое дерево и текстиль." },
+  { name: "Ванная", before: images.interiorBefore, after: roomBath, note: "Микроцемент, ниши и подсветка — спа-минимализм в городской квартире." },
+  { name: "Кабинет", before: images.interiorBefore, after: styleClassic, note: "Стол у окна, книжные секции и собранный, рабочий свет." },
+  { name: "Прихожая", before: images.interiorBefore, after: styleMinimal, note: "Компактное хранение, зеркало и износостойкая отделка у входа." },
+];
 
 
 const press = ["Т—Ж", "VC.ru", "Cossa", "Habr", "Inc."];
