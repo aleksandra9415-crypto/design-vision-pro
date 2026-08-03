@@ -4,7 +4,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Button } from "@/components/ui/button";
 import {
-  galleryExamples,
+  
   howItWorks,
   images,
   interiorStyles,
@@ -12,6 +12,50 @@ import {
   testimonials,
 } from "@/lib/mock-data";
 import heroWide from "@/assets/hero-wide.jpg";
+import styleScandi from "@/assets/style-scandi.jpg";
+import styleLoft from "@/assets/style-loft.jpg";
+import styleMinimal from "@/assets/style-minimal.jpg";
+import styleClassic from "@/assets/style-classic.jpg";
+import styleJapandi from "@/assets/style-japandi.jpg";
+import styleHygge from "@/assets/style-hygge.jpg";
+import styleNeoclassic from "@/assets/style-neoclassic.jpg";
+import styleEclectic from "@/assets/style-eclectic.jpg";
+import styleBoho from "@/assets/style-boho.jpg";
+import roomKitchen from "@/assets/room-kitchen.jpg";
+import roomBath from "@/assets/room-bath.jpg";
+import roomKids from "@/assets/room-kids.jpg";
+
+const styleGallery = [
+  { name: "Сканди", desc: "Светлое дерево и мягкий текстиль", image: styleScandi },
+  { name: "Лофт", desc: "Кирпич, металл, открытые коммуникации", image: styleLoft },
+  { name: "Минимализм", desc: "Чистые линии, ничего лишнего", image: styleMinimal },
+  { name: "Классика", desc: "Молдинги, симметрия, благородные тона", image: styleClassic },
+  { name: "Джапанди", desc: "Японская сдержанность и северный уют", image: styleJapandi },
+  { name: "Хюгге", desc: "Тёплый свет, пледы, натуральные фактуры", image: styleHygge },
+  { name: "Неоклассика", desc: "Лепнина в спокойной серой гамме", image: styleNeoclassic },
+  { name: "Эклектика", desc: "Смешение эпох, яркое искусство", image: styleEclectic },
+  { name: "Бохо", desc: "Ротанг, растения, этнические узоры", image: styleBoho },
+  { name: "Современный", desc: "Актуальные формы и материалы", image: roomKitchen },
+  { name: "Спа-минимализм", desc: "Микроцемент и мягкий свет", image: roomBath },
+  { name: "Тёплый нейтральный", desc: "Дерево и молочные оттенки", image: roomKids },
+];
+
+const userExamples = [
+  { image: styleScandi, style: "Сканди", room: "Гостиная" },
+  { image: roomKitchen, style: "Современный", room: "Кухня" },
+  { image: styleJapandi, style: "Джапанди", room: "Спальня" },
+  { image: roomBath, style: "Минимализм", room: "Ванная" },
+  { image: styleLoft, style: "Лофт", room: "Студия" },
+  { image: roomKids, style: "Хюгге", room: "Детская" },
+  { image: styleClassic, style: "Классика", room: "Гостиная" },
+  { image: styleBoho, style: "Бохо", room: "Балкон" },
+  { image: styleNeoclassic, style: "Неоклассика", room: "Кабинет" },
+  { image: styleEclectic, style: "Эклектика", room: "Столовая" },
+  { image: images.exteriorAfter, style: "Современный фасад", room: "Фасад дома" },
+  { image: images.planAfter, style: "Фотореализм", room: "Квартира по чертежу" },
+];
+
+const press = ["Т—Ж", "VC.ru", "Cossa", "Habr", "Inc."];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -98,7 +142,7 @@ function Home() {
   return (
     <PageShell>
       {/* HERO — полноэкранное фото */}
-      <section className="relative h-[calc(100svh-65px)] min-h-[520px] w-full overflow-hidden">
+      <section className="relative h-[85svh] min-h-[480px] w-full overflow-hidden">
         <img
           src={heroWide}
           alt="Светлая гостиная в нейтральной серо-жемчужной палитре"
@@ -138,32 +182,119 @@ function Home() {
 
       {/* ЦИФРЫ */}
       <section className="border-b border-border bg-secondary/60">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-y-10 px-4 py-12 lg:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label} className="px-2">
-              <p className="font-display text-4xl tracking-tight sm:text-5xl">{s.value}</p>
-              <p className="mt-2 max-w-[16ch] text-sm text-muted-foreground">{s.label}</p>
+        <div className="mx-auto max-w-6xl px-4 py-12">
+          <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.label} className="px-2">
+                <p className="font-display text-4xl tracking-tight sm:text-5xl">{s.value}</p>
+                <p className="mt-2 max-w-[16ch] text-sm text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
+              О нас писали
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              {press.map((p) => (
+                <span
+                  key={p}
+                  className="border border-border bg-card px-4 py-2 font-display text-lg tracking-tight text-muted-foreground"
+                >
+                  {p}
+                </span>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
-      {/* ДО / ПОСЛЕ — крупно */}
+      {/* ДО/ПОСЛЕ + ДЕМО ГЕНЕРАТОРА */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
               Одно фото — другая комната
             </h2>
-            <p className="text-sm text-muted-foreground">
-              Потяните ползунок, чтобы увидеть исходный кадр
+            <p className="max-w-sm text-sm text-muted-foreground">
+              Слева — результат генерации, потяните ползунок. Справа — экран, в котором он сделан.
             </p>
           </div>
-          <div className="mt-8">
-            <BeforeAfter before={images.interiorBefore} after={images.interiorAfter} />
+
+          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div>
+              <BeforeAfter before={images.interiorBefore} after={images.interiorAfter} />
+              <ol className="mt-6 space-y-3 border-t border-border pt-5">
+                {howItWorks.map((step) => (
+                  <li key={step.title} className="flex gap-3">
+                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-foreground" />
+                    <span>
+                      <span className="font-medium">{step.title}. </span>
+                      <span className="text-sm text-muted-foreground">{step.text}</span>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            {/* Фрагмент интерфейса генератора */}
+            <div className="border border-border bg-card p-5 shadow-[0_24px_60px_-40px_oklch(0.205_0.003_250/0.6)] sm:p-7">
+              <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
+                {["Интерьер", "Экстерьер", "Чертёж"].map((t, i) => (
+                  <span
+                    key={t}
+                    className={`flex-1 px-3 py-2 text-center ${
+                      i === 0 ? "bg-background font-medium" : "text-muted-foreground"
+                    }`}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-5">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Фото комнаты
+                </p>
+                <img
+                  src={images.interiorBefore}
+                  alt="Загруженное фото гостиной до генерации"
+                  className="mt-2 h-40 w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="mt-5">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">Стиль</p>
+                <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                  {interiorStyles.slice(0, 8).map((s, i) => (
+                    <span
+                      key={s.id}
+                      className={`border px-3 py-2 text-sm ${
+                        i === 0
+                          ? "border-foreground bg-foreground/5 font-medium"
+                          : "border-border text-muted-foreground"
+                      }`}
+                    >
+                      {s.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <p className="mt-5 border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
+                тёплый свет, зелёный акцент, больше растений
+              </p>
+
+              <Button asChild size="lg" className="mt-5 w-full rounded-none">
+                <Link to="/app/generator" search={{ tab: "interior" }}>
+                  <Sparkles className="size-4" /> Сгенерировать
+                </Link>
+              </Button>
+            </div>
           </div>
 
-          <div className="mt-8 grid gap-6 lg:grid-cols-12 lg:items-center">
+          <div className="mt-10 grid gap-6 lg:grid-cols-12 lg:items-center">
             <Link
               to="/app/generator"
               search={{ tab: "interior" }}
@@ -183,97 +314,47 @@ function Home() {
         </div>
       </section>
 
-      {/* ДЕМО ГЕНЕРАТОРА */}
+      {/* ГАЛЕРЕЯ СТИЛЕЙ */}
       <section className="border-b border-border">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-5">
-            <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
-              Как устроена работа
-            </p>
-            <h2 className="mt-4 font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-              Три поля и одна кнопка
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+              Витрина стилей
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              Никакого обучения интерфейсу. Рядом — реальный экран генератора: снимок, стиль,
-              уточнение словами. Дальше остаётся дождаться кадра.
+            <p className="max-w-sm text-sm text-muted-foreground">
+              Больше 20 направлений в генераторе. Вот двенадцать, с которых обычно начинают.
             </p>
-            <ol className="mt-8 space-y-4 border-t border-border pt-6">
-              {howItWorks.map((step) => (
-                <li key={step.title} className="flex gap-4">
-                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-foreground" />
-                  <span>
-                    <span className="font-medium">{step.title}. </span>
-                    <span className="text-sm text-muted-foreground">{step.text}</span>
-                  </span>
-                </li>
-              ))}
-            </ol>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <StartButton label="Попробовать бесплатно" />
-              <BuyButton label="Выбрать тариф" />
-            </div>
           </div>
-
-          {/* Фрагмент интерфейса */}
-          <div className="lg:col-span-7">
-            <div className="border border-border bg-card p-5 shadow-[0_24px_60px_-40px_oklch(0.205_0.003_250/0.6)] sm:p-7">
-              <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
-                {["Интерьер", "Экстерьер", "Чертёж"].map((t, i) => (
-                  <span
-                    key={t}
-                    className={`flex-1 px-3 py-2 text-center ${
-                      i === 0 ? "bg-background font-medium" : "text-muted-foreground"
-                    }`}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-5 grid gap-5 sm:grid-cols-2">
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                    Фото комнаты
-                  </p>
-                  <img
-                    src={images.interiorBefore}
-                    alt="Загруженное фото гостиной до генерации"
-                    className="mt-2 h-40 w-full object-cover"
-                    loading="lazy"
-                  />
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {styleGallery.map((s) => (
+              <Link
+                key={s.name}
+                to="/app/generator"
+                search={{ tab: "interior" }}
+                className="group block border border-border bg-card transition-colors hover:border-foreground/40"
+              >
+                <img
+                  src={s.image}
+                  alt={`Интерьер в стиле ${s.name}`}
+                  width={768}
+                  height={576}
+                  className="aspect-[4/3] w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="p-3">
+                  <p className="font-display text-xl leading-none tracking-tight">{s.name}</p>
+                  <p className="mt-1.5 line-clamp-1 text-xs text-muted-foreground">{s.desc}</p>
                 </div>
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">Стиль</p>
-                  <div className="mt-2 grid grid-cols-2 gap-2">
-                    {interiorStyles.slice(0, 4).map((s, i) => (
-                      <span
-                        key={s.id}
-                        className={`border px-3 py-2 text-sm ${
-                          i === 0
-                            ? "border-foreground bg-foreground/5 font-medium"
-                            : "border-border text-muted-foreground"
-                        }`}
-                      >
-                        {s.name}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <p className="mt-5 border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
-                тёплый свет, зелёный акцент, больше растений
-              </p>
-
-              <Button asChild size="lg" className="mt-5 w-full rounded-none">
-                <Link to="/app/generator" search={{ tab: "interior" }}>
-                  <Sparkles className="size-4" /> Сгенерировать
-                </Link>
-              </Button>
-            </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <StartButton label="Примерить стиль" />
+            <BuyButton />
           </div>
         </div>
       </section>
+
 
       {/* КЕЙСЫ — журнальный разворот */}
       <section className="border-b border-border">
@@ -326,22 +407,39 @@ function Home() {
       {/* ПРИМЕРЫ */}
       <section className="border-b border-border bg-secondary/50">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-            Из архива работ
-          </h2>
-          <div className="mt-10 grid gap-8 lg:grid-cols-3">
-            {galleryExamples.map((ex) => (
-              <figure key={ex.style}>
-                <BeforeAfter before={ex.before} after={ex.after} />
-                <figcaption className="mt-3">
-                  <span className="font-display text-2xl">{ex.style}</span>
-                  <span className="ml-2 text-sm text-muted-foreground">{ex.room}</span>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+              Из архива работ
+            </h2>
+            <p className="max-w-sm text-sm text-muted-foreground">
+              Разные комнаты, стили и сценарии — от студии до фасада частного дома.
+            </p>
+          </div>
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {userExamples.map((ex) => (
+              <figure key={`${ex.style}-${ex.room}`} className="group">
+                <img
+                  src={ex.image}
+                  alt={`${ex.style} · ${ex.room}`}
+                  width={768}
+                  height={576}
+                  className="aspect-[4/3] w-full object-cover"
+                  loading="lazy"
+                />
+                <figcaption className="mt-2 text-sm">
+                  <span className="font-medium">{ex.style}</span>
+                  <span className="text-muted-foreground"> · {ex.room}</span>
                 </figcaption>
               </figure>
             ))}
           </div>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <StartButton label="Сделать свой кадр" />
+            <BuyButton />
+          </div>
         </div>
       </section>
+
 
       {/* ОТЗЫВЫ */}
       <section className="border-b border-border">
