@@ -524,13 +524,32 @@ function Home() {
 
       {/* ФИНАЛЬНЫЙ CTA */}
       <section>
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-16 sm:flex-row sm:items-end">
-          <h2 className="max-w-lg font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-            Первые три кадра — за наш счёт
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            <StartButton label="Загрузить фото" />
-            <BuyButton />
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+              Первые три кадра — за наш счёт
+            </h2>
+            <p className="mt-5 max-w-md text-muted-foreground">
+              Регистрация занимает минуту, карта не нужна. Загрузите фото комнаты или план — и
+              посмотрите, как она может выглядеть.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <StartButton label="Загрузить фото" />
+              <BuyButton />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3 lg:col-span-7">
+            {finalThumbs.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt="Пример визуализации Vizoria"
+                width={768}
+                height={576}
+                className={`aspect-[4/3] w-full object-cover ${i % 2 === 1 ? "lg:translate-y-6" : ""}`}
+                loading="lazy"
+              />
+            ))}
           </div>
         </div>
       </section>
