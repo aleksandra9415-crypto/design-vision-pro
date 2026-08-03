@@ -5,11 +5,12 @@ import { Button } from "@/components/ui/button";
 
 const nav = [
   { to: "/interior", label: "Интерьер" },
-  { to: "/exterior", label: "Ландшафт и фасад" },
-  { to: "/pro", label: "Для профи" },
+  { to: "/landscape", label: "Ландшафт" },
+  { to: "/facade", label: "Фасад" },
   { to: "/pricing", label: "Тарифы" },
   { to: "/faq", label: "Вопросы" },
 ] as const;
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);

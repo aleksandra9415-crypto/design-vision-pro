@@ -68,7 +68,7 @@ function Pricing() {
         <div className="mt-10 flex flex-col gap-4 rounded-xl border border-border bg-muted/40 p-6 sm:flex-row sm:items-start">
           <ShieldCheck className="size-6 shrink-0 text-primary" />
           <div>
-            <p className="font-medium">Коммерческая лицензия для профи</p>
+            <p className="font-medium">Коммерческая лицензия включена</p>
             <p className="mt-1 text-sm text-muted-foreground">
               Право использовать результаты в проектах клиентов, презентациях и рекламе включено в
               любой платный пакет. Это не отдельная подписка и не доплата: купили кредиты — лицензия

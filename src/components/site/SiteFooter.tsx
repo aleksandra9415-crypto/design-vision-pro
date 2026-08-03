@@ -5,10 +5,11 @@ const columns = [
     title: "Сервис",
     links: [
       { to: "/interior", label: "Дизайн интерьера" },
-      { to: "/exterior", label: "Ландшафт и фасад" },
-      { to: "/pro", label: "Для дизайнеров" },
+      { to: "/landscape", label: "Ландшафт" },
+      { to: "/facade", label: "Фасад" },
       { to: "/pricing", label: "Тарифы" },
     ],
+
   },
   {
     title: "Помощь",

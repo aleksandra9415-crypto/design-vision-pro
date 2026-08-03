@@ -1,39 +1,39 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MiniLanding } from "@/components/site/MiniLanding";
-import { exteriorStyles, images } from "@/lib/mock-data";
+import { images, landscapeStyles } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/landscape")({
   head: () => ({
     meta: [
-      { title: "Дизайн ландшафта и фасада дома по фото с ИИ" },
+      { title: "Дизайн ландшафта и участка по фото с ИИ" },
       {
         name: "description",
         content:
-          "Обновите фасад дома и спланируйте участок до начала работ: загрузите фото и получите визуализацию за минуту.",
+          "Спланируйте участок до начала работ: газон, дорожки, посадки и зона отдыха — визуализация по фото за минуту.",
       },
-      { property: "og:title", content: "Дизайн ландшафта и фасада с ИИ" },
+      { property: "og:title", content: "Дизайн ландшафта с ИИ" },
       {
         property: "og:description",
-        content: "Фасад, двор, газон и терраса — визуализация по фотографии участка.",
+        content: "Двор, газон, дорожки, посадки и терраса — визуализация по фотографии участка.",
       },
     ],
   }),
   component: () => (
     <MiniLanding
-      eyebrow="Дом и участок"
-      title="Дизайн ландшафта и фасада по фотографии"
-      subtitle="Посмотрите, как будет выглядеть дом с новой отделкой фасада и благоустроенным участком, прежде чем тратить бюджет на работы."
+      eyebrow="Участок и сад"
+      title="Дизайн участка по фотографии"
+      subtitle="Посмотрите, как будет выглядеть двор с новым газоном, дорожками и посадками, прежде чем тратить бюджет на благоустройство."
       bullets={[
-        "Фасад, двор, газон, дорожки, терраса и зона барбекю",
-        "Сохраняем форму дома и границы участка",
+        "Газон, дорожки, миксбордеры, деревья и зона барбекю",
+        "Сохраняем границы участка и расположение построек",
         "Удобно согласовывать вариант с семьёй и подрядчиком",
       ]}
-      stylesTitle="Направления для экстерьера"
-      styles={exteriorStyles}
-      before={images.exteriorBefore}
-      after={images.exteriorAfter}
-      tab="exterior"
-      ctaLabel="Оформить экстерьер"
+      stylesTitle="Направления для участка"
+      styles={landscapeStyles}
+      before={images.landscapeBefore}
+      after={images.landscapeAfter}
+      tab="landscape"
+      ctaLabel="Оформить участок"
     />
   ),
 });
