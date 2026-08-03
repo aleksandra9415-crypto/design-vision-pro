@@ -12,12 +12,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import {
-  howItWorks,
   images,
-  interiorStyles,
   plans,
   testimonialsExtended,
 } from "@/lib/mock-data";
+
 import heroWide from "@/assets/hero-wide.jpg";
 import styleScandi from "@/assets/style-scandi.jpg";
 import styleLoft from "@/assets/style-loft.jpg";
