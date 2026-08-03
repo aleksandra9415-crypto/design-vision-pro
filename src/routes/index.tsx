@@ -7,13 +7,6 @@ import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
 
 import { Button } from "@/components/ui/button";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
   images,
   plans,
   testimonialsExtended,
