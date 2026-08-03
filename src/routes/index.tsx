@@ -289,7 +289,7 @@ function Home() {
                   i % 2 === 1 ? "lg:[&>figure]:order-last" : ""
                 }`}
               >
-                <figure className={`lg:col-span-7 ${i === 1 ? "lg:col-span-6" : ""}`}>
+                <figure className={i === 1 ? "lg:col-span-6" : "lg:col-span-7"}>
                   <img
                     src={c.image}
                     alt={c.title}
@@ -297,7 +297,8 @@ function Home() {
                     loading="lazy"
                   />
                 </figure>
-                <div className={`lg:col-span-5 ${i === 1 ? "lg:col-span-6 lg:pr-10" : ""}`}>
+                <div className={i === 1 ? "lg:col-span-6 lg:pr-10" : "lg:col-span-5"}>
+
                   <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
                     {c.kicker}
                   </p>
