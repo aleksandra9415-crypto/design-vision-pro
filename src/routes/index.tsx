@@ -12,6 +12,50 @@ import {
   testimonials,
 } from "@/lib/mock-data";
 import heroWide from "@/assets/hero-wide.jpg";
+import styleScandi from "@/assets/style-scandi.jpg";
+import styleLoft from "@/assets/style-loft.jpg";
+import styleMinimal from "@/assets/style-minimal.jpg";
+import styleClassic from "@/assets/style-classic.jpg";
+import styleJapandi from "@/assets/style-japandi.jpg";
+import styleHygge from "@/assets/style-hygge.jpg";
+import styleNeoclassic from "@/assets/style-neoclassic.jpg";
+import styleEclectic from "@/assets/style-eclectic.jpg";
+import styleBoho from "@/assets/style-boho.jpg";
+import roomKitchen from "@/assets/room-kitchen.jpg";
+import roomBath from "@/assets/room-bath.jpg";
+import roomKids from "@/assets/room-kids.jpg";
+
+const styleGallery = [
+  { name: "Сканди", desc: "Светлое дерево и мягкий текстиль", image: styleScandi },
+  { name: "Лофт", desc: "Кирпич, металл, открытые коммуникации", image: styleLoft },
+  { name: "Минимализм", desc: "Чистые линии, ничего лишнего", image: styleMinimal },
+  { name: "Классика", desc: "Молдинги, симметрия, благородные тона", image: styleClassic },
+  { name: "Джапанди", desc: "Японская сдержанность и северный уют", image: styleJapandi },
+  { name: "Хюгге", desc: "Тёплый свет, пледы, натуральные фактуры", image: styleHygge },
+  { name: "Неоклассика", desc: "Лепнина в спокойной серой гамме", image: styleNeoclassic },
+  { name: "Эклектика", desc: "Смешение эпох, яркое искусство", image: styleEclectic },
+  { name: "Бохо", desc: "Ротанг, растения, этнические узоры", image: styleBoho },
+  { name: "Современный", desc: "Актуальные формы и материалы", image: roomKitchen },
+  { name: "Спа-минимализм", desc: "Микроцемент и мягкий свет", image: roomBath },
+  { name: "Тёплый нейтральный", desc: "Дерево и молочные оттенки", image: roomKids },
+];
+
+const userExamples = [
+  { image: styleScandi, style: "Сканди", room: "Гостиная" },
+  { image: roomKitchen, style: "Современный", room: "Кухня" },
+  { image: styleJapandi, style: "Джапанди", room: "Спальня" },
+  { image: roomBath, style: "Минимализм", room: "Ванная" },
+  { image: styleLoft, style: "Лофт", room: "Студия" },
+  { image: roomKids, style: "Хюгге", room: "Детская" },
+  { image: styleClassic, style: "Классика", room: "Гостиная" },
+  { image: styleBoho, style: "Бохо", room: "Балкон" },
+  { image: styleNeoclassic, style: "Неоклассика", room: "Кабинет" },
+  { image: styleEclectic, style: "Эклектика", room: "Столовая" },
+  { image: images.exteriorAfter, style: "Современный фасад", room: "Фасад дома" },
+  { image: images.planAfter, style: "Фотореализм", room: "Квартира по чертежу" },
+];
+
+const press = ["Т—Ж", "VC.ru", "Cossa", "Habr", "Inc."];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -98,7 +142,7 @@ function Home() {
   return (
     <PageShell>
       {/* HERO — полноэкранное фото */}
-      <section className="relative h-[calc(100svh-65px)] min-h-[520px] w-full overflow-hidden">
+      <section className="relative h-[85svh] min-h-[480px] w-full overflow-hidden">
         <img
           src={heroWide}
           alt="Светлая гостиная в нейтральной серо-жемчужной палитре"
