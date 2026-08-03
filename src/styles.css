@@ -180,10 +180,19 @@
     font-family: var(--font-display);
     font-weight: 600;
     font-style: normal;
-    text-transform: uppercase;
     font-kerning: normal;
     text-rendering: geometricPrecision;
     text-wrap: balance;
+  }
+
+  .font-display:not(h1):not(h2):not(h3) {
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-transform: none;
   }
 
   h1 {
