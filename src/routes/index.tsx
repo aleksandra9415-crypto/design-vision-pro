@@ -50,6 +50,12 @@ const revealItems = [
   { before: images.interiorBefore, after: styleLoft, alt: "Студия в стиле лофт" },
 ];
 
+const revealCards = [
+  { before: images.interiorBefore, after: images.interiorAfter, alt: "Смена интерьера" },
+  { before: images.landscapeBefore, after: images.landscapeAfter, alt: "Ландшафтный дизайн" },
+  { before: images.facadeBefore, after: images.facadeAfter, alt: "Дизайн фасада" },
+];
+
 const finalThumbs = [styleScandi, roomKitchen, styleJapandi, roomBath];
 
 
