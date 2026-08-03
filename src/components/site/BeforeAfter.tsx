@@ -13,7 +13,7 @@ export function BeforeAfter({
 
   return (
     <div className={className}>
-      <div className="relative aspect-[4/3] w-full select-none overflow-hidden rounded-xl border border-border bg-muted">
+      <div className="relative aspect-[4/3] w-full select-none overflow-hidden border border-border bg-muted">
         <img
           src={after}
           alt="После генерации"
