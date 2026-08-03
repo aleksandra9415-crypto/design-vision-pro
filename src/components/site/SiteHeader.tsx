@@ -17,12 +17,15 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:flex sm:justify-between">
-        <Link to="/" className="flex min-w-0 items-center gap-2">
-          <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground">
-            <Sparkles className="size-4" />
+        <Link to="/" className="flex min-w-0 items-baseline gap-2">
+          <span className="truncate font-display text-2xl leading-none tracking-tight">
+            Студия
           </span>
-          <span className="truncate text-base font-semibold tracking-tight">ЛОГО · Дизайн ИИ</span>
+          <span className="truncate text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+            дизайн по фото
+          </span>
         </Link>
+
 
         <nav className="hidden items-center gap-6 lg:flex">
           {nav.map((item) => (
