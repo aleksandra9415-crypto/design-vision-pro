@@ -37,7 +37,7 @@ export function SiteFooter() {
         <div>
           <p className="font-display text-2xl tracking-[0.02em]">Vizoria</p>
           <p className="mt-2 max-w-xs text-sm text-muted-foreground">
-            Визуализация интерьера, ландшафта и фасада по фото или схеме расстановки мебели.
+            Визуализация интерьера, ландшафта и фасада по фото.
           </p>
         </div>
         {columns.map((col) => (
