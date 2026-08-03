@@ -388,11 +388,11 @@ function Home() {
       {/* ПРИМЕРЫ */}
       <section className="border-b border-border bg-secondary/50">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
               Из архива работ
             </h2>
-            <p className="max-w-sm text-sm text-muted-foreground">
+            <p className="mt-3 max-w-sm text-sm text-muted-foreground">
               Разные комнаты, стили и сценарии — от студии до фасада частного дома.
             </p>
           </div>
@@ -431,11 +431,11 @@ function Home() {
       {/* ПРЕВЬЮ ТАРИФОВ */}
       <section className="border-b border-border bg-secondary/40">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
               Пакеты кредитов
             </h2>
-            <p className="max-w-sm text-sm text-muted-foreground">
+            <p className="mt-3 max-w-sm text-sm text-muted-foreground">
               Один кредит — один кадр. Кредиты не сгорают, подписки нет.
             </p>
           </div>
