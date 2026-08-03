@@ -53,14 +53,15 @@ export function RevealCard({
         loading="lazy"
       />
       <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
-        <img
-          src={after}
-          alt={`${alt} — результат`}
-          className="absolute inset-0 h-full object-cover"
-          style={{ width: ref.current?.clientWidth ?? "100%" }}
-          draggable={false}
-          loading="lazy"
-        />
+        <div className="h-full" style={{ width: `${(100 / Math.max(pos, 0.001)) * 100}%` }}>
+          <img
+            src={after}
+            alt={`${alt} — результат`}
+            className="h-full w-full object-cover"
+            draggable={false}
+            loading="lazy"
+          />
+        </div>
       </div>
 
       <span className="absolute bottom-3 left-3 bg-background/85 px-2 py-1 text-[10px] uppercase tracking-[0.22em] text-foreground">
