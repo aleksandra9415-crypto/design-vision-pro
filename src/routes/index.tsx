@@ -509,7 +509,7 @@ function Home() {
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
               Любое пространство
             </h2>
-            <p className="mt-3 max-w-sm text-sm text-muted-foreground">
+            <p className="mt-3 text-sm text-muted-foreground">
               Разные комнаты, стили и сценарии — от студии до фасада частного дома.
             </p>
           </div>
