@@ -32,9 +32,7 @@ export function UserMosaic({ tiles }: { tiles: Tile[] }) {
             loading="lazy"
           />
           <figcaption
-            className={`absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 px-3 text-xs ${
-              isSmall ? "bg-background" : "bg-background/85"
-            }`}
+            className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 bg-background px-3 text-xs"
           >
             <span className="line-clamp-2 leading-tight">{t.alt}</span>
             <span className="shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
