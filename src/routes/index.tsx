@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Sparkles, Upload } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { RevealStrip } from "@/components/site/RevealStrip";
@@ -12,12 +12,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import {
-  howItWorks,
   images,
-  interiorStyles,
   plans,
   testimonialsExtended,
 } from "@/lib/mock-data";
+
 import heroWide from "@/assets/hero-wide.jpg";
 import styleScandi from "@/assets/style-scandi.jpg";
 import styleLoft from "@/assets/style-loft.jpg";
@@ -216,33 +215,26 @@ function Home() {
       {/* ДО/ПОСЛЕ + ДЕМО ГЕНЕРАТОРА */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
             <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
               Одно фото — другая комната
             </h2>
-            <p className="max-w-sm text-sm text-muted-foreground">
-              Слева — результат генерации, потяните ползунок. Справа — экран, в котором он сделан.
+            <p className="mt-3 text-sm text-muted-foreground">
+              Загрузите фото или схему — получите готовый кадр интерьера.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
-            <div>
-              <BeforeAfter before={images.interiorBefore} after={images.interiorAfter} />
-              <ol className="mt-6 space-y-3 border-t border-border pt-5">
-                {howItWorks.map((step) => (
-                  <li key={step.title} className="flex gap-3">
-                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-foreground" />
-                    <span>
-                      <span className="font-medium">{step.title}. </span>
-                      <span className="text-sm text-muted-foreground">{step.text}</span>
-                    </span>
-                  </li>
-                ))}
-              </ol>
+          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch">
+            <div className="flex h-full flex-col">
+              <BeforeAfter
+                before={images.interiorBefore}
+                after={images.interiorAfter}
+                className="flex h-full flex-col [&>div]:flex-1"
+              />
             </div>
 
             {/* Фрагмент интерфейса генератора */}
-            <div className="border border-border bg-card p-6 shadow-[0_24px_60px_-40px_oklch(0.205_0.003_250/0.6)] sm:p-8">
+            <div className="flex h-full flex-col gap-6 border border-border bg-card p-6 shadow-[0_24px_60px_-40px_oklch(0.205_0.003_250/0.6)] sm:p-8">
               <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
                 {["Интерьер", "Экстерьер", "Чертёж"].map((t, i) => (
                   <span
@@ -256,55 +248,55 @@ function Home() {
                 ))}
               </div>
 
-              <div className="mt-6">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                  Фото комнаты
-                </p>
-                <img
-                  src={images.interiorBefore}
-                  alt="Загруженное фото гостиной до генерации"
-                  className="mt-3 h-44 w-full object-cover"
-                  loading="lazy"
-                />
+              <div className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-border bg-muted/30 px-6 py-8 text-center">
+                <Upload className="size-6 text-muted-foreground" />
+                <p className="text-sm font-medium">Перетащите фото комнаты</p>
+                <p className="text-xs text-muted-foreground">или нажмите, чтобы выбрать</p>
+                <Button asChild variant="outline" size="sm" className="mt-2 rounded-none">
+                  <Link to="/app/generator" search={{ tab: "interior" }}>
+                    Выбрать файл
+                  </Link>
+                </Button>
+                <p className="mt-1 text-xs text-muted-foreground">JPG, PNG до 15 МБ</p>
               </div>
 
-              <div className="mt-6">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">Стиль</p>
-                <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
-                  {interiorStyles.slice(0, 8).map((s, i) => (
-                    <span
-                      key={s.id}
-                      className={`border px-3 py-2 text-sm ${
-                        i === 0
-                          ? "border-foreground bg-foreground/5 font-medium"
-                          : "border-border text-muted-foreground"
-                      }`}
-                    >
-                      {s.name}
-                    </span>
-                  ))}
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Тип помещения
+                </p>
+                <div className="flex items-center justify-between border border-border bg-background px-3 py-2.5 text-sm">
+                  <span>Гостиная</span>
+                  <ChevronDown className="size-4 text-muted-foreground" />
                 </div>
               </div>
 
-              <div className="mt-6">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">Уточнения</p>
-                <p className="mt-3 border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">Стиль</p>
+                <div className="flex items-center justify-between border border-border bg-background px-3 py-2.5 text-sm">
+                  <span>Сканди</span>
+                  <ChevronDown className="size-4 text-muted-foreground" />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Уточнения (необязательно)
+                </p>
+                <p className="border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
                   тёплый свет, зелёный акцент, больше растений
                 </p>
               </div>
 
-              <Button asChild size="lg" className="mt-6 w-full rounded-none">
+              <Button asChild size="lg" className="mt-auto w-full rounded-none">
                 <Link to="/app/generator" search={{ tab: "interior" }}>
-                  <Sparkles className="size-4" /> Сгенерировать
+                  <Sparkles className="size-4" /> Сгенерировать дизайн
                 </Link>
               </Button>
-              <p className="mt-3 text-center text-xs text-muted-foreground">
-                JPG или PNG до 15 МБ · первые 3 кадра бесплатно
-              </p>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* ГАЛЕРЕЯ СТИЛЕЙ */}
       <section className="border-b border-border">
