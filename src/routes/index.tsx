@@ -287,6 +287,29 @@ function Home() {
         </div>
       </section>
 
+      {/* МОЗАИКА ПОЛЬЗОВАТЕЛЕЙ */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div>
+            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
+              Дизайны, которые сгенерировали наши пользователи
+            </h2>
+            <p className="mt-3 max-w-lg text-sm text-muted-foreground">
+              Наведите на плитку — покажем исходное фото до генерации.
+            </p>
+          </div>
+          <div className="mt-10">
+            <UserMosaic tiles={mosaicTiles} />
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <StartButton label="Сгенерировать свой" />
+            <BuyButton />
+          </div>
+        </div>
+      </section>
+
+
+
       {/* НАС ВЫБИРАЮТ */}
       <section className="border-b border-border bg-secondary/60">
         <div className="mx-auto max-w-6xl px-4 py-14">
@@ -318,6 +341,42 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* КАК РАБОТАЕМ */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div>
+            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
+              Работать с нами просто
+            </h2>
+            <p className="mt-3 max-w-lg text-sm text-muted-foreground">
+              Четыре шага от снимка на телефоне до готовой визуализации.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((s, i) => (
+              <div key={s.title} className="flex flex-col bg-background p-6">
+                <div className="flex items-center justify-between">
+                  <s.icon className="size-6" strokeWidth={1.5} />
+                  <span className="font-display text-3xl tracking-[0.02em] text-muted-foreground/50">
+                    0{i + 1}
+                  </span>
+                </div>
+                <h3 className="mt-6 font-display text-2xl leading-tight tracking-[0.02em]">
+                  {s.title}
+                </h3>
+                <p className="mt-3 text-sm text-muted-foreground">{s.text}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <StartButton />
+            <BuyButton />
+          </div>
+        </div>
+      </section>
+
+
 
       {/* ГАЛЕРЕЯ СТИЛЕЙ */}
       <section className="border-b border-border">
@@ -436,6 +495,29 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* ЛЮБАЯ КОМНАТА */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div>
+            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
+              Любая комната
+            </h2>
+            <p className="mt-3 max-w-lg text-sm text-muted-foreground">
+              Выберите тип помещения и посмотрите, как меняется кадр.
+            </p>
+          </div>
+          <div className="mt-10">
+            <RoomTabs rooms={rooms} />
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <StartButton label="Обновить свою комнату" />
+            <BuyButton />
+          </div>
+        </div>
+      </section>
+
+
 
       {/* ПРЕВЬЮ ТАРИФОВ */}
       <section className="border-b border-border bg-secondary/40">
