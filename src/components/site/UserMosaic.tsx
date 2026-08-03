@@ -42,10 +42,8 @@ export function UserMosaic({ tiles }: { tiles: Tile[] }) {
             </span>
           </figcaption>
         </figure>
-challenge);
+        );
       })}
-        </figure>
-      ))}
     </div>
   );
 }
