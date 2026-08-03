@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight, Check, ChevronDown, Sparkles, Upload } from "
 import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { RevealStrip } from "@/components/site/RevealStrip";
+import { RevealCard } from "@/components/site/RevealCard";
 import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
 
 import { Button } from "@/components/ui/button";
@@ -394,6 +395,11 @@ function Home() {
             <p className="max-w-sm text-sm text-muted-foreground">
               Разные комнаты, стили и сценарии — от студии до фасада частного дома.
             </p>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {revealItems.slice(0, 3).map((it) => (
+              <RevealCard key={it.alt} before={it.before} after={it.after} alt={it.alt} />
+            ))}
           </div>
           <div className="mt-10">
             <RevealStrip items={revealItems} />
