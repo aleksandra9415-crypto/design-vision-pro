@@ -50,6 +50,12 @@ const revealItems = [
   { before: images.interiorBefore, after: styleLoft, alt: "Студия в стиле лофт" },
 ];
 
+const revealCards = [
+  { before: images.interiorBefore, after: images.interiorAfter, alt: "Смена интерьера" },
+  { before: images.landscapeBefore, after: images.landscapeAfter, alt: "Ландшафтный дизайн" },
+  { before: images.facadeBefore, after: images.facadeAfter, alt: "Дизайн фасада" },
+];
+
 const finalThumbs = [styleScandi, roomKitchen, styleJapandi, roomBath];
 
 
@@ -76,6 +82,12 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+const heroFacts = [
+  { value: "20+ стилей", label: "интерьер, ландшафт и фасад" },
+  { value: "~60 секунд", label: "от фото до готового кадра" },
+  { value: "3 поля и кнопка", label: "без обучения интерфейсу" },
+];
+
 const stats = [
   { value: "48 000", label: "созданных проектов" },
   { value: "12 400", label: "человек в работе с нами" },
@@ -85,25 +97,25 @@ const stats = [
 
 const cases = [
   {
-    kicker: "Правка текстом",
-    title: "Сделай светлее, и убери ковёр",
-    text: "Результат не финальный кадр, а материал в работе. Опишите правку словами — композиция и геометрия комнаты сохранятся, изменится только то, о чём вы попросили.",
+    kicker: "Генерация по фото",
+    title: "Фото комнаты — готовый кадр",
+    text: "Загружаете снимок помещения, выбираете тип комнаты и стиль. Геометрия и окна остаются на месте — меняются отделка, свет и обстановка.",
     image: images.interiorAfter,
     to: "/interior" as const,
     linkLabel: "Как это работает в интерьере",
   },
   {
-    kicker: "Ландшафт",
-    title: "Участок целиком — до первой лопаты",
-    text: "Загружаете фото двора и сравниваете газон, дорожки, посадки и зону отдыха. Спор о том, где будет терраса, заканчивается за пять минут.",
+    kicker: "Редактор фото",
+    title: "Сделай светлее, и убери ковёр",
+    text: "Результат не финальный кадр, а материал в работе. Опишите правку словами — композиция и геометрия комнаты сохранятся, изменится только то, о чём вы попросили.",
     image: images.landscapeAfter,
     to: "/landscape" as const,
     linkLabel: "Как это работает на участке",
   },
   {
-    kicker: "Фасад",
-    title: "Новый фасад на своём доме",
-    text: "Один снимок дома — и вы сравниваете отделку стен, кровлю, входную группу и вечернюю подсветку, не заказывая макет.",
+    kicker: "Редизайн комнаты",
+    title: "Та же комната — другой сценарий",
+    text: "Один и тот же снимок можно прогнать через несколько стилей и планировочных решений, сравнить варианты и выбрать тот, который переживёт смету.",
     image: images.facadeAfter,
     to: "/facade" as const,
     linkLabel: "Как это работает на фасаде",
@@ -175,37 +187,20 @@ function Home() {
               <Link to="/pricing">Тарифы и кредиты</Link>
             </Button>
           </div>
-        </div>
-      </section>
-
-      {/* ЦИФРЫ */}
-      <section className="border-b border-border bg-secondary/60">
-        <div className="mx-auto max-w-6xl px-4 py-12">
-          <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label} className="px-2">
-                <p className="font-display text-4xl tracking-[0.02em] sm:text-5xl">{s.value}</p>
-                <p className="mt-2 max-w-[16ch] text-sm text-muted-foreground">{s.label}</p>
+          <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-t border-background/25 pt-6">
+            {heroFacts.map((f) => (
+              <div key={f.label}>
+                <p className="font-display text-2xl leading-none tracking-[0.02em] text-background">
+                  {f.value}
+                </p>
+                <p className="mt-2 text-xs text-background/70">{f.label}</p>
               </div>
             ))}
           </div>
-          <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
-              О нас писали
-            </p>
-            <div className="flex flex-wrap items-center gap-2">
-              {press.map((p) => (
-                <span
-                  key={p}
-                  className="border border-border bg-card px-4 py-2 font-display text-lg tracking-[0.02em] text-muted-foreground"
-                >
-                  {p}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
+
+
 
       {/* ДО/ПОСЛЕ + ДЕМО ГЕНЕРАТОРА */}
       <section className="border-b border-border">
@@ -292,13 +287,44 @@ function Home() {
         </div>
       </section>
 
+      {/* НАС ВЫБИРАЮТ */}
+      <section className="border-b border-border bg-secondary/60">
+        <div className="mx-auto max-w-6xl px-4 py-14">
+          <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
+            Нас выбирают
+          </h2>
+          <div className="mt-10 grid grid-cols-2 gap-y-10 lg:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.label} className="px-2">
+                <p className="font-display text-4xl tracking-[0.02em] sm:text-5xl">{s.value}</p>
+                <p className="mt-2 max-w-[16ch] text-sm text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
+              О нас писали
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              {press.map((p) => (
+                <span
+                  key={p}
+                  className="border border-border bg-card px-4 py-2 font-display text-lg tracking-[0.02em] text-muted-foreground"
+                >
+                  {p}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ГАЛЕРЕЯ СТИЛЕЙ */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Витрина стилей
+              Стили интерьера
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
               Больше 20 направлений в генераторе. Вот двенадцать, с которых обычно начинают.
@@ -339,7 +365,7 @@ function Home() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-            Что с этим делают
+            Возможности сервиса
           </h2>
           <div className="mt-12 space-y-20">
             {cases.map((c, i) => (
@@ -390,14 +416,14 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Из архива работ
+              Любое пространство
             </h2>
             <p className="mt-3 max-w-sm text-sm text-muted-foreground">
               Разные комнаты, стили и сценарии — от студии до фасада частного дома.
             </p>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {revealItems.slice(0, 3).map((it) => (
+            {revealCards.map((it) => (
               <RevealCard key={it.alt} before={it.before} after={it.after} alt={it.alt} />
             ))}
           </div>
@@ -411,29 +437,12 @@ function Home() {
         </div>
       </section>
 
-      {/* ОТЗЫВЫ */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-            Что говорят пользователи
-          </h2>
-          <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-            Короткие видео от владельцев квартир, дизайнеров и бригад: что загружали, что получили
-            и как это повлияло на ремонт. Текст под каждым видео — краткая расшифровка.
-          </p>
-
-          <TestimonialsCarousel />
-
-        </div>
-      </section>
-
-
       {/* ПРЕВЬЮ ТАРИФОВ */}
       <section className="border-b border-border bg-secondary/40">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Пакеты кредитов
+              Тарифы
             </h2>
             <p className="mt-3 max-w-sm text-sm text-muted-foreground">
               Один кредит — один кадр. Кредиты не сгорают, подписки нет.
@@ -489,12 +498,29 @@ function Home() {
         </div>
       </section>
 
+      {/* ОТЗЫВЫ */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
+            Что говорят пользователи
+          </h2>
+          <p className="mt-3 max-w-2xl text-base text-muted-foreground">
+            Короткие видео от владельцев квартир, дизайнеров и бригад: что загружали, что получили
+            и как это повлияло на ремонт. Текст под каждым видео — краткая расшифровка.
+          </p>
+
+          <TestimonialsCarousel />
+
+        </div>
+      </section>
+
+
       {/* ФИНАЛЬНЫЙ CTA */}
       <section>
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Первые три кадра — за наш счёт
+              Создайте первый дизайн
             </h2>
             <p className="mt-5 max-w-md text-muted-foreground">
               Регистрация занимает минуту, карта не нужна. Загрузите фото комнаты или план — и

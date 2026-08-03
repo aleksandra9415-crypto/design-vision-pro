@@ -52,6 +52,7 @@ export function RevealCard({
         onChange={(e) => setPos(Number(e.target.value))}
         className="mt-4 w-full accent-primary"
       />
+      <p className="mt-2 font-display normal-case text-lg leading-tight tracking-[0.02em]">{alt}</p>
     </div>
   );
 }
