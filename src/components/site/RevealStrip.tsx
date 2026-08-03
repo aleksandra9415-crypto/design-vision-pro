@@ -33,7 +33,7 @@ export function RevealStrip({ items }: { items: RevealItem[] }) {
         <span>Оригинал</span>
         <span>Результат</span>
       </div>
-      <div className="relative w-full select-none overflow-hidden bg-muted">
+      <div className="group relative w-full select-none overflow-hidden bg-muted">
         {track("before")}
 
         {/* Правая половина — «после», выровнена по той же ленте */}
