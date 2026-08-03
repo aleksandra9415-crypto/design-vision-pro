@@ -34,7 +34,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-muted/40">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="text-base font-semibold tracking-tight">ЛОГО · Vizoria</p>
+          <p className="font-display text-2xl tracking-tight">Vizoria</p>
           <p className="mt-2 max-w-xs text-sm text-muted-foreground">
             Визуализация интерьера, ландшафта и фасада по фото или схеме расстановки мебели.
           </p>
