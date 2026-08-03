@@ -20,7 +20,7 @@ export const Route = createFileRoute("/app/account")({
 function Account() {
   return (
     <AppShell>
-      <h1 className="text-2xl font-semibold tracking-tight">Личный кабинет</h1>
+      <h1 className="text-2xl font-semibold tracking-[0.02em]">Личный кабинет</h1>
 
       <Card className="mt-6 border-border">
         <CardContent className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 pt-6 sm:flex sm:justify-between">

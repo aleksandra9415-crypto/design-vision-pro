@@ -158,7 +158,7 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/35 to-foreground/10" />
         <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end px-4 pb-14">
           <p className="text-xs uppercase tracking-[0.32em] text-background/70">Vizoria</p>
-          <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[1.02] tracking-tight text-background sm:text-6xl">
+          <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[1.02] tracking-[0.02em] text-background sm:text-6xl">
             Сначала посмотрите,
             <br />
             потом ремонтируйте
@@ -191,7 +191,7 @@ function Home() {
           <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
             {stats.map((s) => (
               <div key={s.label} className="px-2">
-                <p className="font-display text-4xl tracking-tight sm:text-5xl">{s.value}</p>
+                <p className="font-display text-4xl tracking-[0.02em] sm:text-5xl">{s.value}</p>
                 <p className="mt-2 max-w-[16ch] text-sm text-muted-foreground">{s.label}</p>
               </div>
             ))}
@@ -204,7 +204,7 @@ function Home() {
               {press.map((p) => (
                 <span
                   key={p}
-                  className="border border-border bg-card px-4 py-2 font-display text-lg tracking-tight text-muted-foreground"
+                  className="border border-border bg-card px-4 py-2 font-display text-lg tracking-[0.02em] text-muted-foreground"
                 >
                   {p}
                 </span>
@@ -218,7 +218,7 @@ function Home() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
-            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
               Одно фото — другая комната
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
@@ -304,7 +304,7 @@ function Home() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
-            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
               Витрина стилей
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
@@ -328,7 +328,7 @@ function Home() {
                   loading="lazy"
                 />
                 <div className="p-3">
-                  <p className="font-display text-xl leading-none tracking-tight">{s.name}</p>
+                  <p className="font-display text-xl leading-none tracking-[0.02em]">{s.name}</p>
                   <p className="mt-1.5 line-clamp-1 text-xs text-muted-foreground">{s.desc}</p>
                 </div>
               </Link>
@@ -345,7 +345,7 @@ function Home() {
       {/* КЕЙСЫ — журнальный разворот */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+          <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
             Что с этим делают
           </h2>
           <div className="mt-12 space-y-20">
@@ -371,7 +371,7 @@ function Home() {
                   <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
                     {c.kicker}
                   </p>
-                  <h3 className="mt-4 font-display text-3xl leading-tight tracking-tight sm:text-4xl">
+                  <h3 className="mt-4 font-display text-3xl leading-tight tracking-[0.02em] sm:text-4xl">
                     {c.title}
                   </h3>
                   <p className="mt-4 text-muted-foreground">{c.text}</p>
@@ -396,7 +396,7 @@ function Home() {
       <section className="border-b border-border bg-secondary/50">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
               Из архива работ
             </h2>
             <p className="max-w-sm text-sm text-muted-foreground">
@@ -416,7 +416,7 @@ function Home() {
       {/* ОТЗЫВЫ */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+          <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
             Что говорят пользователи
           </h2>
           <p className="mt-3 max-w-2xl text-base text-muted-foreground">
@@ -451,7 +451,7 @@ function Home() {
       <section className="border-b border-border bg-secondary/40">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
               Пакеты кредитов
             </h2>
             <p className="max-w-sm text-sm text-muted-foreground">
@@ -475,7 +475,7 @@ function Home() {
                     </span>
                   )}
                 </div>
-                <p className="mt-4 font-display text-4xl tracking-tight">{p.price} ₽</p>
+                <p className="mt-4 font-display text-4xl tracking-[0.02em]">{p.price} ₽</p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {p.credits} генераций · {p.desc}
                 </p>
@@ -512,7 +512,7 @@ function Home() {
       <section>
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
               Первые три кадра — за наш счёт
             </h2>
             <p className="mt-5 max-w-md text-muted-foreground">

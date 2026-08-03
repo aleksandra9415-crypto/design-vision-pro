@@ -40,7 +40,7 @@ function Result() {
 
   return (
     <AppShell>
-      <h1 className="text-2xl font-semibold tracking-tight">Результат</h1>
+      <h1 className="text-2xl font-semibold tracking-[0.02em]">Результат</h1>
       <p className="mt-1 text-sm text-muted-foreground">Генерация от {result.createdAt}</p>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[2fr_1fr]">

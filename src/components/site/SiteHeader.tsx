@@ -19,7 +19,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:flex sm:justify-between">
         <Link to="/" className="flex min-w-0 items-baseline gap-2">
-          <span className="truncate font-display text-2xl leading-none tracking-tight">
+          <span className="truncate font-display text-2xl leading-none tracking-[0.02em]">
             Vizoria
           </span>
           <span className="truncate text-[11px] uppercase tracking-[0.25em] text-muted-foreground">

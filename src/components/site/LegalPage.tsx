@@ -4,7 +4,7 @@ export function LegalPage({ title, intro, sections }: { title: string; intro: st
   return (
     <PageShell>
       <article className="mx-auto max-w-3xl px-4 py-16">
-        <h1 className="text-3xl font-semibold tracking-tight">{title}</h1>
+        <h1 className="text-3xl font-semibold tracking-[0.02em]">{title}</h1>
         <p className="mt-4 text-muted-foreground">{intro}</p>
         <div className="mt-8 space-y-8">
           {sections.map((s) => (

@@ -28,7 +28,7 @@ function Faq() {
   return (
     <PageShell>
       <section className="mx-auto max-w-3xl px-4 py-16">
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Вопрос-ответ</h1>
+        <h1 className="text-3xl font-semibold tracking-[0.02em] sm:text-4xl">Вопрос-ответ</h1>
         <Accordion type="single" collapsible className="mt-8">
           {faqItems.map((item) => (
             <AccordionItem key={item.q} value={item.q}>

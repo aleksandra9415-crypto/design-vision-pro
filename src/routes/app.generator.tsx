@@ -114,7 +114,7 @@ function Generator() {
 
   return (
     <AppShell>
-      <h1 className="text-2xl font-semibold tracking-tight">Генератор</h1>
+      <h1 className="text-2xl font-semibold tracking-[0.02em]">Генератор</h1>
 
       <div className="mt-5 grid grid-cols-3 gap-1 rounded-lg bg-muted p-1">
         {tabs.map((t) => (
