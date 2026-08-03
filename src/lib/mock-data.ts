@@ -2,24 +2,24 @@ import interiorBefore from "@/assets/interior-before.jpg";
 import interiorAfter from "@/assets/interior-after.jpg";
 import exteriorBefore from "@/assets/exterior-before.jpg";
 import exteriorAfter from "@/assets/exterior-after.jpg";
-import planBefore from "@/assets/plan-before.jpg";
-import planAfter from "@/assets/plan-after.jpg";
+import landscapeBefore from "@/assets/landscape-before.jpg";
+import landscapeAfter from "@/assets/landscape-after.jpg";
 
 export const images = {
   interiorBefore,
   interiorAfter,
-  exteriorBefore,
-  exteriorAfter,
-  planBefore,
-  planAfter,
+  facadeBefore: exteriorBefore,
+  facadeAfter: exteriorAfter,
+  landscapeBefore,
+  landscapeAfter,
 };
 
-export type TabId = "interior" | "exterior" | "plan";
+export type TabId = "interior" | "landscape" | "facade";
 
 export const tabs: { id: TabId; label: string }[] = [
   { id: "interior", label: "Интерьер" },
-  { id: "exterior", label: "Экстерьер" },
-  { id: "plan", label: "Чертёж" },
+  { id: "landscape", label: "Ландшафт" },
+  { id: "facade", label: "Фасад" },
 ];
 
 export const interiorStyles = [
@@ -33,20 +33,22 @@ export const interiorStyles = [
   { id: "boho", name: "Бохо", desc: "Ротанг, растения, этнические узоры" },
 ];
 
-export const exteriorStyles = [
-  { id: "modern-facade", name: "Современный фасад", desc: "Панели, панорамные окна" },
-  { id: "scandi-house", name: "Скандинавский дом", desc: "Дерево, тёмная крыша" },
+export const landscapeStyles = [
   { id: "eng-garden", name: "Английский сад", desc: "Живые изгороди, миксбордеры" },
   { id: "jp-garden", name: "Японский сад", desc: "Камни, вода, хвойные" },
   { id: "minimal-yard", name: "Минималистичный участок", desc: "Газон, геометрия дорожек" },
   { id: "eco", name: "Эко-стиль", desc: "Природные материалы, злаки" },
+  { id: "meadow", name: "Природный луг", desc: "Злаки и многолетники без стрижки" },
+  { id: "patio", name: "Патио и терраса", desc: "Зона отдыха, мощение, свет" },
 ];
 
-export const planStyles = [
-  { id: "photoreal", name: "Фотореализм", desc: "Рендер под съёмку интерьера" },
-  { id: "presentation", name: "Презентационный", desc: "Для показа заказчику" },
-  { id: "sketch", name: "Скетч", desc: "Быстрая подача идеи" },
-  { id: "minimal-render", name: "Минимализм", desc: "Нейтральная база под правки" },
+export const facadeStyles = [
+  { id: "modern-facade", name: "Современный фасад", desc: "Панели, панорамные окна" },
+  { id: "scandi-house", name: "Скандинавский дом", desc: "Дерево, тёмная крыша" },
+  { id: "barn", name: "Барнхаус", desc: "Строгий силуэт, тёмная отделка" },
+  { id: "brick", name: "Кирпич", desc: "Клинкер и спокойная классика" },
+  { id: "plaster", name: "Штукатурка", desc: "Светлые нейтральные тона" },
+  { id: "night-light", name: "Вечерний свет", desc: "Архитектурная подсветка фасада" },
 ];
 
 export const roomTypes = [
@@ -60,8 +62,22 @@ export const roomTypes = [
   "Студия",
 ];
 
-export const exteriorTypes = ["Фасад дома", "Двор", "Участок с газоном", "Терраса", "Зона барбекю"];
-export const planTypes = ["Квартира", "Дом", "Коммерческое помещение", "Одна комната"];
+export const landscapeTypes = [
+  "Участок с газоном",
+  "Двор",
+  "Сад",
+  "Дорожки и мощение",
+  "Терраса",
+  "Зона барбекю",
+];
+export const facadeTypes = [
+  "Фасад дома",
+  "Входная группа",
+  "Отделка стен",
+  "Кровля",
+  "Вечерняя подсветка",
+];
+
 
 export const galleryExamples = [
   {
@@ -77,10 +93,10 @@ export const galleryExamples = [
     after: exteriorAfter,
   },
   {
-    style: "Фотореализм",
-    room: "Квартира по чертежу",
-    before: planBefore,
-    after: planAfter,
+    style: "Английский сад",
+    room: "Участок с газоном",
+    before: landscapeBefore,
+    after: landscapeAfter,
   },
 ];
 
@@ -98,7 +114,7 @@ export const testimonials = [
   {
     name: "Марина",
     city: "Санкт-Петербург",
-    text: "Делаю визуализации по схеме расстановки мебели прямо на встрече с клиентом. Экономия часов работы.",
+    text: "Показываю клиенту варианты фасада прямо на встрече. Экономия часов работы.",
   },
 ];
 
@@ -137,7 +153,6 @@ export const plans = [
       "Максимальное разрешение",
       "Коммерческая лицензия",
       "Приоритетная очередь",
-      "Генерация по чертежам",
       "Поддержка в чате",
     ],
   },
@@ -169,8 +184,8 @@ export const faqItems = [
     a: "Горизонтальный кадр при дневном свете, из угла комнаты, чтобы были видны две стены и пол. Формат JPG или PNG до 15 МБ.",
   },
   {
-    q: "Что такое генерация по схеме мебели?",
-    a: "Вы загружаете план расстановки мебели, а сервис делает по нему фотореалистичную визуализацию помещения.",
+    q: "Чем отличаются вкладки «Ландшафт» и «Фасад»?",
+    a: "«Ландшафт» работает с участком: газон, дорожки, посадки и зона отдыха. «Фасад» меняет отделку дома, входную группу и подсветку.",
   },
   {
     q: "Сгорают ли кредиты?",
@@ -190,7 +205,7 @@ export const generationHistory = [
   {
     id: "gen-1038",
     date: "28 июля 2026",
-    tab: "Экстерьер",
+    tab: "Фасад",
     style: "Современный фасад",
     room: "Фасад дома",
     thumb: exteriorAfter,
@@ -198,10 +213,10 @@ export const generationHistory = [
   {
     id: "gen-1032",
     date: "21 июля 2026",
-    tab: "Чертёж",
-    style: "Фотореализм",
-    room: "Квартира",
-    thumb: planAfter,
+    tab: "Ландшафт",
+    style: "Английский сад",
+    room: "Участок с газоном",
+    thumb: landscapeAfter,
   },
   {
     id: "gen-1027",
@@ -214,7 +229,7 @@ export const generationHistory = [
 ];
 
 export const howItWorks = [
-  { title: "Загрузите фото", text: "Снимок комнаты, фасада или схема расстановки мебели." },
+  { title: "Загрузите фото", text: "Снимок комнаты, фасада или участка." },
   { title: "Выберите стиль", text: "Более 20 готовых направлений и поле для уточнений." },
   { title: "Генерация ИИ", text: "Нейросеть создаёт результат примерно за 60 секунд." },
   { title: "Результат", text: "Сравнение до/после, скачивание и повторная генерация." },
@@ -223,7 +238,7 @@ export const howItWorks = [
 export const testimonialsExtended = [
   { name: "Анна", city: "Москва", role: "ремонт квартиры", text: "Загрузила фото пустой гостиной — за минуту получила три варианта. Ремонт наконец сдвинулся с места." },
   { name: "Игорь", city: "Казань", role: "загородный дом", text: "Показал жене визуализацию участка до начала работ. Спор о том, где будет терраса, закончился за пять минут." },
-  { name: "Марина", city: "Санкт-Петербург", role: "дизайнер интерьера", text: "Делаю визуализации по схеме расстановки мебели прямо на встрече с клиентом. Экономия часов работы." },
+  { name: "Марина", city: "Санкт-Петербург", role: "дизайнер интерьера", text: "Показываю клиенту варианты фасада прямо на встрече. Экономия часов работы." },
   { name: "Дмитрий", city: "Екатеринбург", role: "риелтор", text: "Пустая квартира на фото выглядела уныло. С меблированным кадром показы пошли заметно бодрее." },
   { name: "Ольга", city: "Новосибирск", role: "ремонт кухни", text: "Сравнила пять вариантов фасадов кухни за вечер. Выбрала тот, о котором сама бы не подумала." },
   { name: "Артём", city: "Краснодар", role: "строительная бригада", text: "Заказчику проще согласовать отделку по картинке, чем по описанию. Правок стало меньше." },

@@ -31,7 +31,9 @@ export function loadGeneration(): GenerationResult | null {
 }
 
 export function mockPair(tab: TabId, uploaded?: string | null) {
-  if (tab === "exterior") return { before: uploaded ?? images.exteriorBefore, after: images.exteriorAfter };
-  if (tab === "plan") return { before: uploaded ?? images.planBefore, after: images.planAfter };
+  if (tab === "landscape")
+    return { before: uploaded ?? images.landscapeBefore, after: images.landscapeAfter };
+  if (tab === "facade")
+    return { before: uploaded ?? images.facadeBefore, after: images.facadeAfter };
   return { before: uploaded ?? images.interiorBefore, after: images.interiorAfter };
 }

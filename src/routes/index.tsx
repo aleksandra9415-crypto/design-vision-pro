@@ -48,10 +48,10 @@ const styleGallery = [
 
 const revealItems = [
   { before: images.interiorBefore, after: styleScandi, alt: "Гостиная в стиле сканди" },
-  { before: images.planBefore, after: roomKitchen, alt: "Кухня по схеме расстановки" },
+  { before: images.landscapeBefore, after: images.landscapeAfter, alt: "Участок с новым газоном" },
   { before: images.interiorBefore, after: styleJapandi, alt: "Спальня в стиле джапанди" },
-  { before: images.exteriorBefore, after: images.exteriorAfter, alt: "Фасад частного дома" },
-  { before: images.planBefore, after: roomBath, alt: "Ванная по чертежу" },
+  { before: images.facadeBefore, after: images.facadeAfter, alt: "Фасад частного дома" },
+  { before: images.interiorBefore, after: roomBath, alt: "Ванная в спа-минимализме" },
   { before: images.interiorBefore, after: styleLoft, alt: "Студия в стиле лофт" },
 ];
 
@@ -67,12 +67,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Vizoria: загрузите фото комнаты, дома или схему расстановки мебели — студийная визуализация будет готова примерно за минуту.",
+          "Vizoria: загрузите фото комнаты, дома или участка — студийная визуализация будет готова примерно за минуту.",
       },
       { property: "og:title", content: "Vizoria — визуализация интерьера и экстерьера" },
       {
         property: "og:description",
-        content: "Визуализация интерьера, ландшафта и фасада по фото или чертежу за минуту.",
+        content: "Визуализация интерьера, ландшафта и фасада по фото за минуту.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -98,20 +98,20 @@ const cases = [
     linkLabel: "Как это работает в интерьере",
   },
   {
-    kicker: "Для профи",
-    title: "Из схемы расстановки — в подачу клиенту",
-    text: "Загружаете план с мебелью, получаете фотореалистичный кадр помещения. Дизайнеры показывают вариант прямо на встрече, вместо того чтобы неделю ждать рендер.",
-    image: images.planAfter,
-    to: "/pro" as const,
-    linkLabel: "Сценарий для дизайнеров",
+    kicker: "Ландшафт",
+    title: "Участок целиком — до первой лопаты",
+    text: "Загружаете фото двора и сравниваете газон, дорожки, посадки и зону отдыха. Спор о том, где будет терраса, заканчивается за пять минут.",
+    image: images.landscapeAfter,
+    to: "/landscape" as const,
+    linkLabel: "Как это работает на участке",
   },
   {
-    kicker: "Фасад и участок",
-    title: "Увидеть двор до первой лопаты",
-    text: "Один снимок дома — и вы сравниваете отделку фасада, дорожки и посадки. Спор о том, где будет терраса, заканчивается за пять минут.",
-    image: images.exteriorAfter,
-    to: "/exterior" as const,
-    linkLabel: "Ландшафт и фасад",
+    kicker: "Фасад",
+    title: "Новый фасад на своём доме",
+    text: "Один снимок дома — и вы сравниваете отделку стен, кровлю, входную группу и вечернюю подсветку, не заказывая макет.",
+    image: images.facadeAfter,
+    to: "/facade" as const,
+    linkLabel: "Как это работает на фасаде",
   },
 ];
 
@@ -220,7 +220,7 @@ function Home() {
               Одно фото — другая комната
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              Загрузите фото или схему — получите готовый кадр интерьера.
+              Загрузите фото — получите готовый кадр интерьера.
             </p>
           </div>
 
@@ -236,7 +236,7 @@ function Home() {
             {/* Фрагмент интерфейса генератора */}
             <div className="flex h-full flex-col gap-6 border border-border bg-card p-6 shadow-[0_24px_60px_-40px_oklch(0.205_0.003_250/0.6)] sm:p-8">
               <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
-                {["Интерьер", "Экстерьер", "Чертёж"].map((t, i) => (
+                {["Интерьер", "Ландшафт", "Фасад"].map((t, i) => (
                   <span
                     key={t}
                     className={`flex-1 px-3 py-2 text-center ${
