@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight, Check, ChevronDown, Sparkles, Upload } from "
 import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { RevealStrip } from "@/components/site/RevealStrip";
-import { VideoTestimonial } from "@/components/site/VideoTestimonial";
+import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
 
 import { Button } from "@/components/ui/button";
 import {
