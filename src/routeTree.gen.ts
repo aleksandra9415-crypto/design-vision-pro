@@ -14,8 +14,12 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ExteriorRouteImport } from './routes/exterior'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as InteriorRouteImport } from './routes/interior'
+import { Route as OfferRouteImport } from './routes/offer'
+import { Route as PaymentInfoRouteImport } from './routes/payment-info'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProRouteImport } from './routes/pro'
+import { Route as TermsRouteImport } from './routes/terms'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -42,14 +46,34 @@ const InteriorRoute = InteriorRouteImport.update({
   path: '/interior',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OfferRoute = OfferRouteImport.update({
+  id: '/offer',
+  path: '/offer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentInfoRoute = PaymentInfoRouteImport.update({
+  id: '/payment-info',
+  path: '/payment-info',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProRoute = ProRouteImport.update({
   id: '/pro',
   path: '/pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -59,8 +83,12 @@ export interface FileRoutesByFullPath {
   '/exterior': typeof ExteriorRoute
   '/faq': typeof FaqRoute
   '/interior': typeof InteriorRoute
+  '/offer': typeof OfferRoute
+  '/payment-info': typeof PaymentInfoRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/pro': typeof ProRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -68,8 +96,12 @@ export interface FileRoutesByTo {
   '/exterior': typeof ExteriorRoute
   '/faq': typeof FaqRoute
   '/interior': typeof InteriorRoute
+  '/offer': typeof OfferRoute
+  '/payment-info': typeof PaymentInfoRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/pro': typeof ProRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -78,15 +110,40 @@ export interface FileRoutesById {
   '/exterior': typeof ExteriorRoute
   '/faq': typeof FaqRoute
   '/interior': typeof InteriorRoute
+  '/offer': typeof OfferRoute
+  '/payment-info': typeof PaymentInfoRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/pro': typeof ProRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/exterior' | '/faq' | '/interior' | '/pricing' | '/pro'
+    | '/'
+    | '/auth'
+    | '/exterior'
+    | '/faq'
+    | '/interior'
+    | '/offer'
+    | '/payment-info'
+    | '/pricing'
+    | '/privacy'
+    | '/pro'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/exterior' | '/faq' | '/interior' | '/pricing' | '/pro'
+  to:
+    | '/'
+    | '/auth'
+    | '/exterior'
+    | '/faq'
+    | '/interior'
+    | '/offer'
+    | '/payment-info'
+    | '/pricing'
+    | '/privacy'
+    | '/pro'
+    | '/terms'
   id:
     | '__root__'
     | '/'
@@ -94,8 +151,12 @@ export interface FileRouteTypes {
     | '/exterior'
     | '/faq'
     | '/interior'
+    | '/offer'
+    | '/payment-info'
     | '/pricing'
+    | '/privacy'
     | '/pro'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -104,8 +165,12 @@ export interface RootRouteChildren {
   ExteriorRoute: typeof ExteriorRoute
   FaqRoute: typeof FaqRoute
   InteriorRoute: typeof InteriorRoute
+  OfferRoute: typeof OfferRoute
+  PaymentInfoRoute: typeof PaymentInfoRoute
   PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProRoute: typeof ProRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -145,6 +210,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InteriorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/offer': {
+      id: '/offer'
+      path: '/offer'
+      fullPath: '/offer'
+      preLoaderRoute: typeof OfferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment-info': {
+      id: '/payment-info'
+      path: '/payment-info'
+      fullPath: '/payment-info'
+      preLoaderRoute: typeof PaymentInfoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
@@ -152,11 +231,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pro': {
       id: '/pro'
       path: '/pro'
       fullPath: '/pro'
       preLoaderRoute: typeof ProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -168,8 +261,12 @@ const rootRouteChildren: RootRouteChildren = {
   ExteriorRoute: ExteriorRoute,
   FaqRoute: FaqRoute,
   InteriorRoute: InteriorRoute,
+  OfferRoute: OfferRoute,
+  PaymentInfoRoute: PaymentInfoRoute,
   PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
   ProRoute: ProRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
