@@ -194,14 +194,11 @@ function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/35 to-foreground/10" />
         <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end px-4 pb-14">
-          <p className="text-xs tracking-[0.2em] text-background/70">
+          <p className="text-sm tracking-[0.18em] text-background/70">
             дизайн интерьера с помощью ИИ
           </p>
           <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[1.02] tracking-[0.02em] text-background sm:text-6xl">
-            Увидеть результат{" "}
-            <span className="inline-block rounded bg-background px-3 py-1 text-foreground">
-              до ремонта
-            </span>
+            Увидеть результат до ремонта
           </h1>
           <p className="mt-6 max-w-xl text-base text-background/80">
             Фотография комнаты, участка или фасада превращается в готовый кадр за минуту.
