@@ -20,7 +20,7 @@
 
 @theme inline {
   --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-display: "Source Serif 4", ui-serif, Georgia, "Times New Roman", serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -164,4 +164,14 @@
     font-family: var(--font-sans);
   }
 
+  .font-display {
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: -0.015em;
+  }
+
+  i,
+  em {
+    font-style: normal;
+  }
 }

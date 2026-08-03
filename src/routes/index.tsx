@@ -1,15 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check, Sparkles, Upload } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Sparkles } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
+import { RevealStrip } from "@/components/site/RevealStrip";
 import { Button } from "@/components/ui/button";
 import {
-  
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
   howItWorks,
   images,
   interiorStyles,
   plans,
-  testimonials,
+  testimonialsExtended,
 } from "@/lib/mock-data";
 import heroWide from "@/assets/hero-wide.jpg";
 import styleScandi from "@/assets/style-scandi.jpg";
@@ -40,20 +47,17 @@ const styleGallery = [
   { name: "Тёплый нейтральный", desc: "Дерево и молочные оттенки", image: roomKids },
 ];
 
-const userExamples = [
-  { image: styleScandi, style: "Сканди", room: "Гостиная" },
-  { image: roomKitchen, style: "Современный", room: "Кухня" },
-  { image: styleJapandi, style: "Джапанди", room: "Спальня" },
-  { image: roomBath, style: "Минимализм", room: "Ванная" },
-  { image: styleLoft, style: "Лофт", room: "Студия" },
-  { image: roomKids, style: "Хюгге", room: "Детская" },
-  { image: styleClassic, style: "Классика", room: "Гостиная" },
-  { image: styleBoho, style: "Бохо", room: "Балкон" },
-  { image: styleNeoclassic, style: "Неоклассика", room: "Кабинет" },
-  { image: styleEclectic, style: "Эклектика", room: "Столовая" },
-  { image: images.exteriorAfter, style: "Современный фасад", room: "Фасад дома" },
-  { image: images.planAfter, style: "Фотореализм", room: "Квартира по чертежу" },
+const revealItems = [
+  { before: images.interiorBefore, after: styleScandi, alt: "Гостиная в стиле сканди" },
+  { before: images.planBefore, after: roomKitchen, alt: "Кухня по схеме расстановки" },
+  { before: images.interiorBefore, after: styleJapandi, alt: "Спальня в стиле джапанди" },
+  { before: images.exteriorBefore, after: images.exteriorAfter, alt: "Фасад частного дома" },
+  { before: images.planBefore, after: roomBath, alt: "Ванная по чертежу" },
+  { before: images.interiorBefore, after: styleLoft, alt: "Студия в стиле лофт" },
 ];
+
+const finalThumbs = [styleScandi, roomKitchen, styleJapandi, roomBath];
+
 
 const press = ["Т—Ж", "VC.ru", "Cossa", "Habr", "Inc."];
 
@@ -153,10 +157,10 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/35 to-foreground/10" />
         <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end px-4 pb-14">
           <p className="text-xs uppercase tracking-[0.32em] text-background/70">Vizoria</p>
-          <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[0.95] tracking-tight text-background sm:text-7xl">
+          <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[1.02] tracking-tight text-background sm:text-6xl">
             Сначала посмотрите,
             <br />
-            <span className="italic">потом ремонтируйте</span>
+            потом ремонтируйте
           </h1>
           <p className="mt-6 max-w-xl text-base text-background/80">
             Фотография комнаты, фасада или план расстановки мебели превращается в готовый кадр
@@ -238,7 +242,7 @@ function Home() {
             </div>
 
             {/* Фрагмент интерфейса генератора */}
-            <div className="border border-border bg-card p-5 shadow-[0_24px_60px_-40px_oklch(0.205_0.003_250/0.6)] sm:p-7">
+            <div className="border border-border bg-card p-6 shadow-[0_24px_60px_-40px_oklch(0.205_0.003_250/0.6)] sm:p-8">
               <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
                 {["Интерьер", "Экстерьер", "Чертёж"].map((t, i) => (
                   <span
@@ -252,21 +256,21 @@ function Home() {
                 ))}
               </div>
 
-              <div className="mt-5">
+              <div className="mt-6">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">
                   Фото комнаты
                 </p>
                 <img
                   src={images.interiorBefore}
                   alt="Загруженное фото гостиной до генерации"
-                  className="mt-2 h-40 w-full object-cover"
+                  className="mt-3 h-44 w-full object-cover"
                   loading="lazy"
                 />
               </div>
 
-              <div className="mt-5">
+              <div className="mt-6">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">Стиль</p>
-                <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
                   {interiorStyles.slice(0, 8).map((s, i) => (
                     <span
                       key={s.id}
@@ -282,33 +286,21 @@ function Home() {
                 </div>
               </div>
 
-              <p className="mt-5 border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
-                тёплый свет, зелёный акцент, больше растений
-              </p>
+              <div className="mt-6">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">Уточнения</p>
+                <p className="mt-3 border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
+                  тёплый свет, зелёный акцент, больше растений
+                </p>
+              </div>
 
-              <Button asChild size="lg" className="mt-5 w-full rounded-none">
+              <Button asChild size="lg" className="mt-6 w-full rounded-none">
                 <Link to="/app/generator" search={{ tab: "interior" }}>
                   <Sparkles className="size-4" /> Сгенерировать
                 </Link>
               </Button>
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-12 lg:items-center">
-            <Link
-              to="/app/generator"
-              search={{ tab: "interior" }}
-              className="group flex flex-col items-center justify-center gap-3 border-2 border-dashed border-border bg-card/60 p-8 text-center transition-colors hover:border-foreground/40 hover:bg-card lg:col-span-7"
-            >
-              <Upload className="size-6" />
-              <span className="font-display text-2xl leading-tight">Перетащите фото сюда</span>
-              <span className="text-xs text-muted-foreground">
+              <p className="mt-3 text-center text-xs text-muted-foreground">
                 JPG или PNG до 15 МБ · первые 3 кадра бесплатно
-              </span>
-            </Link>
-            <div className="flex flex-wrap gap-3 lg:col-span-5">
-              <StartButton label="Загрузить фото" />
-              <BuyButton />
+              </p>
             </div>
           </div>
         </div>
@@ -370,15 +362,17 @@ function Home() {
                   i % 2 === 1 ? "lg:[&>figure]:order-last" : ""
                 }`}
               >
-                <figure className={i === 1 ? "lg:col-span-6" : "lg:col-span-7"}>
+                <figure className="lg:col-span-7">
                   <img
                     src={c.image}
                     alt={c.title}
+                    width={1024}
+                    height={768}
                     className="aspect-[4/3] w-full object-cover"
                     loading="lazy"
                   />
                 </figure>
-                <div className={i === 1 ? "lg:col-span-6 lg:pr-10" : "lg:col-span-5"}>
+                <div className="lg:col-span-5">
 
                   <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
                     {c.kicker}
@@ -415,23 +409,8 @@ function Home() {
               Разные комнаты, стили и сценарии — от студии до фасада частного дома.
             </p>
           </div>
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {userExamples.map((ex) => (
-              <figure key={`${ex.style}-${ex.room}`} className="group">
-                <img
-                  src={ex.image}
-                  alt={`${ex.style} · ${ex.room}`}
-                  width={768}
-                  height={576}
-                  className="aspect-[4/3] w-full object-cover"
-                  loading="lazy"
-                />
-                <figcaption className="mt-2 text-sm">
-                  <span className="font-medium">{ex.style}</span>
-                  <span className="text-muted-foreground"> · {ex.room}</span>
-                </figcaption>
-              </figure>
-            ))}
+          <div className="mt-10">
+            <RevealStrip items={revealItems} />
           </div>
           <div className="mt-10 flex flex-wrap gap-3">
             <StartButton label="Сделать свой кадр" />
@@ -440,20 +419,45 @@ function Home() {
         </div>
       </section>
 
-
       {/* ОТЗЫВЫ */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <div className="grid gap-10 lg:grid-cols-3">
-            {testimonials.map((t) => (
-              <blockquote key={t.name} className="border-t border-foreground/20 pt-6">
-                <p className="font-display text-2xl leading-snug">«{t.text}»</p>
-                <footer className="mt-5 text-sm text-muted-foreground">
-                  {t.name}, {t.city}
-                </footer>
-              </blockquote>
-            ))}
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+              Что говорят пользователи
+            </h2>
+            <p className="max-w-sm text-sm text-muted-foreground">
+              Владельцы квартир, дизайнеры и бригады — листайте, чтобы увидеть больше историй.
+            </p>
           </div>
+
+          <Carousel opts={{ align: "start", loop: true }} className="mt-10">
+            <CarouselContent className="-ml-4">
+              {testimonialsExtended.map((t) => (
+                <CarouselItem key={t.name} className="pl-4 sm:basis-1/2 lg:basis-1/3">
+                  <figure className="flex h-full flex-col border border-border bg-card p-6">
+                    <div className="flex size-16 items-center justify-center rounded-full bg-secondary font-display text-xl text-foreground">
+                      {t.name.slice(0, 1)}
+                    </div>
+                    <blockquote className="mt-5 flex-1 text-sm leading-relaxed text-muted-foreground">
+                      «{t.text}»
+                    </blockquote>
+                    <figcaption className="mt-5 border-t border-border pt-4 text-sm">
+                      <span className="font-medium">{t.name}</span>
+                      <span className="text-muted-foreground">
+                        {" "}
+                        · {t.city} · {t.role}
+                      </span>
+                    </figcaption>
+                  </figure>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="mt-8 flex gap-2">
+              <CarouselPrevious className="static translate-y-0 rounded-none" />
+              <CarouselNext className="static translate-y-0 rounded-none" />
+            </div>
+          </Carousel>
         </div>
       </section>
 
@@ -520,13 +524,32 @@ function Home() {
 
       {/* ФИНАЛЬНЫЙ CTA */}
       <section>
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-16 sm:flex-row sm:items-end">
-          <h2 className="max-w-lg font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-            Первые три кадра — за наш счёт
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            <StartButton label="Загрузить фото" />
-            <BuyButton />
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <h2 className="font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+              Первые три кадра — за наш счёт
+            </h2>
+            <p className="mt-5 max-w-md text-muted-foreground">
+              Регистрация занимает минуту, карта не нужна. Загрузите фото комнаты или план — и
+              посмотрите, как она может выглядеть.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <StartButton label="Загрузить фото" />
+              <BuyButton />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3 lg:col-span-7">
+            {finalThumbs.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt="Пример визуализации Vizoria"
+                width={768}
+                height={576}
+                className={`aspect-[4/3] w-full object-cover ${i % 2 === 1 ? "lg:translate-y-6" : ""}`}
+                loading="lazy"
+              />
+            ))}
           </div>
         </div>
       </section>
