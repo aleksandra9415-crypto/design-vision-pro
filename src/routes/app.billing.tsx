@@ -32,7 +32,7 @@ function Billing() {
 
   return (
     <AppShell>
-      <h1 className="text-2xl font-semibold tracking-tight">Оплата</h1>
+      <h1 className="text-2xl font-semibold tracking-[0.02em]">Оплата</h1>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-3">
         {plans.map((p) => (

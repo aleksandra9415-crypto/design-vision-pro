@@ -19,8 +19,8 @@
  */
 
 @theme inline {
-  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Source Serif 4", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Golos Text", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Golos Text", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -162,12 +162,19 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "lnum" 1;
   }
 
+  h1,
+  h2,
+  h3,
   .font-display {
+    font-family: var(--font-display);
     font-weight: 600;
     font-style: normal;
-    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
   }
 
   i,
@@ -175,3 +182,4 @@
     font-style: normal;
   }
 }
+

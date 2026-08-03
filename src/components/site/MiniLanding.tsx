@@ -37,7 +37,7 @@ export function MiniLanding({
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 lg:grid-cols-2 lg:items-center">
           <div>
             <span className="text-xs font-medium uppercase tracking-wide text-primary">{eyebrow}</span>
-            <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h1>
+            <h1 className="mt-3 text-3xl font-semibold tracking-[0.02em] sm:text-4xl">{title}</h1>
             <p className="mt-4 text-muted-foreground">{subtitle}</p>
             <ul className="mt-6 space-y-2">
               {bullets.map((b) => (
@@ -63,7 +63,7 @@ export function MiniLanding({
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{stylesTitle}</h2>
+        <h2 className="text-2xl font-semibold tracking-[0.02em] sm:text-3xl">{stylesTitle}</h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {styles.map((s) => (
             <Card key={s.id} className="border-border">

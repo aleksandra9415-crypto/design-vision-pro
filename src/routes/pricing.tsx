@@ -25,7 +25,7 @@ function Pricing() {
   return (
     <PageShell>
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Тарифы</h1>
+        <h1 className="text-3xl font-semibold tracking-[0.02em] sm:text-4xl">Тарифы</h1>
         <p className="mt-3 max-w-xl text-muted-foreground">
           Никаких подписок: вы покупаете пакет кредитов, и он остаётся на счёте бессрочно. Одна
           генерация — один кредит.
