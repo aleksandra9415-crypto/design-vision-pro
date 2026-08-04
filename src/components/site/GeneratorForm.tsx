@@ -200,30 +200,50 @@ export function GeneratorForm({
       )}
 
       <div className="space-y-2">
-        <p className="text-xs uppercase tracking-widest text-muted-foreground">{cfg.typeLabel}</p>
-        <div className="flex flex-wrap gap-2">
-          {cfg.types.map((t) => (
-            <button key={t} type="button" onClick={() => setType(t)} className={chip(type === t)}>
-              {t}
-            </button>
-          ))}
+        <label
+          htmlFor={`type-${tab}`}
+          className="text-xs uppercase tracking-widest text-muted-foreground"
+        >
+          {cfg.typeLabel}
+        </label>
+        <div className="relative">
+          <select
+            id={`type-${tab}`}
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            className="w-full appearance-none border border-border bg-background px-3 py-2.5 pr-9 text-sm outline-none focus:border-foreground"
+          >
+            {cfg.types.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
         </div>
       </div>
 
       <div className="space-y-2">
-        <p className="text-xs uppercase tracking-widest text-muted-foreground">Стиль</p>
-        <div className="flex flex-wrap gap-2">
-          {cfg.styles.map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              onClick={() => setStyle(s.id)}
-              title={s.desc}
-              className={chip(style === s.id)}
-            >
-              {s.name}
-            </button>
-          ))}
+        <label
+          htmlFor={`style-${tab}`}
+          className="text-xs uppercase tracking-widest text-muted-foreground"
+        >
+          Стиль
+        </label>
+        <div className="relative">
+          <select
+            id={`style-${tab}`}
+            value={style}
+            onChange={(e) => setStyle(e.target.value)}
+            className="w-full appearance-none border border-border bg-background px-3 py-2.5 pr-9 text-sm outline-none focus:border-foreground"
+          >
+            {cfg.styles.map((s) => (
+              <option key={s.id} value={s.id} title={s.desc}>
+                {s.name}
+              </option>
+            ))}
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
         </div>
       </div>
 
@@ -240,7 +260,7 @@ export function GeneratorForm({
           onChange={(e) => setNotes(e.target.value)}
           rows={2}
           placeholder={cfg.notesPlaceholder}
-          className="w-full border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-foreground"
+          className="w-full border border-border bg-muted/50 px-3 py-2.5 text-sm outline-none placeholder:text-muted-foreground focus:border-foreground focus:bg-background"
         />
       </div>
 
