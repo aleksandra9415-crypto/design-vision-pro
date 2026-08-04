@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Check, ChevronDown, ShieldCheck } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { PageShell } from "@/components/site/PageShell";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/pricing")({
       {
         name: "description",
         content:
-          "Три разовых пакета кредитов без подписки: «Эскиз», «Проект» и «Объект». 28 стилей, редактор фото и коммерческая лицензия.",
+          "Три разовых пакета кредитов без подписки: «Эскиз», «Проект» и «Объект». 34 стиля, редактор фото и коммерческая лицензия.",
       },
       { property: "og:title", content: "Тарифы сервиса дизайна с ИИ" },
       { property: "og:description", content: "Разовые пакеты кредитов от 990 ₽, без подписки." },
@@ -61,11 +61,11 @@ function StyleList({ id }: { id: string }) {
   );
 }
 
-function Consents({ id }: { id: string }) {
+function Consents() {
   return (
-    <div className="mt-8 space-y-3">
-      <label htmlFor={`${id}-terms`} className="flex cursor-pointer items-start gap-2 text-xs text-muted-foreground">
-        <Checkbox id={`${id}-terms`} className="mt-0.5" />
+    <div className="space-y-3">
+      <label htmlFor="terms" className="flex cursor-pointer items-start gap-2 text-xs text-muted-foreground">
+        <Checkbox id="terms" className="mt-0.5" />
         <span>
           Принимаю условия{" "}
           <Link to="/terms" className="underline underline-offset-2">
@@ -73,8 +73,8 @@ function Consents({ id }: { id: string }) {
           </Link>
         </span>
       </label>
-      <label htmlFor={`${id}-privacy`} className="flex cursor-pointer items-start gap-2 text-xs text-muted-foreground">
-        <Checkbox id={`${id}-privacy`} className="mt-0.5" />
+      <label htmlFor="privacy" className="flex cursor-pointer items-start gap-2 text-xs text-muted-foreground">
+        <Checkbox id="privacy" className="mt-0.5" />
         <span>
           Согласие на{" "}
           <Link to="/privacy" className="underline underline-offset-2">
@@ -82,8 +82,8 @@ function Consents({ id }: { id: string }) {
           </Link>
         </span>
       </label>
-      <label htmlFor={`${id}-ads`} className="flex cursor-pointer items-start gap-2 text-xs text-muted-foreground">
-        <Checkbox id={`${id}-ads`} className="mt-0.5" />
+      <label htmlFor="ads" className="flex cursor-pointer items-start gap-2 text-xs text-muted-foreground">
+        <Checkbox id="ads" className="mt-0.5" />
         <span>
           Согласие на информационную и рекламную рассылку (см.{" "}
           <Link to="/offer" className="underline underline-offset-2">
@@ -99,7 +99,7 @@ function Consents({ id }: { id: string }) {
 function PayMethods() {
   const methods = ["МИР", "VISA", "Mastercard", "СБП"];
   return (
-    <div className="mt-4">
+    <div>
       <div className="flex flex-wrap gap-2">
         {methods.map((m) => (
           <span
@@ -130,7 +130,8 @@ function Pricing() {
         </h1>
         <p className="mt-3 text-muted-foreground">Прозрачные цены без скрытых платежей</p>
         <p className="mt-8 text-sm text-muted-foreground">
-          Один кредит — один кадр. Кредиты не сгорают, подписки нет.
+          1 кредит — 1 кадр в стандартном качестве, 2 кредита — в PRO. Кредиты не сгорают, подписки
+          нет.
         </p>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
@@ -150,9 +151,8 @@ function Pricing() {
                 )}
               </div>
               <p className="mt-6 font-display text-4xl tracking-[0.02em]">{p.price} ₽</p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                {p.credits} генераций · {p.desc}
-              </p>
+              <p className="mt-4 text-sm font-medium">{p.credits} кредитов</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
               <p className="mt-4 text-xs text-muted-foreground">{p.perFrame}</p>
 
               <hr className="mt-8 border-border" />
@@ -178,8 +178,6 @@ function Pricing() {
                 )}
               </ul>
 
-              <Consents id={p.id} />
-
               <Button
                 asChild
                 size="lg"
@@ -190,22 +188,13 @@ function Pricing() {
                   Оплатить
                 </Link>
               </Button>
-
-              <PayMethods />
             </div>
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-4 border border-border bg-muted/40 p-6 sm:flex-row sm:items-start">
-          <ShieldCheck className="size-6 shrink-0 text-primary" />
-          <div>
-            <p className="font-medium">Коммерческая лицензия включена</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Право использовать результаты в проектах клиентов, презентациях и рекламе включено в
-              любой платный пакет. Это не отдельная подписка и не доплата: купили кредиты — лицензия
-              уже ваша.
-            </p>
-          </div>
+        <div className="mt-10 flex flex-col gap-8 border border-border bg-muted/40 p-6 sm:flex-row sm:items-start sm:justify-between">
+          <Consents />
+          <PayMethods />
         </div>
       </section>
     </PageShell>
