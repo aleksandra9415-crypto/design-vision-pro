@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { Loader2, Sparkles, Upload, X } from "lucide-react";
+import { ChevronDown, Loader2, Sparkles, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { mockPair, saveGeneration } from "@/lib/generation-store";
 import {
