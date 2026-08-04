@@ -1,9 +1,26 @@
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Check, ChevronDown, Sparkles, Upload } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
+import { UserMosaic } from "@/components/site/UserMosaic";
 import { Button } from "@/components/ui/button";
 import { images, plans } from "@/lib/mock-data";
 import heroWide from "@/assets/hero-wide.jpg";
+import styleScandi from "@/assets/style-scandi.jpg";
+import styleJapandi from "@/assets/style-japandi.jpg";
+import styleLoft from "@/assets/style-loft.jpg";
+import roomKitchen from "@/assets/room-kitchen.jpg";
+import roomBath from "@/assets/room-bath.jpg";
+import landHero from "@/assets/land-hero.jpg";
+import landNatural from "@/assets/land-natural.jpg";
+import landJapan from "@/assets/land-japan.jpg";
+import landMinimal from "@/assets/land-minimal.jpg";
+import landOld from "@/assets/land-old.jpg";
+import facadeHero from "@/assets/facade-hero.jpg";
+import facadeModern from "@/assets/facade-modern.jpg";
+import facadeScandi from "@/assets/facade-scandi.jpg";
+import facadeClassic from "@/assets/facade-classic.jpg";
+import facadeOld from "@/assets/facade-old.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,14 +61,27 @@ const verticals = [
     to: "/landscape" as const,
     label: "Дизайн ландшафта",
     desc: "Благоустройство участка по фото",
-    image: images.landscapeAfter,
+    image: landHero,
   },
   {
     to: "/facade" as const,
     label: "Дизайн фасада",
     desc: "Новый облик дома по фото",
-    image: images.facadeAfter,
+    image: facadeHero,
   },
+];
+
+const steps = [
+  { title: "Загрузка фото", text: "Снимок с телефона подойдёт — важно, чтобы было видно стены, окна и пол." },
+  { title: "Выбор стиля", text: "Тип помещения и одно из 20+ направлений: сканди, лофт, джапанди и другие." },
+  { title: "Генерация ИИ", text: "Около минуты — геометрия комнаты сохраняется, меняются отделка, свет и мебель." },
+  { title: "Результат", text: "Сравниваете до/после, просите правки словами и скачиваете кадр в высоком разрешении." },
+];
+
+const showcase = [
+  { src: styleScandi, alt: "Гостиная в стиле сканди", caption: "Интерьер · сканди" },
+  { src: facadeModern, alt: "Современный фасад частного дома", caption: "Фасад · современный" },
+  { src: landNatural, alt: "Благоустроенный участок с газоном", caption: "Ландшафт · природный" },
 ];
 
 const stats = [
@@ -63,12 +93,40 @@ const stats = [
 
 const press = ["Т—Ж", "VC.ru", "Cossa", "Habr", "Inc."];
 
-const steps = [
-  { title: "Загрузка фото", text: "Снимок с телефона подойдёт — важно, чтобы было видно стены, окна и пол." },
-  { title: "Выбор стиля", text: "Тип помещения и одно из 20+ направлений: сканди, лофт, джапанди и другие." },
-  { title: "Генерация ИИ", text: "Около минуты — геометрия комнаты сохраняется, меняются отделка, свет и мебель." },
-  { title: "Результат", text: "Сравниваете до/после, просите правки словами и скачиваете кадр в высоком разрешении." },
+const mosaicTiles = [
+  {
+    before: images.interiorBefore,
+    after: styleScandi,
+    alt: "Гостиная, сканди",
+    span: "col-span-2 row-span-2 lg:col-span-3 lg:row-span-2",
+  },
+  { before: landOld, after: landNatural, alt: "Участок, природный сад", span: "lg:col-span-2" },
+  { before: facadeOld, after: facadeModern, alt: "Фасад, современный", span: "lg:row-span-2" },
+  { before: images.interiorBefore, after: roomKitchen, alt: "Кухня, современный" },
+  { before: landOld, after: landJapan, alt: "Сад, японский стиль" },
+  {
+    before: facadeOld,
+    after: facadeScandi,
+    alt: "Фасад, скандинавский дом",
+    span: "col-span-2 lg:col-span-2",
+  },
+  {
+    before: images.interiorBefore,
+    after: styleJapandi,
+    alt: "Спальня, джапанди",
+    span: "lg:col-span-2 lg:row-span-2",
+  },
+  { before: landOld, after: landMinimal, alt: "Двор, минимализм" },
+  { before: images.interiorBefore, after: roomBath, alt: "Ванная, спа-минимализм" },
+  {
+    before: facadeOld,
+    after: facadeClassic,
+    alt: "Фасад, классика",
+    span: "col-span-2 lg:col-span-2",
+  },
 ];
+
+const finalThumbs = [styleScandi, landNatural, facadeModern, styleLoft];
 
 function StartButton({
   label = "Начать бесплатно",
@@ -93,6 +151,35 @@ function BuyButton({ label = "Купить кредиты" }: { label?: string }
         {label} <ArrowUpRight className="size-4" />
       </Link>
     </Button>
+  );
+}
+
+function ShowcaseImage() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((v) => (v + 1) % showcase.length), 3500);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <div className="relative h-full min-h-[420px] w-full overflow-hidden border border-border bg-muted">
+      {showcase.map((s, idx) => (
+        <img
+          key={s.src}
+          src={s.src}
+          alt={s.alt}
+          className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ${
+            idx === i ? "opacity-100" : "opacity-0"
+          }`}
+          loading="lazy"
+        />
+      ))}
+      <span className="absolute left-4 top-4 bg-background px-3 py-1.5 text-xs uppercase tracking-[0.28em]">
+        Результат
+      </span>
+      <span className="absolute bottom-4 left-4 bg-background/90 px-3 py-1.5 text-xs">
+        {showcase[i].caption}
+      </span>
+    </div>
   );
 }
 
@@ -146,78 +233,6 @@ function Home() {
         </div>
       </section>
 
-      {/* ГЕНЕРАТОР */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <div>
-            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Начните прямо здесь
-            </h2>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Загрузите фото — получите готовый результат за минуту.
-            </p>
-          </div>
-
-          <div className="mx-auto mt-10 flex max-w-xl flex-col gap-6 border border-border bg-card p-6 sm:p-8">
-            <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
-              {["Интерьер", "Ландшафт", "Фасад"].map((t, i) => (
-                <span
-                  key={t}
-                  className={`flex-1 px-3 py-2 text-center ${
-                    i === 0 ? "bg-background font-medium" : "text-muted-foreground"
-                  }`}
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-border bg-muted/30 px-6 py-8 text-center">
-              <Upload className="size-6 text-muted-foreground" />
-              <p className="text-sm font-medium">Перетащите фото комнаты</p>
-              <p className="text-xs text-muted-foreground">или нажмите, чтобы выбрать</p>
-              <Button asChild variant="outline" size="sm" className="mt-2 rounded-none">
-                <Link to="/app/generator" search={{ tab: "interior" }}>
-                  Выбрать файл
-                </Link>
-              </Button>
-              <p className="mt-1 text-xs text-muted-foreground">JPG, PNG до 15 МБ</p>
-            </div>
-
-            <div className="space-y-2">
-              <p className="text-xs uppercase tracking-widest text-muted-foreground">Тип помещения</p>
-              <div className="flex items-center justify-between border border-border bg-background px-3 py-2.5 text-sm">
-                <span>Гостиная</span>
-                <ChevronDown className="size-4 text-muted-foreground" />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <p className="text-xs uppercase tracking-widest text-muted-foreground">Стиль</p>
-              <div className="flex items-center justify-between border border-border bg-background px-3 py-2.5 text-sm">
-                <span>Сканди</span>
-                <ChevronDown className="size-4 text-muted-foreground" />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                Уточнения (необязательно)
-              </p>
-              <p className="border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
-                тёплый свет, зелёный акцент, больше растений
-              </p>
-            </div>
-
-            <Button asChild size="lg" className="mt-auto w-full rounded-none">
-              <Link to="/app/generator" search={{ tab: "interior" }}>
-                <Sparkles className="size-4" /> Сгенерировать дизайн
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* ТРИ НАПРАВЛЕНИЯ */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
@@ -234,25 +249,127 @@ function Home() {
               <Link
                 key={v.to}
                 to={v.to}
-                className="group block border border-border bg-card transition-colors hover:border-foreground/40"
+                className="group relative block aspect-[9/16] overflow-hidden border border-border bg-muted"
               >
                 <img
                   src={v.image}
                   alt={v.label}
-                  width={1024}
-                  height={768}
-                  className="aspect-[4/3] w-full object-cover"
+                  className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   loading="lazy"
                 />
-                <div className="p-5">
-                  <p className="flex items-center gap-1 font-display text-2xl leading-none tracking-[0.02em]">
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/25 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <p className="flex items-center gap-1 font-display text-2xl leading-none tracking-[0.02em] text-background">
                     {v.label}
                     <ArrowUpRight className="size-5 transition-transform group-hover:translate-x-0.5" />
                   </p>
-                  <p className="mt-2 text-sm text-muted-foreground">{v.desc}</p>
+                  <p className="mt-2 text-sm text-background/80">{v.desc}</p>
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* КАК РАБОТАЕМ */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div>
+            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
+              Работать с нами просто
+            </h2>
+            <p className="mt-3 max-w-lg text-sm text-muted-foreground">
+              Четыре шага от снимка на телефоне до готовой визуализации.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((s, i) => (
+              <div key={s.title} className="relative flex flex-col bg-background p-6">
+                <span className="font-display text-3xl tracking-[0.02em] text-muted-foreground/50">
+                  0{i + 1}
+                </span>
+                <h3 className="mt-8 font-display text-2xl leading-tight tracking-[0.02em]">
+                  {s.title}
+                </h3>
+                <p className="mt-3 text-sm text-muted-foreground">{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ГЕНЕРАТОР */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div>
+            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
+              Начните прямо здесь
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Загрузите фото — получите готовый результат за минуту.
+            </p>
+          </div>
+
+          <div className="mt-10 grid items-stretch gap-8 lg:grid-cols-2">
+            <div className="flex flex-col gap-6 border border-border bg-card p-6 sm:p-8">
+              <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
+                {["Интерьер", "Ландшафт", "Фасад"].map((t, i) => (
+                  <span
+                    key={t}
+                    className={`flex-1 px-3 py-2 text-center ${
+                      i === 0 ? "bg-background font-medium" : "text-muted-foreground"
+                    }`}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-border bg-muted/30 px-6 py-8 text-center">
+                <Upload className="size-6 text-muted-foreground" />
+                <p className="text-sm font-medium">Перетащите фото комнаты</p>
+                <p className="text-xs text-muted-foreground">или нажмите, чтобы выбрать</p>
+                <Button asChild variant="outline" size="sm" className="mt-2 rounded-none">
+                  <Link to="/app/generator" search={{ tab: "interior" }}>
+                    Выбрать файл
+                  </Link>
+                </Button>
+                <p className="mt-1 text-xs text-muted-foreground">JPG, PNG до 15 МБ</p>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">Тип помещения</p>
+                <div className="flex items-center justify-between border border-border bg-background px-3 py-2.5 text-sm">
+                  <span>Гостиная</span>
+                  <ChevronDown className="size-4 text-muted-foreground" />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">Стиль</p>
+                <div className="flex items-center justify-between border border-border bg-background px-3 py-2.5 text-sm">
+                  <span>Сканди</span>
+                  <ChevronDown className="size-4 text-muted-foreground" />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Уточнения (необязательно)
+                </p>
+                <p className="border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
+                  тёплый свет, зелёный акцент, больше растений
+                </p>
+              </div>
+
+              <Button asChild size="lg" className="mt-auto w-full rounded-none">
+                <Link to="/app/generator" search={{ tab: "interior" }}>
+                  <Sparkles className="size-4" /> Сгенерировать дизайн
+                </Link>
+              </Button>
+            </div>
+
+            <ShowcaseImage />
           </div>
         </div>
       </section>
@@ -287,39 +404,29 @@ function Home() {
         </div>
       </section>
 
-      {/* КАК РАБОТАЕМ */}
+      {/* СГЕНЕРИРОВАНО У НАС */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Работать с нами просто
+              Сгенерировано у нас
             </h2>
-            <p className="mt-3 max-w-lg text-sm text-muted-foreground">
-              Четыре шага от снимка на телефоне до готовой визуализации.
+            <p className="mt-3 text-sm text-muted-foreground">
+              Квартиры, участки и фасады. Наведите на плитку — покажем исходное фото до генерации.
             </p>
           </div>
-          <div className="mt-10 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s, i) => (
-              <div key={s.title} className="relative flex flex-col bg-background p-6">
-                <span className="font-display text-3xl tracking-[0.02em] text-muted-foreground/50">
-                  0{i + 1}
-                </span>
-                <h3 className="mt-8 font-display text-2xl leading-tight tracking-[0.02em]">
-                  {s.title}
-                </h3>
-                <p className="mt-3 text-sm text-muted-foreground">{s.text}</p>
-              </div>
-            ))}
+          <div className="mt-10">
+            <UserMosaic tiles={mosaicTiles} />
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <StartButton />
+            <StartButton label="Сгенерировать свой" />
             <BuyButton />
           </div>
         </div>
       </section>
 
       {/* ТАРИФЫ */}
-      <section className="bg-secondary/40">
+      <section className="border-b border-border bg-secondary/40">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
@@ -375,6 +482,38 @@ function Home() {
           <div className="mt-8 flex flex-wrap gap-3">
             <BuyButton label="Все тарифы" />
             <StartButton label="Сначала попробовать" />
+          </div>
+        </div>
+      </section>
+
+      {/* ФИНАЛЬНЫЙ CTA */}
+      <section>
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
+              Сделай первую генерацию
+            </h2>
+            <p className="mt-5 max-w-md text-muted-foreground">
+              Регистрация занимает минуту, карта не нужна. Загрузите фото комнаты, участка или
+              фасада — и посмотрите, как это может выглядеть.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <StartButton label="Загрузить фото" />
+              <BuyButton />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3 lg:col-span-7">
+            {finalThumbs.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt="Пример визуализации Vizoria"
+                width={768}
+                height={576}
+                className={`aspect-[4/3] w-full object-cover ${i % 2 === 1 ? "lg:translate-y-6" : ""}`}
+                loading="lazy"
+              />
+            ))}
           </div>
         </div>
       </section>
