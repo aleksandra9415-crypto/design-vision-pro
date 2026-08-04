@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { PricingPlans } from "@/components/site/PricingPlans";
 import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
@@ -7,7 +7,7 @@ import { UserMosaic } from "@/components/site/UserMosaic";
 import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
 import { Button } from "@/components/ui/button";
 import { GeneratorForm } from "@/components/site/GeneratorForm";
-import { images, plans } from "@/lib/mock-data";
+import { images } from "@/lib/mock-data";
 
 import landHero from "@/assets/land-hero.jpg";
 import landNatural from "@/assets/land-natural.jpg";
