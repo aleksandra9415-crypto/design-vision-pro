@@ -368,5 +368,15 @@ export const testimonialsExtended = [
 ];
 
 
-export const accountUser = { name: "Анна", email: "anna@example.com" };
+export const accountUser = { name: "Александра", email: "alexandra@example.com" };
 export const accountBalance = 12;
+export const accountPlan = { id: "proekt", name: "Проект" };
+export const referralProgram = {
+  link: "vizoria.ru/invite/AX7K2",
+  bonus: 10,
+  invited: 0,
+  paid: 0,
+  earned: 0,
+};
+export const telegramBonus = { credits: 5, url: "https://t.me/vizoria" };
+
