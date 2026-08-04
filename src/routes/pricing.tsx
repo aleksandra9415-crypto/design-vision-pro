@@ -128,8 +128,8 @@ function Consents() {
 function PayMethods() {
   const methods = ["МИР", "VISA", "Mastercard", "СБП"];
   return (
-    <div>
-      <div className="flex flex-wrap gap-2">
+    <div className="text-center">
+      <div className="flex flex-wrap justify-center gap-2">
         {methods.map((m) => (
           <span
             key={m}
