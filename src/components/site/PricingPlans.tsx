@@ -205,26 +205,40 @@ export function PricingPlans({
               )}
             </ul>
 
-            <Button
-              asChild
-              size="lg"
-              variant={p.popular ? "default" : "outline"}
-              className="mt-8 w-full rounded-none"
-            >
-              <Link to="/app/billing" search={{ plan: p.id }}>
-                Оплатить
-              </Link>
-            </Button>
+            {selectable ? (
+              <Button
+                size="lg"
+                variant={selectedId === p.id ? "default" : "outline"}
+                className="mt-8 w-full rounded-none"
+                onClick={() => onSelect(p.id)}
+              >
+                {selectedId === p.id ? "Пакет выбран" : "Выбрать пакет"}
+              </Button>
+            ) : (
+              <Button
+                asChild
+                size="lg"
+                variant={p.popular ? "default" : "outline"}
+                className="mt-8 w-full rounded-none"
+              >
+                <Link to="/app/billing" search={{ plan: p.id }}>
+                  Оплатить
+                </Link>
+              </Button>
+            )}
           </div>
         ))}
       </div>
 
-      <div className="mt-10 grid grid-cols-1 items-start gap-8 border border-border bg-muted/40 p-6 sm:p-8 md:grid-cols-[3fr_2fr] md:divide-x md:divide-border">
-        <Consents ns={ns} />
-        <div className="md:pl-8">
-          <PayMethods />
+      {showConsents && (
+        <div className="mt-10 grid grid-cols-1 items-start gap-8 border border-border bg-muted/40 p-6 sm:p-8 md:grid-cols-[3fr_2fr] md:divide-x md:divide-border">
+          <Consents ns={ns} />
+          <div className="md:pl-8">
+            <PayMethods />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
+
