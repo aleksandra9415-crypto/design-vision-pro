@@ -177,7 +177,7 @@ function ShowcaseImage() {
         Результат
       </span>
       <span className="absolute bottom-4 left-4 bg-background/90 px-3 py-1.5 text-xs">
-        {showcase[i].caption}
+        {showcase[i]?.caption}
       </span>
     </div>
   );
