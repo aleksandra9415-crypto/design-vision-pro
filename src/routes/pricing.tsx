@@ -61,6 +61,35 @@ function StyleList({ id }: { id: string }) {
   );
 }
 
+function LicenseNote({ id, text }: { id: string; text: string }) {
+  const [open, setOpen] = useState(false);
+  const [label, body] = text.split(" — ", 2);
+  return (
+    <div>
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={`license-${id}`}
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-start gap-2 text-left text-sm"
+      >
+        <Check className="mt-0.5 size-4 shrink-0 text-foreground" />
+        <span className="flex-1">{label}</span>
+        <ChevronDown
+          className={`mt-0.5 size-4 shrink-0 text-muted-foreground transition-transform ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+      {open && (
+        <div id={`license-${id}`} className="mt-3 space-y-3 border-l border-border pl-4">
+          <p className="text-sm leading-relaxed text-muted-foreground">{body}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Consents() {
   return (
     <div className="space-y-3">
@@ -99,8 +128,8 @@ function Consents() {
 function PayMethods() {
   const methods = ["МИР", "VISA", "Mastercard", "СБП"];
   return (
-    <div>
-      <div className="flex flex-wrap gap-2">
+    <div className="text-center">
+      <div className="flex flex-wrap justify-center gap-2">
         {methods.map((m) => (
           <span
             key={m}
@@ -166,6 +195,10 @@ function Pricing() {
                     <li key={f}>
                       <StyleList id={p.id} />
                     </li>
+                  ) : f.startsWith("Коммерческая лицензия включена") ? (
+                    <li key={f}>
+                      <LicenseNote id={p.id} text={f} />
+                    </li>
                   ) : (
                     <li
                       key={f}
@@ -192,7 +225,7 @@ function Pricing() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-8 border border-border bg-muted/40 p-6 sm:flex-row sm:items-start sm:justify-between">
+        <div className="mx-auto mt-10 flex max-w-3xl flex-col items-start gap-8 border border-border bg-muted/40 p-6 sm:flex-row sm:items-start sm:justify-center sm:p-8">
           <Consents />
           <PayMethods />
         </div>
