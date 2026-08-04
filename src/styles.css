@@ -167,10 +167,23 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-weight: 400;
+    font-variation-settings: "slnt" 0, "CRSV" 0, "SHRP" 0;
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: "lnum" 1;
     line-height: 1.6;
     letter-spacing: 0.01em;
+  }
+
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  small,
+  figcaption {
+    font-family: var(--font-sans);
+    font-variation-settings: "slnt" 0, "CRSV" 0, "SHRP" 0;
   }
 
   h1,
@@ -180,9 +193,16 @@
     font-family: var(--font-display);
     font-weight: 600;
     font-style: normal;
+    font-variation-settings: "slnt" 0, "CRSV" 0, "SHRP" 100;
     font-kerning: normal;
+    font-variant-numeric: lining-nums tabular-nums;
     text-rendering: geometricPrecision;
     text-wrap: balance;
+  }
+
+  h1,
+  h2 {
+    font-weight: 700;
   }
 
   .font-display:not(h1):not(h2):not(h3) {
