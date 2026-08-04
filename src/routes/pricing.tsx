@@ -137,7 +137,7 @@ function Pricing() {
           {plans.map((p) => (
             <div
               key={p.id}
-              className={`flex flex-col border bg-card p-6 ${
+              className={`flex flex-col border bg-card p-8 lg:p-10 ${
                 p.popular ? "border-foreground" : "border-border"
               }`}
             >
@@ -149,23 +149,28 @@ function Pricing() {
                   </span>
                 )}
               </div>
-              <p className="mt-4 font-display text-4xl tracking-[0.02em]">{p.price} ₽</p>
-              <p className="mt-1 text-sm text-muted-foreground">
+              <p className="mt-6 font-display text-4xl tracking-[0.02em]">{p.price} ₽</p>
+              <p className="mt-3 text-sm text-muted-foreground">
                 {p.credits} генераций · {p.desc}
               </p>
-              <p className="mt-3 text-xs text-muted-foreground">{p.perFrame}</p>
+              <p className="mt-4 text-xs text-muted-foreground">{p.perFrame}</p>
 
-              <p className="mt-6 text-[11px] uppercase tracking-widest text-muted-foreground">
+              <hr className="mt-8 border-border" />
+
+              <p className="mt-8 text-[11px] uppercase tracking-widest text-muted-foreground">
                 Что входит
               </p>
-              <ul className="mt-3 flex-1 space-y-2.5">
+              <ul className="mt-4 flex-1 space-y-4">
                 {p.features.map((f) =>
                   f.startsWith("Доступные стили") ? (
                     <li key={f}>
                       <StyleList id={p.id} />
                     </li>
                   ) : (
-                    <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <li
+                      key={f}
+                      className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground"
+                    >
                       <Check className="mt-0.5 size-4 shrink-0 text-foreground" />
                       <span>{f}</span>
                     </li>
@@ -179,7 +184,7 @@ function Pricing() {
                 asChild
                 size="lg"
                 variant={p.popular ? "default" : "outline"}
-                className="mt-6 w-full rounded-none"
+                className="mt-8 w-full rounded-none"
               >
                 <Link to="/app/billing" search={{ plan: p.id }}>
                   Оплатить
