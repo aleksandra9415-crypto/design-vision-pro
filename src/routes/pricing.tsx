@@ -225,7 +225,7 @@ function Pricing() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-8 border border-border bg-muted/40 p-6 sm:flex-row sm:items-start sm:justify-between">
+        <div className="mx-auto mt-10 flex max-w-3xl flex-col items-start gap-8 border border-border bg-muted/40 p-6 sm:flex-row sm:items-start sm:justify-center sm:p-8">
           <Consents />
           <PayMethods />
         </div>
