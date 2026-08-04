@@ -140,7 +140,18 @@ function PayMethods() {
   );
 }
 
-export function PricingPlans({ ns = "pricing" }: { ns?: string }) {
+export function PricingPlans({
+  ns = "pricing",
+  selectedId,
+  onSelect,
+  showConsents = true,
+}: {
+  ns?: string;
+  selectedId?: string;
+  onSelect?: (id: string) => void;
+  showConsents?: boolean;
+}) {
+  const selectable = typeof onSelect === "function";
   return (
     <>
       <div className="grid gap-6 lg:grid-cols-3">
@@ -148,9 +159,12 @@ export function PricingPlans({ ns = "pricing" }: { ns?: string }) {
           <div
             key={p.id}
             className={`flex flex-col border bg-card p-8 lg:p-10 ${
-              p.popular ? "border-foreground" : "border-border"
+              (selectable ? selectedId === p.id : p.popular)
+                ? "border-foreground"
+                : "border-border"
             }`}
           >
+
             <div className="flex items-center justify-between gap-3">
               <p className="font-display text-2xl">{p.name}</p>
               {p.popular && (
