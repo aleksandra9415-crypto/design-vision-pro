@@ -63,7 +63,7 @@ function StyleList({ id }: { id: string }) {
 
 function Consents({ id }: { id: string }) {
   return (
-    <div className="mt-6 space-y-3">
+    <div className="mt-8 space-y-3">
       <label htmlFor={`${id}-terms`} className="flex cursor-pointer items-start gap-2 text-xs text-muted-foreground">
         <Checkbox id={`${id}-terms`} className="mt-0.5" />
         <span>
