@@ -83,7 +83,7 @@ function LicenseNote({ id, text }: { id: string; text: string }) {
       </button>
       {open && (
         <div id={`license-${id}`} className="mt-3 space-y-3 border-l border-border pl-4">
-          <p className="text-sm leading-relaxed text-muted-foreground">{body}</p>
+          <p className="whitespace-pre-line text-sm leading-relaxed text-muted-foreground">{body}</p>
         </div>
       )}
     </div>
