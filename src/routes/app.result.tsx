@@ -39,18 +39,15 @@ function Result() {
   }, []);
 
   return (
-    <AppShell>
-      <h1 className="text-2xl font-semibold tracking-[0.02em]">Результат</h1>
-      <p className="mt-1 text-sm text-muted-foreground">Генерация от {result.createdAt}</p>
-
-      <div className="mt-6 grid gap-6 lg:grid-cols-[2fr_1fr]">
-        <Card className="border-border">
+    <AppShell kicker="Результат" title="Готовый кадр" subtitle={`Генерация от ${result.createdAt}`}>
+      <div className=" grid gap-6 lg:grid-cols-[2fr_1fr]">
+        <Card className="rounded-none border-border bg-card">
           <CardContent className="pt-6">
             <BeforeAfter before={result.before} after={result.after} />
           </CardContent>
         </Card>
 
-        <Card className="border-border">
+        <Card className="rounded-none border-border bg-card">
           <CardContent className="pt-6">
             <p className="font-medium">Параметры</p>
             <dl className="mt-4 space-y-3 text-sm">
@@ -69,12 +66,12 @@ function Result() {
 
             <div className="mt-6 space-y-2">
               <Button
-                className="w-full"
+                className="w-full rounded-none"
                 onClick={() => toast.success("Изображение сохранено (демо)")}
               >
                 <Download className="size-4" /> Скачать
               </Button>
-              <Button asChild variant="outline" className="w-full">
+              <Button asChild variant="outline" className="w-full rounded-none">
                 <Link to="/app/generator" search={{ tab: result.tab }}>
                   <RefreshCw className="size-4" /> Сгенерировать ещё
                 </Link>
