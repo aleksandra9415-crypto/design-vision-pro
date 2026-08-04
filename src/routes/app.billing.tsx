@@ -11,7 +11,7 @@ import { plans } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/app/billing")({
   validateSearch: (search: Record<string, unknown>): { plan: string } => ({
-    plan: typeof search["plan"] === "string" ? search["plan"] : "optimum",
+    plan: typeof search["plan"] === "string" ? search["plan"] : "proekt",
   }),
   head: () => ({
     meta: [
