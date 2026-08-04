@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { ChevronDown, Loader2, Sparkles, Upload, X } from "lucide-react";
+import { Loader2, Sparkles, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { mockPair, saveGeneration } from "@/lib/generation-store";
 import {
   facadeStyles,
@@ -200,21 +207,25 @@ export function GeneratorForm({
         >
           {cfg.typeLabel}
         </label>
-        <div className="relative">
-          <select
+        <Select value={type} onValueChange={setType}>
+          <SelectTrigger
             id={`type-${tab}`}
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            className="w-full appearance-none border border-border bg-background px-3 py-2.5 pr-9 text-sm outline-none focus:border-foreground"
+            className="h-auto w-full rounded-none border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-foreground focus:ring-0 focus:ring-offset-0 [&>svg]:text-muted-foreground"
           >
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent className="rounded-none border-border bg-card shadow-sm">
             {cfg.types.map((t) => (
-              <option key={t} value={t}>
+              <SelectItem
+                key={t}
+                value={t}
+                className="rounded-none border-b border-border px-3 py-2.5 text-sm last:border-b-0 focus:bg-muted"
+              >
                 {t}
-              </option>
+              </SelectItem>
             ))}
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-        </div>
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="space-y-2">
@@ -224,21 +235,26 @@ export function GeneratorForm({
         >
           Стиль
         </label>
-        <div className="relative">
-          <select
+        <Select value={style} onValueChange={setStyle}>
+          <SelectTrigger
             id={`style-${tab}`}
-            value={style}
-            onChange={(e) => setStyle(e.target.value)}
-            className="w-full appearance-none border border-border bg-background px-3 py-2.5 pr-9 text-sm outline-none focus:border-foreground"
+            className="h-auto w-full rounded-none border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-foreground focus:ring-0 focus:ring-offset-0 [&>svg]:text-muted-foreground"
           >
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent className="rounded-none border-border bg-card shadow-sm">
             {cfg.styles.map((s) => (
-              <option key={s.id} value={s.id} title={s.desc}>
+              <SelectItem
+                key={s.id}
+                value={s.id}
+                title={s.desc}
+                className="rounded-none border-b border-border px-3 py-2.5 text-sm last:border-b-0 focus:bg-muted"
+              >
                 {s.name}
-              </option>
+              </SelectItem>
             ))}
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-        </div>
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="space-y-2">
