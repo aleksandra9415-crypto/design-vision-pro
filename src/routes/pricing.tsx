@@ -61,6 +61,35 @@ function StyleList({ id }: { id: string }) {
   );
 }
 
+function LicenseNote({ id, text }: { id: string; text: string }) {
+  const [open, setOpen] = useState(false);
+  const [label, body] = text.split(" — ", 2);
+  return (
+    <div>
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={`license-${id}`}
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-start gap-2 text-left text-sm"
+      >
+        <Check className="mt-0.5 size-4 shrink-0 text-foreground" />
+        <span className="flex-1">{label}</span>
+        <ChevronDown
+          className={`mt-0.5 size-4 shrink-0 text-muted-foreground transition-transform ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+      {open && (
+        <div id={`license-${id}`} className="mt-3 space-y-3 border-l border-border pl-4">
+          <p className="text-sm leading-relaxed text-muted-foreground">{body}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Consents() {
   return (
     <div className="space-y-3">
