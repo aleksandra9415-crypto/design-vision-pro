@@ -47,12 +47,6 @@ const config: Record<
   },
 };
 
-const chip = (selected: boolean) =>
-  `border px-3 py-2 text-left text-sm transition-colors ${
-    selected
-      ? "border-foreground bg-foreground text-background"
-      : "border-border bg-background text-foreground hover:border-foreground/40"
-  }`;
 
 export function GeneratorForm({
   defaultTab = "interior",
