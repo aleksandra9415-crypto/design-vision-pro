@@ -1,7 +1,16 @@
-import { Link } from "@tanstack/react-router";
-import { Menu } from "lucide-react";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { Menu, User } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { accountBalance, accountUser } from "@/lib/mock-data";
 
 const nav = [
   { to: "/interior", label: "Интерьер" },
@@ -11,9 +20,9 @@ const nav = [
   { to: "/faq", label: "Вопросы" },
 ] as const;
 
-
-export function SiteHeader() {
+export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
@@ -23,7 +32,6 @@ export function SiteHeader() {
             Vizoria
           </span>
         </Link>
-
 
         <nav className="hidden items-center gap-6 lg:flex">
           {nav.map((item) => (
@@ -39,14 +47,61 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
-          <Button asChild variant="outline" size="sm" className="hidden sm:inline-flex">
-            <Link to="/auth">Войти</Link>
-          </Button>
-          <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link to="/app/generator" search={{ tab: "interior" }}>
-              Попробовать
-            </Link>
-          </Button>
+          {signedIn ? (
+            <>
+              <Link
+                to="/app/billing"
+                search={{ plan: "proekt" }}
+                className="hidden border border-border px-3 py-1.5 text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground sm:inline-block"
+              >
+                {accountBalance} кредитов
+              </Link>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    type="button"
+                    className="flex items-center gap-2 border border-border px-2.5 py-1.5 text-sm transition-colors hover:bg-secondary"
+                  >
+                    <span className="grid size-6 place-items-center rounded-full bg-foreground text-background">
+                      <User className="size-3.5" />
+                    </span>
+                    <span className="hidden max-w-28 truncate sm:inline">{accountUser.name}</span>
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="rounded-none bg-card">
+                  <DropdownMenuItem asChild className="rounded-none">
+                    <Link to="/app/account">Личный кабинет</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild className="rounded-none">
+                    <Link to="/app/generator" search={{ tab: "interior" }}>
+                      Генератор
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    className="rounded-none"
+                    onSelect={() => {
+                      toast.success("Вы вышли из аккаунта (демо)");
+                      navigate({ to: "/" });
+                    }}
+                  >
+                    Выйти
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </>
+          ) : (
+            <>
+              <Button asChild variant="outline" size="sm" className="hidden sm:inline-flex">
+                <Link to="/auth">Войти</Link>
+              </Button>
+              <Button asChild size="sm" className="hidden sm:inline-flex">
+                <Link to="/app/generator" search={{ tab: "interior" }}>
+                  Попробовать
+                </Link>
+              </Button>
+            </>
+          )}
           <Button
             variant="outline"
             size="icon"
@@ -72,9 +127,19 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <Link to="/auth" onClick={() => setOpen(false)} className="py-2 text-sm font-medium">
-              Войти
-            </Link>
+            {signedIn ? (
+              <Link
+                to="/app/account"
+                onClick={() => setOpen(false)}
+                className="py-2 text-sm font-medium"
+              >
+                Личный кабинет · {accountBalance} кредитов
+              </Link>
+            ) : (
+              <Link to="/auth" onClick={() => setOpen(false)} className="py-2 text-sm font-medium">
+                Войти
+              </Link>
+            )}
           </nav>
         </div>
       )}

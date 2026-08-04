@@ -2,8 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Plus, Sparkles } from "lucide-react";
 import { AppShell } from "@/components/site/AppShell";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { generationHistory } from "@/lib/mock-data";
+import { accountBalance, generationHistory } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/app/account")({
   head: () => ({
@@ -19,53 +18,59 @@ export const Route = createFileRoute("/app/account")({
 
 function Account() {
   return (
-    <AppShell>
-      <h1 className="text-2xl font-semibold tracking-[0.02em]">Личный кабинет</h1>
+    <AppShell
+      kicker="Кабинет"
+      title="Личный кабинет"
+      subtitle="Баланс кредитов и все ваши генерации в одном месте."
+    >
+      <div className="grid gap-6 border border-border bg-card p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:p-10">
+        <div className="min-w-0">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">Баланс</p>
+          <p className="mt-4 font-display text-4xl tracking-[0.02em]">
+            {accountBalance} кредитов
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            1 кредит — 1 кадр в стандартном качестве, 2 кредита — в PRO.
+          </p>
+        </div>
+        <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+          <Button asChild size="lg" className="rounded-none">
+            <Link to="/app/billing" search={{ plan: "proekt" }}>
+              <Plus className="size-4" /> Пополнить
+            </Link>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="rounded-none">
+            <Link to="/app/generator" search={{ tab: "interior" }}>
+              <Sparkles className="size-4" /> Новая генерация
+            </Link>
+          </Button>
+        </div>
+      </div>
 
-      <Card className="mt-6 border-border">
-        <CardContent className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 pt-6 sm:flex sm:justify-between">
-          <div className="min-w-0">
-            <p className="text-sm text-muted-foreground">Баланс</p>
-            <p className="mt-1 text-3xl font-semibold">12 кредитов</p>
-            <p className="mt-1 text-xs text-muted-foreground">1 кредит = 1 генерация</p>
-          </div>
-          <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-            <Button asChild>
-              <Link to="/app/billing" search={{ plan: "optimum" }}>
-                <Plus className="size-4" /> Пополнить
-              </Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link to="/app/generator" search={{ tab: "interior" }}>
-                <Sparkles className="size-4" /> Новая генерация
-              </Link>
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+      <h2 className="mt-14 font-display text-3xl tracking-[0.02em]">История генераций</h2>
+      <p className="mt-3 text-muted-foreground">Готовые кадры доступны для скачивания в любой момент.</p>
 
-      <h2 className="mt-10 text-lg font-medium">История генераций</h2>
-      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {generationHistory.map((g) => (
-          <Card key={g.id} className="overflow-hidden border-border pt-0">
+          <article key={g.id} className="flex flex-col border border-border bg-card">
             <img
               src={g.thumb}
               alt={`${g.style}, ${g.room}`}
-              className="h-36 w-full object-cover"
+              className="h-40 w-full object-cover"
               loading="lazy"
             />
-            <CardContent className="pb-6">
+            <div className="flex flex-1 flex-col p-5">
               <p className="text-sm font-medium">
                 {g.style} · {g.room}
               </p>
-              <p className="mt-1 text-xs text-muted-foreground">
+              <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
                 {g.tab} · {g.date}
               </p>
-              <Button asChild size="sm" variant="outline" className="mt-3 w-full">
+              <Button asChild size="sm" variant="outline" className="mt-5 w-full rounded-none">
                 <Link to="/app/result">Открыть</Link>
               </Button>
-            </CardContent>
-          </Card>
+            </div>
+          </article>
         ))}
       </div>
     </AppShell>

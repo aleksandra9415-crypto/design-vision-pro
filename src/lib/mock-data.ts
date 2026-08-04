@@ -367,3 +367,6 @@ export const testimonialsExtended = [
   { name: "Владимир", city: "Пермь", role: "архитектор", duration: "1:12", poster: personVladimir, text: "Быстрый черновой рендер по плану — удобно для первой встречи, когда идею надо показать сразу." },
 ];
 
+
+export const accountUser = { name: "Анна", email: "anna@example.com" };
+export const accountBalance = 12;

@@ -140,7 +140,18 @@ function PayMethods() {
   );
 }
 
-export function PricingPlans({ ns = "pricing" }: { ns?: string }) {
+export function PricingPlans({
+  ns = "pricing",
+  selectedId,
+  onSelect,
+  showConsents = true,
+}: {
+  ns?: string;
+  selectedId?: string;
+  onSelect?: (id: string) => void;
+  showConsents?: boolean;
+}) {
+  const selectable = typeof onSelect === "function";
   return (
     <>
       <div className="grid gap-6 lg:grid-cols-3">
@@ -148,9 +159,12 @@ export function PricingPlans({ ns = "pricing" }: { ns?: string }) {
           <div
             key={p.id}
             className={`flex flex-col border bg-card p-8 lg:p-10 ${
-              p.popular ? "border-foreground" : "border-border"
+              (selectable ? selectedId === p.id : p.popular)
+                ? "border-foreground"
+                : "border-border"
             }`}
           >
+
             <div className="flex items-center justify-between gap-3">
               <p className="font-display text-2xl">{p.name}</p>
               {p.popular && (
@@ -191,26 +205,40 @@ export function PricingPlans({ ns = "pricing" }: { ns?: string }) {
               )}
             </ul>
 
-            <Button
-              asChild
-              size="lg"
-              variant={p.popular ? "default" : "outline"}
-              className="mt-8 w-full rounded-none"
-            >
-              <Link to="/app/billing" search={{ plan: p.id }}>
-                Оплатить
-              </Link>
-            </Button>
+            {selectable ? (
+              <Button
+                size="lg"
+                variant={selectedId === p.id ? "default" : "outline"}
+                className="mt-8 w-full rounded-none"
+                onClick={() => onSelect(p.id)}
+              >
+                {selectedId === p.id ? "Пакет выбран" : "Выбрать пакет"}
+              </Button>
+            ) : (
+              <Button
+                asChild
+                size="lg"
+                variant={p.popular ? "default" : "outline"}
+                className="mt-8 w-full rounded-none"
+              >
+                <Link to="/app/billing" search={{ plan: p.id }}>
+                  Оплатить
+                </Link>
+              </Button>
+            )}
           </div>
         ))}
       </div>
 
-      <div className="mt-10 grid grid-cols-1 items-start gap-8 border border-border bg-muted/40 p-6 sm:p-8 md:grid-cols-[3fr_2fr] md:divide-x md:divide-border">
-        <Consents ns={ns} />
-        <div className="md:pl-8">
-          <PayMethods />
+      {showConsents && (
+        <div className="mt-10 grid grid-cols-1 items-start gap-8 border border-border bg-muted/40 p-6 sm:p-8 md:grid-cols-[3fr_2fr] md:divide-x md:divide-border">
+          <Consents ns={ns} />
+          <div className="md:pl-8">
+            <PayMethods />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
+
