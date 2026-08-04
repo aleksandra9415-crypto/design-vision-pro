@@ -27,14 +27,17 @@ function Generator() {
   const navigate = useNavigate();
 
   return (
-    <AppShell>
-      <h1 className="text-2xl font-semibold tracking-[0.02em]">Генератор</h1>
+    <AppShell
+      kicker="Генератор"
+      title="Создайте новый кадр"
+      subtitle="Загрузите фото, выберите тип объекта и стиль — результат будет готов примерно за минуту."
+    >
       <GeneratorForm
         key={tab}
         defaultTab={tab}
-        className="mt-6"
         onTabChange={(next) => navigate({ to: "/app/generator", search: { tab: next } })}
       />
+
       <p className="mt-4 text-center text-xs text-muted-foreground">
         Демоверсия: генерация имитируется и возвращает подготовленный пример.
       </p>
