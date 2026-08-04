@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { ChevronDown, Loader2, Sparkles, Upload, X } from "lucide-react";
+import { Loader2, Sparkles, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { mockPair, saveGeneration } from "@/lib/generation-store";
 import {
   facadeStyles,
