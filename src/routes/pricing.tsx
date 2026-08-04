@@ -226,9 +226,11 @@ function Pricing() {
           ))}
         </div>
 
-        <div className="mx-auto mt-10 flex max-w-3xl flex-col items-start gap-8 border border-border bg-muted/40 p-6 sm:flex-row sm:items-start sm:justify-center sm:p-8">
+        <div className="mt-10 grid grid-cols-1 items-start gap-8 border border-border bg-muted/40 p-6 sm:p-8 md:grid-cols-[3fr_2fr] md:divide-x md:divide-border">
           <Consents />
-          <PayMethods />
+          <div className="md:pl-8">
+            <PayMethods />
+          </div>
         </div>
       </section>
     </PageShell>
