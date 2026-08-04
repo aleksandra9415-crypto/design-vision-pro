@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { PricingPlans } from "@/components/site/PricingPlans";
 import { PageShell } from "@/components/site/PageShell";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { UserMosaic } from "@/components/site/UserMosaic";
@@ -389,50 +390,13 @@ function LandscapePage() {
               Тарифы
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              Один кредит — один кадр. Кредиты не сгорают, подписки нет.
+              1 кредит — 1 кадр в стандартном качестве, 2 кредита — в PRO. Кредиты не сгорают,
+              подписки нет.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {plans.map((p) => (
-              <div
-                key={p.id}
-                className={`flex flex-col border bg-card p-6 ${
-                  p.popular ? "border-foreground" : "border-border"
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <p className="font-display text-2xl">{p.name}</p>
-                  {p.popular && (
-                    <span className="bg-foreground px-2 py-1 text-[11px] uppercase tracking-widest text-background">
-                      Выбирают чаще
-                    </span>
-                  )}
-                </div>
-                <p className="mt-4 font-display text-4xl tracking-[0.02em]">{p.price} ₽</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {p.credits} генераций · {p.desc}
-                </p>
-                <ul className="mt-5 flex-1 space-y-2">
-                  {p.features.slice(0, 4).map((f) => (
-                    <li key={f} className="flex gap-2 text-sm text-muted-foreground">
-                      <Check className="mt-0.5 size-4 shrink-0 text-foreground" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  asChild
-                  size="lg"
-                  variant={p.popular ? "default" : "outline"}
-                  className="mt-6 w-full rounded-none"
-                >
-                  <Link to="/app/billing" search={{ plan: p.id }}>
-                    Купить пакет
-                  </Link>
-                </Button>
-              </div>
-            ))}
+          <div className="mt-10">
+            <PricingPlans ns="landscape" />
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">

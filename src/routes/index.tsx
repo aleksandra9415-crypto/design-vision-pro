@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { PricingPlans } from "@/components/site/PricingPlans";
 import { PageShell } from "@/components/site/PageShell";
 import { UserMosaic } from "@/components/site/UserMosaic";
 import { Button } from "@/components/ui/button";
@@ -245,124 +246,10 @@ function Home() {
               Выберите, что хотите изменить — интерьер, участок или фасад дома.
             </p>
           </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {verticals.map((v) => (
-              <Link
-                key={v.to}
-                to={v.to}
-                className="group relative block aspect-[9/16] overflow-hidden border border-border bg-muted"
-              >
-                <img
-                  src={v.image}
-                  alt={v.label}
-                  className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/25 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <p className="flex items-center gap-1 font-display text-2xl leading-none tracking-[0.02em] text-background">
-                    {v.label}
-                    <ArrowUpRight className="size-5 transition-transform group-hover:translate-x-0.5" />
-                  </p>
-                  <p className="mt-2 text-sm text-background/80">{v.desc}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* КАК РАБОТАЕМ */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <div>
-            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Работать с нами просто
-            </h2>
-            <p className="mt-3 max-w-lg text-sm text-muted-foreground">
-              Четыре шага от снимка на телефоне до готовой визуализации.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s, i) => (
-              <div key={s.title} className="relative flex flex-col bg-background p-6">
-                <span className="font-display text-3xl tracking-[0.02em] text-muted-foreground/50">
-                  0{i + 1}
-                </span>
-                <h3 className="mt-8 font-display text-2xl leading-tight tracking-[0.02em]">
-                  {s.title}
-                </h3>
-                <p className="mt-3 text-sm text-muted-foreground">{s.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ГЕНЕРАТОР */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <div>
-            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Начните прямо здесь
-            </h2>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Загрузите фото — получите готовый результат за минуту.
-            </p>
-          </div>
-
-          <div className="mt-10 grid items-stretch gap-8 lg:grid-cols-2">
-            <GeneratorForm defaultTab="interior" className="" />
-
-            <ShowcaseImage />
-          </div>
-        </div>
-      </section>
-
-      {/* НАС ВЫБИРАЮТ */}
-      <section className="border-b border-border bg-secondary/60">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-            Нас выбирают
-          </h2>
-          <div className="mt-10 grid grid-cols-2 gap-y-10 lg:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label} className="px-2">
-                <p className="font-display text-4xl tracking-[0.02em] sm:text-5xl">{s.value}</p>
-                <p className="mt-2 max-w-[16ch] text-sm text-muted-foreground">{s.label}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">О нас писали</p>
-            <div className="flex flex-wrap items-center gap-2">
-              {press.map((p) => (
-                <span
-                  key={p}
-                  className="border border-border bg-card px-4 py-2 font-display text-lg tracking-[0.02em] text-muted-foreground"
-                >
-                  {p}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* СГЕНЕРИРОВАНО У НАС */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <div>
-            <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
-              Сгенерировано у нас
-            </h2>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Квартиры, участки и фасады. Наведите на плитку — покажем исходное фото до генерации.
-            </p>
-          </div>
           <div className="mt-10">
-            <UserMosaic tiles={mosaicTiles} />
+            <PricingPlans ns="home" />
           </div>
+
           <div className="mt-8 flex flex-wrap gap-3">
             <StartButton label="Сгенерировать свой" />
             <BuyButton />
@@ -377,8 +264,9 @@ function Home() {
             <h2 className="font-display text-4xl leading-tight tracking-[0.02em] sm:text-5xl">
               Тарифы
             </h2>
-            <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-              Один кредит — один кадр. Кредиты не сгорают, подписки нет.
+            <p className="mt-3 text-sm text-muted-foreground">
+              1 кредит — 1 кадр в стандартном качестве, 2 кредита — в PRO. Кредиты не сгорают,
+              подписки нет.
             </p>
           </div>
 
