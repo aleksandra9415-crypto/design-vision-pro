@@ -195,6 +195,10 @@ function Pricing() {
                     <li key={f}>
                       <StyleList id={p.id} />
                     </li>
+                  ) : f.startsWith("Коммерческая лицензия включена") ? (
+                    <li key={f}>
+                      <LicenseNote id={p.id} text={f} />
+                    </li>
                   ) : (
                     <li
                       key={f}
