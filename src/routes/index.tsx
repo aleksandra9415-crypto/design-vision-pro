@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, Check, ChevronDown, Sparkles, Upload } from "
 import { PageShell } from "@/components/site/PageShell";
 import { UserMosaic } from "@/components/site/UserMosaic";
 import { Button } from "@/components/ui/button";
+import { GeneratorForm } from "@/components/site/GeneratorForm";
 import { images, plans } from "@/lib/mock-data";
 import heroWide from "@/assets/hero-wide.jpg";
 import styleScandi from "@/assets/style-scandi.jpg";
@@ -311,63 +312,7 @@ function Home() {
           </div>
 
           <div className="mt-10 grid items-stretch gap-8 lg:grid-cols-2">
-            <div className="flex flex-col gap-6 border border-border bg-card p-6 sm:p-8">
-              <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
-                {["Интерьер", "Ландшафт", "Фасад"].map((t, i) => (
-                  <span
-                    key={t}
-                    className={`flex-1 px-3 py-2 text-center ${
-                      i === 0 ? "bg-background font-medium" : "text-muted-foreground"
-                    }`}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-border bg-muted/30 px-6 py-8 text-center">
-                <Upload className="size-6 text-muted-foreground" />
-                <p className="text-sm font-medium">Перетащите фото комнаты</p>
-                <p className="text-xs text-muted-foreground">или нажмите, чтобы выбрать</p>
-                <Button asChild variant="outline" size="sm" className="mt-2 rounded-none">
-                  <Link to="/app/generator" search={{ tab: "interior" }}>
-                    Выбрать файл
-                  </Link>
-                </Button>
-                <p className="mt-1 text-xs text-muted-foreground">JPG, PNG до 15 МБ</p>
-              </div>
-
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">Тип помещения</p>
-                <div className="flex items-center justify-between border border-border bg-background px-3 py-2.5 text-sm">
-                  <span>Гостиная</span>
-                  <ChevronDown className="size-4 text-muted-foreground" />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">Стиль</p>
-                <div className="flex items-center justify-between border border-border bg-background px-3 py-2.5 text-sm">
-                  <span>Сканди</span>
-                  <ChevronDown className="size-4 text-muted-foreground" />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                  Уточнения (необязательно)
-                </p>
-                <p className="border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
-                  тёплый свет, зелёный акцент, больше растений
-                </p>
-              </div>
-
-              <Button asChild size="lg" className="mt-auto w-full rounded-none">
-                <Link to="/app/generator" search={{ tab: "interior" }}>
-                  <Sparkles className="size-4" /> Сгенерировать дизайн
-                </Link>
-              </Button>
-            </div>
+            <GeneratorForm defaultTab="interior" className="" />
 
             <ShowcaseImage />
           </div>

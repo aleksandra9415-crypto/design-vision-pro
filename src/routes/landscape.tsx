@@ -5,6 +5,7 @@ import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { UserMosaic } from "@/components/site/UserMosaic";
 import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
 import { Button } from "@/components/ui/button";
+import { GeneratorForm } from "@/components/site/GeneratorForm";
 import { images, plans } from "@/lib/mock-data";
 
 import landHero from "@/assets/land-hero.jpg";
@@ -211,65 +212,7 @@ function LandscapePage() {
               />
             </div>
 
-            <div className="flex h-full flex-col gap-6 border border-border bg-card p-6 sm:p-8">
-              <div className="flex gap-1 border border-border bg-muted p-1 text-sm">
-                {["Интерьер", "Ландшафт", "Фасад"].map((t, i) => (
-                  <span
-                    key={t}
-                    className={`flex-1 px-3 py-2 text-center ${
-                      i === 1 ? "bg-background font-medium" : "text-muted-foreground"
-                    }`}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-border bg-muted/30 px-6 py-8 text-center">
-                <Upload className="size-6 text-muted-foreground" />
-                <p className="text-sm font-medium">Перетащите фото участка</p>
-                <p className="text-xs text-muted-foreground">или нажмите, чтобы выбрать</p>
-                <Button asChild variant="outline" size="sm" className="mt-2 rounded-none">
-                  <Link to="/app/generator" search={{ tab: "landscape" }}>
-                    Выбрать файл
-                  </Link>
-                </Button>
-                <p className="mt-1 text-xs text-muted-foreground">JPG, PNG до 15 МБ</p>
-              </div>
-
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                  Тип объекта
-                </p>
-                <div className="flex items-center justify-between border border-border bg-background px-3 py-2.5 text-sm">
-                  <span>Участок у дома</span>
-                  <ChevronDown className="size-4 text-muted-foreground" />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">Стиль</p>
-                <div className="flex items-center justify-between border border-border bg-background px-3 py-2.5 text-sm">
-                  <span>Природный (пейзажный)</span>
-                  <ChevronDown className="size-4 text-muted-foreground" />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                  Уточнения (необязательно)
-                </p>
-                <p className="border border-border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
-                  добавь дорожку к террасе и мягкий свет вдоль газона
-                </p>
-              </div>
-
-              <Button asChild size="lg" className="mt-auto w-full rounded-none">
-                <Link to="/app/generator" search={{ tab: "landscape" }}>
-                  <Sparkles className="size-4" /> Сгенерировать дизайн
-                </Link>
-              </Button>
-            </div>
+            <GeneratorForm defaultTab="landscape" className="h-full " />
           </div>
         </div>
       </section>
