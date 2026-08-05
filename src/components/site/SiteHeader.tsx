@@ -51,14 +51,24 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
           {nav.map((item) => (
             <Link
               key={item.to}
-              to={item.to}
+              {...navLinkProps(item, signedIn)}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{ className: "text-foreground font-medium" }}
             >
               {item.label}
             </Link>
           ))}
+          {signedIn && (
+            <Link
+              to="/app/account"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              activeProps={{ className: "text-foreground font-medium" }}
+            >
+              Кабинет
+            </Link>
+          )}
         </nav>
+
 
         <div className="flex shrink-0 items-center gap-2">
           {signedIn ? (
