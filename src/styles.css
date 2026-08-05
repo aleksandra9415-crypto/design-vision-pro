@@ -186,6 +186,15 @@
     font-variation-settings: "slnt" 0, "CRSV" 0, "SHRP" 0;
   }
 
+  small,
+  figcaption,
+  caption,
+  label,
+  footer,
+  footer * {
+    font-weight: 300;
+  }
+
   h1,
   h2,
   h3,
