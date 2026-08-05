@@ -22,6 +22,7 @@ import {
   roomTypes,
   tabs,
   type TabId,
+  type StyleItem,
 } from "@/lib/mock-data";
 
 const config: Record<
