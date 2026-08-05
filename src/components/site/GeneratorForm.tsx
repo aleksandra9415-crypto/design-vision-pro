@@ -294,11 +294,12 @@ export function GeneratorForm({
                     }`}
                   >
                     <img
-                      src={cfg.preview}
+                      src={s.image}
                       alt={s.name}
                       loading="lazy"
                       className="h-20 w-full object-cover"
                     />
+
                     {active && (
                       <span className="absolute right-1.5 top-1.5 grid size-5 place-items-center rounded-full bg-foreground text-background">
                         <Check className="size-3" />
