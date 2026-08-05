@@ -141,7 +141,7 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
       {open && (
         <div className="border-t border-border bg-background lg:hidden">
           <nav className="mx-auto flex max-w-6xl flex-col px-4 py-2">
-            {nav.map((item) => (
+            {visibleNav(signedIn).map((item) => (
               <Link
                 key={item.to}
                 {...navLinkProps(item, signedIn)}
@@ -153,6 +153,14 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
             ))}
             {signedIn ? (
               <>
+                <Link
+                  to="/app/history"
+                  search={{ tab: "all" as const }}
+                  onClick={() => setOpen(false)}
+                  className="py-2 text-sm text-muted-foreground"
+                >
+                  Мои генерации
+                </Link>
                 <Link
                   to="/app/account"
                   onClick={() => setOpen(false)}
