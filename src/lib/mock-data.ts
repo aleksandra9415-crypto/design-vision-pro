@@ -309,40 +309,51 @@ export const faqItems = [
 ];
 
 
-export const generationHistory = [
-  {
-    id: "gen-1041",
-    date: "2 августа 2026",
-    tab: "Интерьер",
-    style: "Сканди",
-    room: "Гостиная",
-    thumb: interiorAfter,
-  },
-  {
-    id: "gen-1038",
-    date: "28 июля 2026",
-    tab: "Фасад",
-    style: "Современный фасад",
-    room: "Фасад дома",
-    thumb: exteriorAfter,
-  },
-  {
-    id: "gen-1032",
-    date: "21 июля 2026",
-    tab: "Ландшафт",
-    style: "Английский сад",
-    room: "Участок с газоном",
-    thumb: landscapeAfter,
-  },
-  {
-    id: "gen-1027",
-    date: "14 июля 2026",
-    tab: "Интерьер",
-    style: "Джапанди",
-    room: "Спальня",
-    thumb: interiorAfter,
-  },
+export type GenerationHistoryItem = {
+  id: string;
+  date: string;
+  tabId: TabId;
+  tab: string;
+  style: string;
+  room: string;
+  thumb: string;
+  before: string;
+  after: string;
+};
+
+const historySeed: { id: string; date: string; tabId: TabId; style: string; room: string }[] = [
+  { id: "gen-1041", date: "2 августа 2026", tabId: "interior", style: "Сканди", room: "Гостиная" },
+  { id: "gen-1038", date: "28 июля 2026", tabId: "facade", style: "Современный фасад", room: "Фасад дома" },
+  { id: "gen-1032", date: "21 июля 2026", tabId: "landscape", style: "Английский сад", room: "Участок с газоном" },
+  { id: "gen-1027", date: "14 июля 2026", tabId: "interior", style: "Джапанди", room: "Спальня" },
+  { id: "gen-1024", date: "9 июля 2026", tabId: "interior", style: "Минимализм", room: "Кухня-гостиная" },
+  { id: "gen-1019", date: "3 июля 2026", tabId: "landscape", style: "Японский сад", room: "Зона отдыха" },
+  { id: "gen-1015", date: "27 июня 2026", tabId: "facade", style: "Скандинавский фасад", room: "Загородный дом" },
+  { id: "gen-1012", date: "22 июня 2026", tabId: "interior", style: "Лофт", room: "Кабинет" },
+  { id: "gen-1008", date: "16 июня 2026", tabId: "landscape", style: "Средиземноморский", room: "Двор с террасой" },
+  { id: "gen-1004", date: "11 июня 2026", tabId: "interior", style: "Классика", room: "Столовая" },
+  { id: "gen-0998", date: "5 июня 2026", tabId: "facade", style: "Классический фасад", room: "Таунхаус" },
+  { id: "gen-0993", date: "30 мая 2026", tabId: "interior", style: "Бохо", room: "Детская" },
+  { id: "gen-0989", date: "24 мая 2026", tabId: "landscape", style: "Минималистичный сад", room: "Палисадник" },
+  { id: "gen-0984", date: "18 мая 2026", tabId: "interior", style: "Хюгге", room: "Спальня" },
+  { id: "gen-0980", date: "12 мая 2026", tabId: "facade", style: "Минималистичный фасад", room: "Дом из бруса" },
+  { id: "gen-0975", date: "6 мая 2026", tabId: "interior", style: "Современный", room: "Ванная" },
 ];
+
+const historyPairs: Record<TabId, { label: string; before: string; after: string }> = {
+  interior: { label: "Интерьер", before: interiorBefore, after: interiorAfter },
+  landscape: { label: "Ландшафт", before: landscapeBefore, after: landscapeAfter },
+  facade: { label: "Фасад", before: exteriorBefore, after: exteriorAfter },
+};
+
+export const generationHistory: GenerationHistoryItem[] = historySeed.map((g) => ({
+  ...g,
+  tab: historyPairs[g.tabId].label,
+  thumb: historyPairs[g.tabId].after,
+  before: historyPairs[g.tabId].before,
+  after: historyPairs[g.tabId].after,
+}));
+
 
 export const howItWorks = [
   { title: "Загрузите фото", text: "Снимок комнаты, фасада или участка." },
