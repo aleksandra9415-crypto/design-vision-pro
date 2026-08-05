@@ -8,8 +8,8 @@ type FilterId = TabId | "all";
 
 export const Route = createFileRoute("/app/history")({
   validateSearch: (search: Record<string, unknown>) => ({
-    tab: (["all", "interior", "landscape", "facade"].includes(String(search.tab))
-      ? (search.tab as FilterId)
+    tab: (["all", "interior", "landscape", "facade"].includes(String(search["tab"]))
+      ? (search["tab"] as FilterId)
       : "all") as FilterId,
   }),
   head: () => ({
