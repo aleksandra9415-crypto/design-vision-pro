@@ -23,6 +23,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AppAccountRouteImport } from './routes/app.account'
 import { Route as AppBillingRouteImport } from './routes/app.billing'
 import { Route as AppGeneratorRouteImport } from './routes/app.generator'
+import { Route as AppHistoryRouteImport } from './routes/app.history'
 import { Route as AppResultRouteImport } from './routes/app.result'
 
 const IndexRoute = IndexRouteImport.update({
@@ -95,6 +96,11 @@ const AppGeneratorRoute = AppGeneratorRouteImport.update({
   path: '/app/generator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppHistoryRoute = AppHistoryRouteImport.update({
+  id: '/app/history',
+  path: '/app/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppResultRoute = AppResultRouteImport.update({
   id: '/app/result',
   path: '/app/result',
@@ -116,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/app/account': typeof AppAccountRoute
   '/app/billing': typeof AppBillingRoute
   '/app/generator': typeof AppGeneratorRoute
+  '/app/history': typeof AppHistoryRoute
   '/app/result': typeof AppResultRoute
 }
 export interface FileRoutesByTo {
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/app/account': typeof AppAccountRoute
   '/app/billing': typeof AppBillingRoute
   '/app/generator': typeof AppGeneratorRoute
+  '/app/history': typeof AppHistoryRoute
   '/app/result': typeof AppResultRoute
 }
 export interface FileRoutesById {
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/app/account': typeof AppAccountRoute
   '/app/billing': typeof AppBillingRoute
   '/app/generator': typeof AppGeneratorRoute
+  '/app/history': typeof AppHistoryRoute
   '/app/result': typeof AppResultRoute
 }
 export interface FileRouteTypes {
@@ -170,6 +179,7 @@ export interface FileRouteTypes {
     | '/app/account'
     | '/app/billing'
     | '/app/generator'
+    | '/app/history'
     | '/app/result'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -187,6 +197,7 @@ export interface FileRouteTypes {
     | '/app/account'
     | '/app/billing'
     | '/app/generator'
+    | '/app/history'
     | '/app/result'
   id:
     | '__root__'
@@ -204,6 +215,7 @@ export interface FileRouteTypes {
     | '/app/account'
     | '/app/billing'
     | '/app/generator'
+    | '/app/history'
     | '/app/result'
   fileRoutesById: FileRoutesById
 }
@@ -222,6 +234,7 @@ export interface RootRouteChildren {
   AppAccountRoute: typeof AppAccountRoute
   AppBillingRoute: typeof AppBillingRoute
   AppGeneratorRoute: typeof AppGeneratorRoute
+  AppHistoryRoute: typeof AppHistoryRoute
   AppResultRoute: typeof AppResultRoute
 }
 
@@ -325,6 +338,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/history': {
+      id: '/app/history'
+      path: '/app/history'
+      fullPath: '/app/history'
+      preLoaderRoute: typeof AppHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/result': {
       id: '/app/result'
       path: '/app/result'
@@ -350,18 +370,9 @@ const rootRouteChildren: RootRouteChildren = {
   AppAccountRoute: AppAccountRoute,
   AppBillingRoute: AppBillingRoute,
   AppGeneratorRoute: AppGeneratorRoute,
+  AppHistoryRoute: AppHistoryRoute,
   AppResultRoute: AppResultRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

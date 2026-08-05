@@ -178,13 +178,24 @@ function Account() {
         </section>
       </div>
 
-      <h2 className="mt-8 font-display text-2xl tracking-[0.02em]">История генераций</h2>
-      <p className="mt-1 text-sm text-muted-foreground">
-        Готовые кадры доступны для скачивания в любой момент.
-      </p>
+      <div className="mt-8 flex flex-wrap items-end justify-between gap-2">
+        <div>
+          <h2 className="font-display text-2xl tracking-[0.02em]">История генераций</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Готовые кадры доступны для скачивания в любой момент.
+          </p>
+        </div>
+        <Link
+          to="/app/history"
+          search={{ tab: "all" }}
+          className="text-sm font-medium underline underline-offset-4 hover:text-primary"
+        >
+          Все генерации →
+        </Link>
+      </div>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {generationHistory.map((g) => (
+        {generationHistory.slice(0, 4).map((g) => (
           <article key={g.id} className="flex flex-col border border-border bg-card">
             <img
               src={g.thumb}
@@ -201,11 +212,14 @@ function Account() {
                 {g.tab} · {g.date}
               </p>
               <Button asChild size="sm" variant="outline" className="mt-3 w-full rounded-none">
-                <Link to="/app/result">Открыть</Link>
+                <Link to="/app/result" search={{ id: g.id }}>
+                  Открыть
+                </Link>
               </Button>
             </div>
           </article>
         ))}
+
       </div>
 
       <section className="mt-8 border border-border bg-card p-5 sm:p-6">
