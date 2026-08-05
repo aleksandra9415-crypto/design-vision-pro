@@ -149,7 +149,7 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
             {nav.map((item) => (
               <Link
                 key={item.to}
-                to={item.to}
+                {...navLinkProps(item, signedIn)}
                 onClick={() => setOpen(false)}
                 className="py-2 text-sm text-muted-foreground"
               >
