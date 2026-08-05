@@ -34,6 +34,7 @@ export const tabs: { id: TabId; label: string }[] = [
 ];
 
 // Стили берутся из единого источника src/lib/styles.ts
+import { styleGroups } from "./styles";
 export {
   interiorStyleList as interiorStyles,
   landscapeStyleList as landscapeStyles,
@@ -42,6 +43,7 @@ export {
   totalStyles,
   type StyleItem,
 } from "./styles";
+
 
 
 export const roomTypes = [
