@@ -101,16 +101,6 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
                   <DropdownMenuItem asChild className="rounded-none">
                     <Link to="/app/account">Личный кабинет</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="rounded-none">
-                    <Link to="/app/history" search={{ tab: "all" }}>
-                      История генераций
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="rounded-none">
-                    <Link to="/app/generator" search={{ tab: "interior" }}>
-                      Генератор
-                    </Link>
-                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     className="rounded-none"
