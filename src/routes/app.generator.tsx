@@ -35,6 +35,7 @@ function Generator() {
       <GeneratorForm
         key={tab}
         defaultTab={tab}
+        advanced
         onTabChange={(next) => navigate({ to: "/app/generator", search: { tab: next } })}
       />
 
