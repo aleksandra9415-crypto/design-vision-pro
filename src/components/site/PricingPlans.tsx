@@ -194,14 +194,19 @@ export function PricingPlans({
                     <LicenseNote id={`${ns}-${p.id}`} text={f} />
                   </li>
                 ) : (
-                  <li
-                    key={f}
-                    className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground"
-                  >
+                  <li key={f} className="flex items-start gap-2 text-sm leading-relaxed">
                     <Check className="mt-0.5 size-4 shrink-0 text-foreground" />
-                    <span>{f}</span>
+                    <span className="flex-1">
+                      <span className="block text-foreground">{f.split(" — ")[0]}</span>
+                      {f.includes(" — ") && (
+                        <span className="mt-1 block text-muted-foreground">
+                          {f.split(" — ").slice(1).join(" — ")}
+                        </span>
+                      )}
+                    </span>
                   </li>
                 ),
+
               )}
             </ul>
 
