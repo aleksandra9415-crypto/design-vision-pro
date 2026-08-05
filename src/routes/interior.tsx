@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { GeneratorForm } from "@/components/site/GeneratorForm";
 import {
   images,
+  interiorStyles,
 } from "@/lib/mock-data";
 
 import heroWide from "@/assets/hero-wide.jpg";
