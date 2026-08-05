@@ -24,6 +24,10 @@ const nav = [
 
 type NavItem = (typeof nav)[number];
 
+function visibleNav(signedIn: boolean): readonly NavItem[] {
+  return signedIn ? nav.filter((item) => "tab" in item) : nav;
+}
+
 function navLinkProps(item: NavItem, signedIn: boolean) {
   if (signedIn && "tab" in item) {
     return {
@@ -48,7 +52,7 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
-          {nav.map((item) => (
+          {visibleNav(signedIn).map((item) => (
             <Link
               key={item.to}
               {...navLinkProps(item, signedIn)}
@@ -60,11 +64,12 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
           ))}
           {signedIn && (
             <Link
-              to="/app/account"
+              to="/app/history"
+              search={{ tab: "all" as const }}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{ className: "text-foreground font-medium" }}
             >
-              Кабинет
+              Мои генерации
             </Link>
           )}
         </nav>
@@ -76,7 +81,7 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
               <Link
                 to="/app/billing"
                 search={{ plan: "proekt" }}
-                className="hidden border border-border px-3 py-1.5 text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground sm:inline-block"
+                className="hidden h-9 items-center border border-border px-3 text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
               >
                 {accountBalance} кредитов
               </Link>
@@ -84,7 +89,7 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
                 <DropdownMenuTrigger asChild>
                   <button
                     type="button"
-                    className="flex items-center gap-2 border border-border px-2.5 py-1.5 text-sm transition-colors hover:bg-secondary"
+                    className="flex h-9 items-center gap-2 border border-border px-3 text-sm transition-colors hover:bg-secondary"
                   >
                     <span className="grid size-6 place-items-center rounded-full bg-foreground text-background">
                       <User className="size-3.5" />
