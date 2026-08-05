@@ -199,7 +199,7 @@ export function PricingPlans({
                     <span className="flex-1">
                       <span className="block text-foreground">{f.split(" — ")[0]}</span>
                       {f.includes(" — ") && (
-                        <span className="mt-1 block text-muted-foreground">
+                        <span className="mt-1 block text-xs font-normal text-muted-foreground">
                           {f.split(" — ").slice(1).join(" — ")}
                         </span>
                       )}
