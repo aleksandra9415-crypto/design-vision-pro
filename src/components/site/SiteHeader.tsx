@@ -128,13 +128,27 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
               </Link>
             ))}
             {signedIn ? (
-              <Link
-                to="/app/account"
-                onClick={() => setOpen(false)}
-                className="py-2 text-sm font-medium"
-              >
-                Личный кабинет · {accountBalance} кредитов
-              </Link>
+              <>
+                <Link
+                  to="/app/account"
+                  onClick={() => setOpen(false)}
+                  className="py-2 text-sm font-medium"
+                >
+                  Личный кабинет · {accountBalance} кредитов
+                </Link>
+                <button
+                  type="button"
+                  className="py-2 text-left text-sm text-muted-foreground"
+                  onClick={() => {
+                    setOpen(false);
+                    toast.success("Вы вышли из аккаунта (демо)");
+                    navigate({ to: "/" });
+                  }}
+                >
+                  Выйти
+                </button>
+              </>
+
             ) : (
               <Link to="/auth" onClick={() => setOpen(false)} className="py-2 text-sm font-medium">
                 Войти
