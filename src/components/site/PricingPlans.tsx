@@ -30,7 +30,7 @@ function StyleList({ id }: { id: string }) {
         <div id={`styles-${id}`} className="mt-3 space-y-3 border-l border-border pl-4">
           {styleCatalog.map((g) => (
             <div key={g.group}>
-              <p className="text-[11px] uppercase tracking-widest text-muted-foreground">
+              <p className="text-[11px] font-light uppercase tracking-widest text-muted-foreground">
                 {g.group} · {g.items.length}
               </p>
               <p className="mt-1 text-sm text-muted-foreground">{g.items.join(", ")}</p>
@@ -119,12 +119,12 @@ function PayMethods() {
   const methods = ["МИР", "VISA", "Mastercard", "СБП"];
   return (
     <div>
-      <p className="mb-3 text-xs font-medium text-muted-foreground">Способы оплаты</p>
+      <p className="mb-3 text-xs font-light text-muted-foreground">Способы оплаты</p>
       <div className="flex flex-wrap gap-2">
         {methods.map((m) => (
           <span
             key={m}
-            className="border border-border px-2 py-1 text-[11px] uppercase tracking-widest text-muted-foreground"
+            className="border border-border px-2 py-1 text-[11px] font-light uppercase tracking-widest text-muted-foreground"
           >
             {m}
           </span>
@@ -132,7 +132,7 @@ function PayMethods() {
       </div>
       <Link
         to="/payment-info"
-        className="mt-3 inline-block text-xs text-muted-foreground underline underline-offset-2"
+        className="mt-3 inline-block text-xs font-light text-muted-foreground underline underline-offset-2"
       >
         Способы оплаты и безопасность
       </Link>
@@ -176,11 +176,11 @@ export function PricingPlans({
             <p className="mt-6 font-display text-4xl tracking-[0.02em]">{p.price} ₽</p>
             <p className="mt-4 text-sm font-medium">{p.credits} кредитов</p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-            <p className="mt-4 text-xs text-muted-foreground">{p.perFrame}</p>
+            <p className="mt-4 text-xs font-light text-muted-foreground">{p.perFrame}</p>
 
             <hr className="mt-8 border-border" />
 
-            <p className="mt-8 text-[11px] uppercase tracking-widest text-muted-foreground">
+            <p className="mt-8 text-[11px] font-light uppercase tracking-widest text-muted-foreground">
               Что входит
             </p>
             <ul className="mt-4 flex-1 space-y-4">
@@ -199,7 +199,7 @@ export function PricingPlans({
                     <span className="flex-1">
                       <span className="block text-foreground">{f.split(" — ")[0]}</span>
                       {f.includes(" — ") && (
-                        <span className="mt-1 block text-xs font-normal text-muted-foreground">
+                        <span className="mt-1 block text-xs font-light text-muted-foreground">
                           {f.split(" — ").slice(1).join(" — ")}
                         </span>
                       )}
