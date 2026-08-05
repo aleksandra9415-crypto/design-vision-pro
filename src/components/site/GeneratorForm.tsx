@@ -154,7 +154,7 @@ export function GeneratorForm({
         after: pair.after,
         createdAt: new Date().toLocaleDateString("ru-RU"),
       });
-      navigate({ to: "/app/result" });
+      navigate({ to: "/app/result", search: { id: undefined } });
     }, 2500);
   };
 
