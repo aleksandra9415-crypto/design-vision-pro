@@ -7,8 +7,12 @@ import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { loadGeneration, mockPair, type GenerationResult } from "@/lib/generation-store";
+import { generationHistory } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/app/result")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    id: typeof search["id"] === "string" ? search["id"] : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Результат генерации — сравнение до и после" },
@@ -31,12 +35,33 @@ const fallback: GenerationResult = {
 };
 
 function Result() {
-  const [result, setResult] = useState<GenerationResult>(fallback);
+  const { id } = Route.useSearch();
+  const saved = id ? generationHistory.find((g) => g.id === id) : undefined;
+  const fromHistory: GenerationResult | null = saved
+    ? {
+        tab: saved.tabId,
+        tabLabel: saved.tab,
+        type: saved.room,
+        style: saved.style,
+        notes: "",
+        before: saved.before,
+        after: saved.after,
+        createdAt: saved.date,
+      }
+    : null;
+
+  const [result, setResult] = useState<GenerationResult>(fromHistory ?? fallback);
 
   useEffect(() => {
-    const saved = loadGeneration();
-    if (saved) setResult(saved);
-  }, []);
+    if (fromHistory) {
+      setResult(fromHistory);
+      return;
+    }
+    const stored = loadGeneration();
+    if (stored) setResult(stored);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
 
   return (
     <AppShell kicker="Результат" title="Готовый кадр" subtitle={`Генерация от ${result.createdAt}`}>
