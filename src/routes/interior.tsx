@@ -29,20 +29,8 @@ import roomKitchen from "@/assets/room-kitchen.jpg";
 import roomBath from "@/assets/room-bath.jpg";
 import roomKids from "@/assets/room-kids.jpg";
 
-const styleGallery = [
-  { name: "Сканди", desc: "Светлое дерево и мягкий текстиль", image: styleScandi },
-  { name: "Лофт", desc: "Кирпич, металл, открытые коммуникации", image: styleLoft },
-  { name: "Минимализм", desc: "Чистые линии, ничего лишнего", image: styleMinimal },
-  { name: "Классика", desc: "Молдинги, симметрия, благородные тона", image: styleClassic },
-  { name: "Джапанди", desc: "Японская сдержанность и северный уют", image: styleJapandi },
-  { name: "Хюгге", desc: "Тёплый свет, пледы, натуральные фактуры", image: styleHygge },
-  { name: "Неоклассика", desc: "Лепнина в спокойной серой гамме", image: styleNeoclassic },
-  { name: "Эклектика", desc: "Смешение эпох, яркое искусство", image: styleEclectic },
-  { name: "Бохо", desc: "Ротанг, растения, этнические узоры", image: styleBoho },
-  { name: "Современный", desc: "Актуальные формы и материалы", image: roomKitchen },
-  { name: "Спа-минимализм", desc: "Микроцемент и мягкий свет", image: roomBath },
-  { name: "Тёплый нейтральный", desc: "Дерево и молочные оттенки", image: roomKids },
-];
+const styleGallery = interiorStyles;
+
 
 const revealItems = [
   { before: images.interiorBefore, after: styleScandi, alt: "Гостиная в стиле сканди" },
