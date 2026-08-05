@@ -7,7 +7,7 @@ import { UserMosaic } from "@/components/site/UserMosaic";
 import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
 import { Button } from "@/components/ui/button";
 import { GeneratorForm } from "@/components/site/GeneratorForm";
-import { images } from "@/lib/mock-data";
+import { images, landscapeStyles } from "@/lib/mock-data";
 
 import landHero from "@/assets/land-hero.jpg";
 import landNatural from "@/assets/land-natural.jpg";
@@ -42,16 +42,8 @@ const steps = [
   { title: "Результат", text: "Сравниваете было/стало, просите правки словами и скачиваете кадр в высоком разрешении." },
 ];
 
-const landscapeStyleGallery = [
-  { name: "Природный (пейзажный)", desc: "Свободные формы, естественные посадки, минимум ухода", image: landNatural },
-  { name: "Регулярный (французский)", desc: "Симметрия, стриженые кустарники, чёткие линии", image: landFormal },
-  { name: "Минималистичный двор", desc: "Газон, мощение, несколько акцентных растений", image: landMinimal },
-  { name: "Японский сад", desc: "Камни, вода, сдержанная палитра", image: landJapan },
-  { name: "Средиземноморский", desc: "Гравий, хвойники, керамика, тёплые тона", image: landMedit },
-  { name: "Кантри/огородный", desc: "Грядки, плодовые деревья, домашний уют", image: landCountry },
-  { name: "Северный/хвойный", desc: "Хвойники, натуральный камень, приглушённые тона", image: landNordic },
-  { name: "Современный", desc: "Геометричное мощение, чёткие зоны, лаконичное озеленение", image: landModern },
-];
+const landscapeStyleGallery = landscapeStyles;
+
 
 const mosaicTiles = [
   { before: landOld, after: landModern, alt: "Современный двор с мощением", span: "col-span-2 row-span-2 lg:col-span-3 lg:row-span-2" },
@@ -274,7 +266,7 @@ function LandscapePage() {
               Стили ландшафта
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              Восемь направлений, с которых обычно начинают работу над участком.
+              Двенадцать направлений, с которых обычно начинают работу над участком.
             </p>
           </div>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">

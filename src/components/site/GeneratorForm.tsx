@@ -22,13 +22,14 @@ import {
   roomTypes,
   tabs,
   type TabId,
+  type StyleItem,
 } from "@/lib/mock-data";
 
 const config: Record<
   TabId,
   {
     types: readonly string[];
-    styles: readonly { id: string; name: string; desc: string }[];
+    styles: readonly StyleItem[];
     typeLabel: string;
     upload: string;
     notesPlaceholder: string;
@@ -294,11 +295,12 @@ export function GeneratorForm({
                     }`}
                   >
                     <img
-                      src={cfg.preview}
+                      src={s.image}
                       alt={s.name}
                       loading="lazy"
                       className="h-20 w-full object-cover"
                     />
+
                     {active && (
                       <span className="absolute right-1.5 top-1.5 grid size-5 place-items-center rounded-full bg-foreground text-background">
                         <Check className="size-3" />

@@ -33,34 +33,18 @@ export const tabs: { id: TabId; label: string }[] = [
   { id: "facade", label: "Фасад" },
 ];
 
-export const interiorStyles = [
-  { id: "scandi", name: "Сканди", desc: "Светлое дерево, мягкий текстиль" },
-  { id: "loft", name: "Лофт", desc: "Кирпич, металл, открытые коммуникации" },
-  { id: "minimal", name: "Минимализм", desc: "Чистые линии, ничего лишнего" },
-  { id: "classic", name: "Классика", desc: "Молдинги, симметрия, благородные тона" },
-  { id: "japandi", name: "Джапанди", desc: "Японская сдержанность и уют скандинавии" },
-  { id: "hygge", name: "Хюгге", desc: "Тёплый свет, пледы, натуральные фактуры" },
-  { id: "modern", name: "Современный", desc: "Актуальные формы и материалы" },
-  { id: "boho", name: "Бохо", desc: "Ротанг, растения, этнические узоры" },
-];
+// Стили берутся из единого источника src/lib/styles.ts
+import { styleGroups } from "./styles";
+export {
+  interiorStyleList as interiorStyles,
+  landscapeStyleList as landscapeStyles,
+  facadeStyleList as facadeStyles,
+  styleGroups,
+  totalStyles,
+  type StyleItem,
+} from "./styles";
 
-export const landscapeStyles = [
-  { id: "eng-garden", name: "Английский сад", desc: "Живые изгороди, миксбордеры" },
-  { id: "jp-garden", name: "Японский сад", desc: "Камни, вода, хвойные" },
-  { id: "minimal-yard", name: "Минималистичный участок", desc: "Газон, геометрия дорожек" },
-  { id: "eco", name: "Эко-стиль", desc: "Природные материалы, злаки" },
-  { id: "meadow", name: "Природный луг", desc: "Злаки и многолетники без стрижки" },
-  { id: "patio", name: "Патио и терраса", desc: "Зона отдыха, мощение, свет" },
-];
 
-export const facadeStyles = [
-  { id: "modern-facade", name: "Современный фасад", desc: "Панели, панорамные окна" },
-  { id: "scandi-house", name: "Скандинавский дом", desc: "Дерево, тёмная крыша" },
-  { id: "barn", name: "Барнхаус", desc: "Строгий силуэт, тёмная отделка" },
-  { id: "brick", name: "Кирпич", desc: "Клинкер и спокойная классика" },
-  { id: "plaster", name: "Штукатурка", desc: "Светлые нейтральные тона" },
-  { id: "night-light", name: "Вечерний свет", desc: "Архитектурная подсветка фасада" },
-];
 
 export const roomTypes = [
   "Гостиная",
@@ -129,59 +113,11 @@ export const testimonials = [
   },
 ];
 
-export const styleCatalog: { group: string; items: string[] }[] = [
-  {
-    group: "Интерьер",
-    items: [
-      "Сканди",
-      "Лофт",
-      "Минимализм",
-      "Классика",
-      "Джапанди",
-      "Хюгге",
-      "Современный",
-      "Бохо",
-      "Спа-минимализм",
-      "Тёплый нейтральный",
-      "Неоклассика",
-      "Эклектика",
-    ],
-  },
-  {
-    group: "Фасад",
-    items: [
-      "Современный",
-      "Скандинавский",
-      "Классический",
-      "Лофт",
-      "Шале",
-      "Хай-тек",
-      "Средиземноморский",
-      "Эко-стиль",
-      "Минимализм",
-      "Барнхаус",
-    ],
-  },
-  {
-    group: "Ландшафт",
-    items: [
-      "Природный",
-      "Регулярный",
-      "Минималистичный двор",
-      "Японский сад",
-      "Средиземноморский",
-      "Кантри",
-      "Северный/хвойный",
-      "Современный",
-      "Альпийский",
-      "Прованс",
-      "Русская усадьба",
-      "Контемпорари",
-    ],
-  },
-];
+export const styleCatalog: { group: string; items: string[] }[] = styleGroups.map((g) => ({
+  group: g.group,
+  items: g.items.map((s) => s.name),
+}));
 
-export const totalStyles = styleCatalog.reduce((n, g) => n + g.items.length, 0);
 
 export const plans = [
   {
