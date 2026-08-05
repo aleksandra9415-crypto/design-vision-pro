@@ -12,13 +12,27 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { accountBalance, accountUser } from "@/lib/mock-data";
 
+import type { TabId } from "@/lib/mock-data";
+
 const nav = [
-  { to: "/interior", label: "Интерьер" },
-  { to: "/landscape", label: "Ландшафт" },
-  { to: "/facade", label: "Фасад" },
+  { to: "/interior", label: "Интерьер", tab: "interior" },
+  { to: "/landscape", label: "Ландшафт", tab: "landscape" },
+  { to: "/facade", label: "Фасад", tab: "facade" },
   { to: "/pricing", label: "Тарифы" },
   { to: "/faq", label: "Вопросы" },
 ] as const;
+
+type NavItem = (typeof nav)[number];
+
+function navLinkProps(item: NavItem, signedIn: boolean) {
+  if (signedIn && "tab" in item) {
+    return {
+      to: "/app/generator" as const,
+      search: { tab: item.tab as TabId },
+    };
+  }
+  return { to: item.to };
+}
 
 export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
   const [open, setOpen] = useState(false);
@@ -37,14 +51,24 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
           {nav.map((item) => (
             <Link
               key={item.to}
-              to={item.to}
+              {...navLinkProps(item, signedIn)}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{ className: "text-foreground font-medium" }}
             >
               {item.label}
             </Link>
           ))}
+          {signedIn && (
+            <Link
+              to="/app/account"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              activeProps={{ className: "text-foreground font-medium" }}
+            >
+              Кабинет
+            </Link>
+          )}
         </nav>
+
 
         <div className="flex shrink-0 items-center gap-2">
           {signedIn ? (
@@ -73,7 +97,9 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
                     <Link to="/app/account">Личный кабинет</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild className="rounded-none">
-                    <Link to="/app/history">История генераций</Link>
+                    <Link to="/app/history" search={{ tab: "all" }}>
+                      История генераций
+                    </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild className="rounded-none">
                     <Link to="/app/generator" search={{ tab: "interior" }}>
@@ -123,7 +149,7 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
             {nav.map((item) => (
               <Link
                 key={item.to}
-                to={item.to}
+                {...navLinkProps(item, signedIn)}
                 onClick={() => setOpen(false)}
                 className="py-2 text-sm text-muted-foreground"
               >
