@@ -12,13 +12,27 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { accountBalance, accountUser } from "@/lib/mock-data";
 
+import type { TabId } from "@/lib/mock-data";
+
 const nav = [
-  { to: "/interior", label: "Интерьер" },
-  { to: "/landscape", label: "Ландшафт" },
-  { to: "/facade", label: "Фасад" },
+  { to: "/interior", label: "Интерьер", tab: "interior" },
+  { to: "/landscape", label: "Ландшафт", tab: "landscape" },
+  { to: "/facade", label: "Фасад", tab: "facade" },
   { to: "/pricing", label: "Тарифы" },
   { to: "/faq", label: "Вопросы" },
 ] as const;
+
+type NavItem = (typeof nav)[number];
+
+function navLinkProps(item: NavItem, signedIn: boolean) {
+  if (signedIn && "tab" in item) {
+    return {
+      to: "/app/generator" as const,
+      search: { tab: item.tab as TabId },
+    };
+  }
+  return { to: item.to };
+}
 
 export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
   const [open, setOpen] = useState(false);
