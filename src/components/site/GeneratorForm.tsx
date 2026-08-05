@@ -28,7 +28,7 @@ const config: Record<
   TabId,
   {
     types: readonly string[];
-    styles: readonly { id: string; name: string; desc: string }[];
+    styles: readonly StyleItem[];
     typeLabel: string;
     upload: string;
     notesPlaceholder: string;
