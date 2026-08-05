@@ -7,7 +7,7 @@ import { UserMosaic } from "@/components/site/UserMosaic";
 import { TestimonialsCarousel } from "@/components/site/TestimonialsCarousel";
 import { Button } from "@/components/ui/button";
 import { GeneratorForm } from "@/components/site/GeneratorForm";
-import { images } from "@/lib/mock-data";
+import { images, facadeStyles } from "@/lib/mock-data";
 
 import facadeHero from "@/assets/facade-hero.jpg";
 import facadeModern from "@/assets/facade-modern.jpg";
@@ -42,16 +42,8 @@ const steps = [
   { title: "Результат", text: "Сравниваете было/стало, просите правки словами и скачиваете кадр в высоком разрешении." },
 ];
 
-const facadeStyleGallery = [
-  { name: "Современный", desc: "Чистые формы, большие окна, минимум декора", image: facadeModern },
-  { name: "Скандинавский", desc: "Светлое дерево, простые линии, тёплый уют", image: facadeScandi },
-  { name: "Классический", desc: "Симметрия, лепнина, благородные пропорции", image: facadeClassic },
-  { name: "Лофт", desc: "Кирпич, металл, индустриальные детали", image: facadeLoft },
-  { name: "Шале", desc: "Дерево и камень, покатая крыша, горный характер", image: facadeChalet },
-  { name: "Хай-тек", desc: "Стекло, металл, технологичный силуэт", image: facadeHitech },
-  { name: "Средиземноморский", desc: "Штукатурка, черепица, тёплые оттенки", image: facadeMedit },
-  { name: "Эко-стиль", desc: "Натуральные материалы, зелёные акценты, вписан в ландшафт", image: facadeEco },
-];
+const facadeStyleGallery = facadeStyles;
+
 
 const mosaicTiles = [
   { before: facadeOld, after: facadeModern, alt: "Современный фасад", span: "col-span-2 row-span-2 lg:col-span-3 lg:row-span-2" },
@@ -274,7 +266,7 @@ function FacadePage() {
               Стили фасада
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              Восемь направлений, с которых обычно начинают работу над домом.
+              Десять направлений, с которых обычно начинают работу над домом.
             </p>
           </div>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
