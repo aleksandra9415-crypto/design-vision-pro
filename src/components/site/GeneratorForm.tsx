@@ -279,7 +279,7 @@ export function GeneratorForm({
         <>
           <div className={`space-y-3 ${spot ? "pointer-events-none opacity-50" : ""}`}>
             <StepTitle n={2}>Стиль</StepTitle>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {cfg.styles.map((s) => {
                 const active = style === s.id;
                 return (
@@ -298,7 +298,7 @@ export function GeneratorForm({
                       src={s.image}
                       alt={s.name}
                       loading="lazy"
-                      className="h-20 w-full object-cover"
+                      className="aspect-[5/4] w-full object-cover"
                     />
 
                     {active && (
