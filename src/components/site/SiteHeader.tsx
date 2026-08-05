@@ -73,6 +73,9 @@ export function SiteHeader({ signedIn = false }: { signedIn?: boolean }) {
                     <Link to="/app/account">Личный кабинет</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild className="rounded-none">
+                    <Link to="/app/history">История генераций</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild className="rounded-none">
                     <Link to="/app/generator" search={{ tab: "interior" }}>
                       Генератор
                     </Link>
