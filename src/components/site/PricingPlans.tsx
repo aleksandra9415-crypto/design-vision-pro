@@ -71,7 +71,7 @@ function LicenseNote({ id, text }: { id: string; text: string }) {
   );
 }
 
-function Consents({ ns }: { ns: string }) {
+export function Consents({ ns }: { ns: string }) {
   return (
     <div className="space-y-3">
       <label
@@ -144,7 +144,7 @@ export function PricingPlans({
   ns = "pricing",
   selectedId,
   onSelect,
-  showConsents = true,
+  showConsents = false,
 }: {
   ns?: string;
   selectedId?: string;

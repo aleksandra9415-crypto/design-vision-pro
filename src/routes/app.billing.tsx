@@ -3,7 +3,7 @@ import { Lock } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { AppShell } from "@/components/site/AppShell";
-import { PricingPlans } from "@/components/site/PricingPlans";
+import { PricingPlans, Consents } from "@/components/site/PricingPlans";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -69,7 +69,10 @@ function Billing() {
             <Label htmlFor="cvc">CVC</Label>
             <Input id="cvc" required placeholder="000" inputMode="numeric" className="rounded-none" />
           </div>
-          <div className="sm:col-span-2">
+          <div className="sm:col-span-2 space-y-6">
+            <div className="border border-border bg-muted/20 p-6">
+              <Consents ns="billing-form" />
+            </div>
             <Button type="submit" size="lg" className="w-full rounded-none">
               <Lock className="size-4" /> Оплатить {active.price} ₽
             </Button>
