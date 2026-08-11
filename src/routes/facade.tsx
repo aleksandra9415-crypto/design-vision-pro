@@ -46,16 +46,16 @@ const facadeStyleGallery = facadeStyles;
 
 
 const mosaicTiles = [
-  { before: facadeOld, after: facadeModern, alt: "Современный фасад", span: "col-span-2 row-span-2" },
-  { before: facadeOld, after: facadeScandi, alt: "Фасад в скандинавском стиле", span: "" },
-  { before: images.facadeBefore, after: facadeHitech, alt: "Фасад в стиле хай-тек", span: "row-span-2" },
+  { before: facadeOld, after: facadeModern, alt: "Современный фасад", span: "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2" },
+  { before: facadeOld, after: facadeScandi, alt: "Фасад в скандинавском стиле", span: "lg:col-span-2" },
+  { before: images.facadeBefore, after: facadeHitech, alt: "Фасад в стиле хай-тек", span: "lg:row-span-2" },
   { before: facadeOld, after: facadeClassic, alt: "Классический фасад" },
   { before: facadeOld, after: facadeLoft, alt: "Фасад в стиле лофт" },
-  { before: images.facadeBefore, after: images.facadeAfter, alt: "Фасад загородного дома", span: "col-span-2" },
-  { before: facadeOld, after: facadeChalet, alt: "Фасад в стиле шале", span: "col-span-2 row-span-2" },
+  { before: images.facadeBefore, after: images.facadeAfter, alt: "Фасад загородного дома", span: "col-span-2 lg:col-span-2" },
+  { before: facadeOld, after: facadeChalet, alt: "Фасад в стиле шале", span: "lg:col-span-2 lg:row-span-2" },
   { before: facadeOld, after: facadeMedit, alt: "Средиземноморский фасад" },
   { before: images.facadeBefore, after: facadeEco, alt: "Фасад в эко-стиле" },
-  { before: facadeOld, after: facadeModern, alt: "Отделка фасада панелями", span: "col-span-2" },
+  { before: facadeOld, after: facadeModern, alt: "Отделка фасада панелями", span: "col-span-2 lg:col-span-2" },
 ];
 
 const cases = [

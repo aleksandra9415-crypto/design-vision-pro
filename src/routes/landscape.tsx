@@ -46,16 +46,16 @@ const landscapeStyleGallery = landscapeStyles;
 
 
 const mosaicTiles = [
-  { before: landOld, after: landModern, alt: "Современный двор с мощением", span: "col-span-2 row-span-2" },
-  { before: landOld, after: landMinimal, alt: "Участок с газоном", span: "" },
-  { before: images.landscapeBefore, after: landNatural, alt: "Сад в природном стиле", span: "row-span-2" },
+  { before: landOld, after: landModern, alt: "Современный двор с мощением", span: "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2" },
+  { before: landOld, after: landMinimal, alt: "Участок с газоном", span: "lg:col-span-2" },
+  { before: images.landscapeBefore, after: landNatural, alt: "Сад в природном стиле", span: "lg:row-span-2" },
   { before: landOld, after: landFormal, alt: "Регулярный сад" },
   { before: landOld, after: landJapan, alt: "Японский сад" },
-  { before: images.landscapeBefore, after: images.landscapeAfter, alt: "Двор загородного дома", span: "col-span-2" },
-  { before: landOld, after: landMedit, alt: "Средиземноморский двор", span: "col-span-2 row-span-2" },
+  { before: images.landscapeBefore, after: images.landscapeAfter, alt: "Двор загородного дома", span: "col-span-2 lg:col-span-2" },
+  { before: landOld, after: landMedit, alt: "Средиземноморский двор", span: "lg:col-span-2 lg:row-span-2" },
   { before: landOld, after: landCountry, alt: "Огородный сад с грядками" },
   { before: images.landscapeBefore, after: landNordic, alt: "Хвойный сад с камнями" },
-  { before: landOld, after: landModern, alt: "Зона отдыха с подсветкой", span: "col-span-2" },
+  { before: landOld, after: landModern, alt: "Зона отдыха с подсветкой", span: "col-span-2 lg:col-span-2" },
 ];
 
 const cases = [
