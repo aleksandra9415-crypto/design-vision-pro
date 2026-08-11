@@ -59,6 +59,17 @@ export function UserMosaic({ tiles }: { tiles: Tile[] }) {
 
 
 function MosaicCard({ tile, type }: { tile: Tile; type: "vertical" | "horizontal" }) {
+  // Generate a mock prompt based on the tile content
+  const getPrompt = (alt: string) => {
+    if (alt.toLowerCase().includes("фасад")) {
+      return "Современный минимализм, отделка деревом и тёмным металлом, панорамные окна";
+    }
+    if (alt.toLowerCase().includes("ландшафт") || alt.toLowerCase().includes("двор")) {
+      return "Уютная зона отдыха, мощёные дорожки, многоуровневое освещение и хвойные растения";
+    }
+    return "Тёплый мягкий свет, натуральное дерево, больше зелени и минималистичный декор";
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -99,12 +110,18 @@ function MosaicCard({ tile, type }: { tile: Tile; type: "vertical" | "horizontal
         </VisuallyHidden.Root>
         <div className="relative bg-background p-4 sm:p-8">
           <BeforeAfter before={tile.before} after={tile.after} />
-          <p className="mt-6 text-center font-display text-2xl tracking-[0.02em]">
-            {tile.alt}
-          </p>
+          <div className="mt-6 text-center space-y-1">
+            <h3 className="font-display text-2xl tracking-normal normal-case font-normal">
+              {tile.alt}
+            </h3>
+            <p className="text-muted-foreground text-sm italic">
+              «{getPrompt(tile.alt)}»
+            </p>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
   );
 }
+
 
