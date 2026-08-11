@@ -141,7 +141,7 @@ function FacadePage() {
           className="absolute inset-0 size-full origin-center object-cover animate-ken-burns"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/35 to-foreground/10" />
-        <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end px-4 pb-14">
+        <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-center px-4 pt-32 pb-14 sm:justify-end sm:pt-0">
           <p className="text-sm tracking-[0.18em] text-background/70">
             дизайн фасада с помощью ИИ
           </p>
