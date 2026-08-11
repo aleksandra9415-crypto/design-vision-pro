@@ -46,7 +46,7 @@ const facadeStyleGallery = facadeStyles;
 
 
 const mosaicTiles = [
-  { before: facadeOld, after: facadeModern, alt: "Современный фасад", span: "col-span-2 row-span-2 lg:col-span-3 lg:row-span-2" },
+  { before: facadeOld, after: facadeModern, alt: "Современный фасад", span: "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2" },
   { before: facadeOld, after: facadeScandi, alt: "Фасад в скандинавском стиле", span: "lg:col-span-2" },
   { before: images.facadeBefore, after: facadeHitech, alt: "Фасад в стиле хай-тек", span: "lg:row-span-2" },
   { before: facadeOld, after: facadeClassic, alt: "Классический фасад" },

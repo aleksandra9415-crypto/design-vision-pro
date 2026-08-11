@@ -100,7 +100,7 @@ const mosaicTiles = [
     before: images.interiorBefore,
     after: styleScandi,
     alt: "Гостиная, сканди",
-    span: "col-span-2 row-span-2 lg:col-span-3 lg:row-span-2",
+    span: "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2",
   },
   { before: landOld, after: landNatural, alt: "Участок, природный сад", span: "lg:col-span-2" },
   { before: facadeOld, after: facadeModern, alt: "Фасад, современный", span: "lg:row-span-2" },

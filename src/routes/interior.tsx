@@ -51,7 +51,7 @@ const revealCards = [
 const finalThumbs = [styleScandi, roomKitchen, styleJapandi, roomBath];
 
 const mosaicTiles = [
-  { before: images.interiorBefore, after: styleScandi, alt: "Гостиная, сканди", span: "col-span-2 row-span-2 lg:col-span-3 lg:row-span-2" },
+  { before: images.interiorBefore, after: styleScandi, alt: "Гостиная, сканди", span: "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2" },
   { before: images.interiorBefore, after: styleLoft, alt: "Студия, лофт", span: "lg:col-span-2" },
   { before: images.landscapeBefore, after: images.landscapeAfter, alt: "Участок с газоном", span: "lg:row-span-2" },
   { before: images.interiorBefore, after: roomKitchen, alt: "Кухня, современный" },

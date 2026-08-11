@@ -46,7 +46,7 @@ const landscapeStyleGallery = landscapeStyles;
 
 
 const mosaicTiles = [
-  { before: landOld, after: landModern, alt: "Современный двор с мощением", span: "col-span-2 row-span-2 lg:col-span-3 lg:row-span-2" },
+  { before: landOld, after: landModern, alt: "Современный двор с мощением", span: "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2" },
   { before: landOld, after: landMinimal, alt: "Участок с газоном", span: "lg:col-span-2" },
   { before: images.landscapeBefore, after: landNatural, alt: "Сад в природном стиле", span: "lg:row-span-2" },
   { before: landOld, after: landFormal, alt: "Регулярный сад" },
