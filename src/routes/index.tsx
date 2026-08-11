@@ -178,7 +178,7 @@ function Home() {
           className="absolute inset-0 size-full origin-center object-cover animate-ken-burns"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/35 to-foreground/10" />
-        <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end px-4 pb-14">
+        <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-center px-4 pt-20 pb-14 sm:justify-end sm:pt-0">
           <p className="text-sm tracking-[0.18em] text-background/70">дизайн с помощью ИИ</p>
           <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[1.02] tracking-[0.02em] text-background sm:text-6xl">
             Увидеть результат до ремонта
