@@ -364,15 +364,15 @@ function InteriorPage() {
               </div>
             ))}
           </div>
-          <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-10 flex flex-col gap-6 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
               О нас писали
             </p>
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-2">
               {press.map((p) => (
                 <span
                   key={p}
-                  className="border border-border bg-card px-4 py-2 font-display text-lg tracking-[0.02em] text-muted-foreground"
+                  className="flex-1 min-w-[calc(33.33%-8px)] text-center sm:flex-none border border-border bg-card px-5 py-3 sm:px-4 sm:py-2 font-display text-xl sm:text-lg tracking-[0.02em] text-muted-foreground"
                 >
                   {p}
                 </span>
