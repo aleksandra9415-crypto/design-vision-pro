@@ -51,16 +51,16 @@ const revealCards = [
 const finalThumbs = [styleScandi, roomKitchen, styleJapandi, roomBath];
 
 const mosaicTiles = [
-  { before: images.interiorBefore, after: styleScandi, alt: "Гостиная, сканди", span: "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2" },
-  { before: images.interiorBefore, after: styleLoft, alt: "Студия, лофт", span: "lg:col-span-2" },
-  { before: images.landscapeBefore, after: images.landscapeAfter, alt: "Участок с газоном", span: "lg:row-span-2" },
+  { before: images.interiorBefore, after: styleScandi, alt: "Гостиная, сканди", span: "col-span-2 row-span-2" },
+  { before: images.interiorBefore, after: styleLoft, alt: "Студия, лофт", span: "" },
+  { before: images.landscapeBefore, after: images.landscapeAfter, alt: "Участок с газоном", span: "row-span-2" },
   { before: images.interiorBefore, after: roomKitchen, alt: "Кухня, современный" },
   { before: images.interiorBefore, after: roomBath, alt: "Ванная, спа-минимализм" },
-  { before: images.facadeBefore, after: images.facadeAfter, alt: "Фасад дома", span: "col-span-2 lg:col-span-2" },
-  { before: images.interiorBefore, after: styleJapandi, alt: "Спальня, джапанди", span: "lg:col-span-2 lg:row-span-2" },
+  { before: images.facadeBefore, after: images.facadeAfter, alt: "Фасад дома", span: "col-span-2" },
+  { before: images.interiorBefore, after: styleJapandi, alt: "Спальня, джапанди", span: "col-span-2 row-span-2" },
   { before: images.interiorBefore, after: roomKids, alt: "Детская, тёплые тона" },
   { before: images.interiorBefore, after: styleNeoclassic, alt: "Гостиная, неоклассика" },
-  { before: images.interiorBefore, after: styleBoho, alt: "Спальня, бохо", span: "col-span-2 lg:col-span-2" },
+  { before: images.interiorBefore, after: styleBoho, alt: "Спальня, бохо", span: "col-span-2" },
 ];
 
 const steps = [
