@@ -18,36 +18,40 @@ export function UserMosaic({ tiles }: { tiles: Tile[] }) {
   const displayTiles = tiles.slice(0, 9);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 lg:gap-6">
       {/* Group 1: Columns 1-3 */}
-      {/* Col 1: 1 large vertical */}
-      <div className="flex flex-col">
-        {displayTiles[0] && <MosaicCard tile={displayTiles[0]} type="vertical" />}
-      </div>
-      {/* Col 2: 2 horizontal */}
-      <div className="flex flex-col justify-between">
-        {displayTiles[1] && <MosaicCard tile={displayTiles[1]} type="horizontal" />}
-        {displayTiles[2] && <MosaicCard tile={displayTiles[2]} type="horizontal" />}
-      </div>
-      {/* Col 3: 1 large vertical */}
-      <div className="flex flex-col">
-        {displayTiles[3] && <MosaicCard tile={displayTiles[3]} type="vertical" />}
+      <div className="contents">
+        {/* Col 1: 1 large vertical */}
+        <div className="flex flex-col gap-6">
+          {displayTiles[0] && <MosaicCard tile={displayTiles[0]} type="vertical" />}
+        </div>
+        {/* Col 2: 2 horizontal */}
+        <div className="flex flex-col gap-6">
+          {displayTiles[1] && <MosaicCard tile={displayTiles[1]} type="horizontal" />}
+          {displayTiles[2] && <MosaicCard tile={displayTiles[2]} type="horizontal" />}
+        </div>
+        {/* Col 3: 1 large vertical */}
+        <div className="flex flex-col gap-6">
+          {displayTiles[3] && <MosaicCard tile={displayTiles[3]} type="vertical" />}
+        </div>
       </div>
 
       {/* Group 2: Columns 1-3 */}
-      {/* Col 1: 2 horizontal */}
-      <div className="flex flex-col justify-between">
-        {displayTiles[4] && <MosaicCard tile={displayTiles[4]} type="horizontal" />}
-        {displayTiles[5] && <MosaicCard tile={displayTiles[5]} type="horizontal" />}
-      </div>
-      {/* Col 2: 1 large vertical */}
-      <div className="flex flex-col">
-        {displayTiles[6] && <MosaicCard tile={displayTiles[6]} type="vertical" />}
-      </div>
-      {/* Col 3: 2 horizontal */}
-      <div className="flex flex-col justify-between">
-        {displayTiles[7] && <MosaicCard tile={displayTiles[7]} type="horizontal" />}
-        {displayTiles[8] && <MosaicCard tile={displayTiles[8]} type="horizontal" />}
+      <div className="contents">
+        {/* Col 1: 2 horizontal */}
+        <div className="flex flex-col gap-6">
+          {displayTiles[4] && <MosaicCard tile={displayTiles[4]} type="horizontal" />}
+          {displayTiles[5] && <MosaicCard tile={displayTiles[5]} type="horizontal" />}
+        </div>
+        {/* Col 2: 1 large vertical */}
+        <div className="flex flex-col gap-6">
+          {displayTiles[6] && <MosaicCard tile={displayTiles[6]} type="vertical" />}
+        </div>
+        {/* Col 3: 2 horizontal */}
+        <div className="flex flex-col gap-6">
+          {displayTiles[7] && <MosaicCard tile={displayTiles[7]} type="horizontal" />}
+          {displayTiles[8] && <MosaicCard tile={displayTiles[8]} type="horizontal" />}
+        </div>
       </div>
     </div>
   );
