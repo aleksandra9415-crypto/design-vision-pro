@@ -18,7 +18,7 @@ export function UserMosaic({ tiles }: { tiles: Tile[] }) {
   const displayTiles = tiles.slice(0, 9);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 lg:gap-6">
       {/* Group 1: Columns 1-3 */}
       <div className="contents">
         {/* Col 1: 1 large vertical */}
@@ -56,6 +56,7 @@ export function UserMosaic({ tiles }: { tiles: Tile[] }) {
     </div>
   );
 }
+
 
 function MosaicCard({ tile, type }: { tile: Tile; type: "vertical" | "horizontal" }) {
   return (
