@@ -51,17 +51,17 @@ const revealCards = [
 const finalThumbs = [styleScandi, roomKitchen, styleJapandi, roomBath];
 
 const mosaicTiles = [
-  { before: images.interiorBefore, after: styleScandi, alt: "Гостиная, сканди", span: "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2" },
-  { before: images.interiorBefore, after: styleLoft, alt: "Студия, лофт", span: "lg:col-span-2" },
-  { before: images.landscapeBefore, after: images.landscapeAfter, alt: "Участок с газоном", span: "lg:row-span-2" },
-  { before: images.interiorBefore, after: roomKitchen, alt: "Кухня, современный" },
-  { before: images.interiorBefore, after: roomBath, alt: "Ванная, спа-минимализм" },
-  { before: images.facadeBefore, after: images.facadeAfter, alt: "Фасад дома", span: "col-span-2 lg:col-span-2" },
-  { before: images.interiorBefore, after: styleJapandi, alt: "Спальня, джапанди", span: "lg:col-span-2 lg:row-span-2" },
-  { before: images.interiorBefore, after: roomKids, alt: "Детская, тёплые тона" },
-  { before: images.interiorBefore, after: styleNeoclassic, alt: "Гостиная, неоклассика" },
-  { before: images.interiorBefore, after: styleBoho, alt: "Спальня, бохо", span: "col-span-2 lg:col-span-2" },
+  { before: images.interiorBefore, after: styleScandi, alt: "Гостиная в скандинавском стиле с элементами минимализма" },
+  { before: images.interiorBefore, after: styleLoft, alt: "Просторная студия в индустриальном стиле лофт" },
+  { before: images.interiorBefore, after: roomKitchen, alt: "Современная кухня с островом и встроенной техникой" },
+  { before: images.interiorBefore, after: roomBath, alt: "Ванная комната в стиле спа-минимализм с подсветкой" },
+  { before: images.interiorBefore, after: styleJapandi, alt: "Уютная спальня в стиле джапанди в светлых тонах" },
+  { before: images.interiorBefore, after: roomKids, alt: "Детская комната в теплых тонах для игр и отдыха" },
+  { before: images.interiorBefore, after: styleNeoclassic, alt: "Гостиная в стиле неоклассика с лепниной" },
+  { before: images.interiorBefore, after: styleBoho, alt: "Творческая спальня в стиле бохо с декором" },
+  { before: images.interiorBefore, after: styleMinimal, alt: "Минималистичная спальня без визуального шума" },
 ];
+
 
 const steps = [
   { title: "Загрузка фото", text: "Снимок с телефона подойдёт — важно, чтобы было видно стены, окна и пол." },
