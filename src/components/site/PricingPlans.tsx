@@ -243,6 +243,12 @@ export function PricingPlans({
           </div>
         </div>
       )}
+      
+      {!showConsents && (
+        <div className="mt-10 border border-border bg-muted/40 p-6 sm:p-8">
+          <PayMethods />
+        </div>
+      )}
     </>
   );
 }
