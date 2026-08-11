@@ -96,37 +96,17 @@ const stats = [
 const press = ["Т—Ж", "VC.ru", "Cossa", "Habr", "Inc."];
 
 const mosaicTiles = [
-  {
-    before: images.interiorBefore,
-    after: styleScandi,
-    alt: "Гостиная, сканди",
-    span: "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2",
-  },
-  { before: landOld, after: landNatural, alt: "Участок, природный сад", span: "lg:col-span-2" },
-  { before: facadeOld, after: facadeModern, alt: "Фасад, современный", span: "lg:row-span-2" },
-  { before: images.interiorBefore, after: roomKitchen, alt: "Кухня, современный" },
-  { before: landOld, after: landJapan, alt: "Сад, японский стиль" },
-  {
-    before: facadeOld,
-    after: facadeScandi,
-    alt: "Фасад, скандинавский дом",
-    span: "col-span-2 lg:col-span-2",
-  },
-  {
-    before: images.interiorBefore,
-    after: styleJapandi,
-    alt: "Спальня, джапанди",
-    span: "lg:col-span-2 lg:row-span-2",
-  },
-  { before: landOld, after: landMinimal, alt: "Двор, минимализм" },
-  { before: images.interiorBefore, after: roomBath, alt: "Ванная, спа-минимализм" },
-  {
-    before: facadeOld,
-    after: facadeClassic,
-    alt: "Фасад, классика",
-    span: "col-span-2 lg:col-span-2",
-  },
+  { before: images.interiorBefore, after: styleScandi, alt: "Гостиная в скандинавском стиле с элементами минимализма" },
+  { before: landOld, after: landNatural, alt: "Участок с природным ландшафтом и зоной отдыха" },
+  { before: facadeOld, after: facadeModern, alt: "Современный фасад частного дома с отделкой панелями" },
+  { before: images.interiorBefore, after: roomKitchen, alt: "Кухня в современном стиле с островом" },
+  { before: landOld, after: landJapan, alt: "Сад в японском стиле с камнями и водоемом" },
+  { before: facadeOld, after: facadeScandi, alt: "Фасад в скандинавском стиле с деревянной отделкой" },
+  { before: images.interiorBefore, after: styleJapandi, alt: "Спальня в стиле джапанди с мягким светом" },
+  { before: landOld, after: landMinimal, alt: "Двор в стиле минимализм с лаконичным мощением" },
+  { before: images.interiorBefore, after: roomBath, alt: "Ванная комната в стиле спа-минимализм" },
 ];
+
 
 const finalThumbs = [styleScandi, landNatural, facadeModern, styleLoft];
 
