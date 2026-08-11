@@ -132,7 +132,7 @@ function LandscapePage() {
   return (
     <PageShell>
       {/* HERO */}
-      <section className="relative h-[85svh] min-h-[480px] w-full overflow-hidden">
+      <section className="relative h-auto sm:h-[85svh] min-h-[480px] w-full overflow-hidden">
         <img
           src={landHero}
           alt="Благоустроенный участок с газоном, дорожками и вечерней подсветкой"
@@ -171,7 +171,7 @@ function LandscapePage() {
               <Link to="/pricing">Тарифы и кредиты</Link>
             </Button>
           </div>
-          <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-t border-background/25 pt-6">
+          <div className="mt-8 grid grid-cols-1 sm:flex sm:flex-wrap gap-x-10 gap-y-6 border-t border-background/25 pt-6">
             {heroFacts.map((f) => (
               <div key={f.label}>
                 <p className="font-display text-2xl leading-none tracking-[0.02em] text-background">
