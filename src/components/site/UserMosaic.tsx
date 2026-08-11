@@ -13,7 +13,7 @@ type Tile = {
 
 export function UserMosaic({ tiles }: { tiles: Tile[] }) {
   return (
-    <div className="grid auto-rows-[160px] grid-cols-2 gap-4 sm:auto-rows-[200px] sm:grid-cols-4 lg:auto-rows-[240px] lg:grid-cols-6">
+    <div className="grid auto-rows-[220px] grid-cols-2 gap-4 sm:auto-rows-[260px] sm:grid-cols-4 lg:auto-rows-[300px] lg:grid-cols-6">
       {tiles.map((t) => {
         return (
           <Dialog key={t.alt}>
@@ -37,9 +37,9 @@ export function UserMosaic({ tiles }: { tiles: Tile[] }) {
                 />
                 
                 <figcaption
-                  className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 bg-background/90 px-3 text-[10px] sm:text-xs backdrop-blur-sm"
+                  className="absolute inset-x-0 bottom-0 flex min-h-[50px] items-center justify-between gap-2 bg-background/90 px-3 py-2 text-[10px] sm:text-xs backdrop-blur-sm"
                 >
-                  <span className="line-clamp-1 leading-tight">{t.alt}</span>
+                  <span className="flex-1 leading-tight">{t.alt}</span>
                   <span className="shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
                     было
                   </span>
